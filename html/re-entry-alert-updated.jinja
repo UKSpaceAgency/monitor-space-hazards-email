@@ -1,0 +1,341 @@
+{% set risk = reentry_event_report.probability|to_risk %}
+{% if risk == "Low" %}
+{% set risk_background_color = "#D4E7D0" %}
+{% elif risk == "Medium" %}
+{% set risk_background_color = "#FFF0C8" %}
+{% else %}
+{% set risk_background_color = "#F1C6C6" %}
+{% endif %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--$-->
+<html style="font-size:16px" dir="ltr" lang="en">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta name="color-scheme" content="only" />
+    <style>
+      table {
+        border-spacing: 0;
+        mso-table-lspace: 0pt !important;
+        mso-table-rspace: 0pt !important;
+      }
+    </style>
+  </head>
+  <body style="background-color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="background-color:rgb(38,92,89);padding:8px">
+              <tbody>
+                <tr>
+                  <td>
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation">
+                      <tbody style="width:100%">
+                        <tr style="width:100%">
+                          <td align="left" data-id="__react-email-column" style="height:60px;width:16.666667%">
+                            <img src="data:image/png;base64,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" style="width:100%;height:auto;display:block;outline:none;border:none;text-decoration:none" />
+                          </td>
+                          <td align="center" data-id="__react-email-column" style="height:60px;width:66.666667%"></td>
+                          <td align="right" data-id="__react-email-column" style="height:60px;width:16.666667%">
+                            <img src="data:image/png;base64,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" style="width:64px;height:auto;display:block;outline:none;border:none;text-decoration:none" />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation">
+                      <tbody style="width:100%">
+                        <tr style="width:100%">
+                          <td data-id="__react-email-column">
+                            <h1 style="font-size:16px;color:rgb(255,255,255)">{{ subject }}<br/>{{ reentry_event_report.object_name }} {{ reentry_event_report.object_type }}</h1>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <p style="margin:0;font-size:14px;line-height:24px">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+              <!-- -->
+              <b>full report, interactive mapping for this incident and the archive.</b>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="margin:0;border-collapse:collapse">
+              <tbody>
+                <tr>
+                  <td>
+                    <table style="width:100%;border-collapse:collapse">
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Risk Assessment</h4>
+                        </td>
+                        <td style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;background-color:#d8e6d2">
+                          <h4 style="text-align:center;font-size:14px;margin:0">{{ risk }}</h4>
+                        </td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Affected Territory(s)</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.impact.by_nation|to_affected_territories }}</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Impact Probability</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ '%0.3f' % (100*reentry_event_report.probability)|float }}%</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Time Frame</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ (reentry_event_report.time_window_start,
+                                                reentry_event_report.time_window_end)|to_time_frame }}</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Object Details</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.object_type }} (NORAD ID {{
+                                                reentry_event_report.norad_id }} - {{ reentry_event_report.object_name }})
+                                  </td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Report Number</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event.reentry_report_number }}</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Liability</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "Unknown" }}</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Recommendation Actions</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">For information. No action required from response agencies.</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="background-color:rgb(38,92,89);padding:8px;margin:0">
+              <tbody>
+                <tr>
+                  <td>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Summary</h1>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
+              <tbody>
+                <tr>
+                  <td>
+                    <p style="margin:0;font-size:14px;line-height:24px">
+                                        We are monitoring <a
+                                            href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert"
+                                            target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name }} launching in {{ reentry_event_report.launching_year }}. </a>{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
+                                    </p>
+                                    <p style="font-size:14px;line-height:24px;margin:16px 0"><b>Recommended
+                                            actions</b><br>
+                                        This is a
+                                        {{ risk }} risk event: we expect organisations to keep a watching brief.</p>
+                                    <p style="font-size:14px;line-height:24px;margin:16px 0">
+                                        The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "Unknown Object" }} is expected to re-enter at approximately <b>{{
+                                            (reentry_event_report.time_window_start,
+                                            reentry_event_report.time_window_end)|to_time_frame }}.</b> The UK mainland
+                                        is
+                                        expected to have
+                                        {{ reentry_event_report.overflight_time|length }} overflight(s) in the current
+                                        uncertainty window. The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "Unknown Object" }} has a <b>{{ '%0.3f' %
+                                            (100*reentry_event_report.probability)|float }}% probability of UK re-entry.</b> This
+                                        meets the
+                                        {{ risk }}-risk escalation threshold. We cannot rule out that hazardous material
+                                        will
+                                        have contaminated the re-entering objects. Hydrazine is commonly used as
+                                        rocket-fuel.
+                                    </p>
+                                    <p style="font-size:14px;line-height:24px;margin:16px 0">
+                                        <b>
+                                            Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert"
+                                                target="_blank">Monitor Space Hazards</a> <!-- -->for
+                                            additional analysis and information.
+                                        </b>  
+                                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="background-color:rgb(38,92,89);padding:8px;margin:0">
+              <tbody>
+                <tr>
+                  <td>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Impact Risk Locations</h1>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
+              <tbody>
+                <tr>
+                  <td>
+                    <img src="{{ reentry_event_map_url }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;border:none;text-decoration:none" width="580" />
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="margin:0;border-collapse:collapse">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <table style="width:100%;border-collapse:collapse">
+                              <tr style="width:100%">
+                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                                  <h4 style="text-align:left;font-size:14px;margin:0">England</h4>
+                                </td>
+                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.england|to_affected_territories or "No regions affected"}}</td>
+                              </tr>
+                              <tr style="width:100%">
+                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                                  <h4 style="text-align:left;font-size:14px;margin:0">Scotland</h4>
+                                </td>
+                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.scotland|to_affected_territories or "No regions affected"}}</td>
+                              </tr>
+                              <tr style="width:100%">
+                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                                  <h4 style="text-align:left;font-size:14px;margin:0">Wales</h4>
+                                </td>
+                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.wales|to_affected_territories or "No regions affected"}}</td>
+                              </tr>
+                              <tr style="width:100%">
+                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                                  <h4 style="text-align:left;font-size:14px;margin:0">Northern Ireland</h4>
+                                </td>
+                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.northern_ireland|to_affected_territories or "No regions affected"}}</td>
+                              </tr>
+                              <tr style="width:100%">
+                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                                  <h4 style="text-align:left;font-size:14px;margin:0">UK OSTs and CDs</h4>
+                                </td>
+                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{
+                                        reentry_event_report.impact.overseas_territories_and_crown_dependencies|to_affected_territories or
+                                        "No regions affected"}}</td>
+                              </tr>
+                              <tr style="width:100%">
+                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                                  <h4 style="text-align:left;font-size:14px;margin:0">Airspace and Maritime</h4>
+                                </td>
+                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{
+                                        reentry_event_report.impact.maritime_and_airspace|to_affected_territories or
+                                        "No regions affected"}}</td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+                              <!-- -->
+                              <b>full report, interactive mapping for this incident and the archive.</b>
+                            </p>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="max-width:37.5em">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="background-color:rgb(38,92,89);padding:8px;margin:0">
+              <tbody>
+                <tr>
+                  <td>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Additional Information</h1>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
+              <tbody>
+                <tr>
+                  <td>
+                    <p style="margin:0;font-size:14px;line-height:24px">
+                      <b>Press and Public Lines</b>
+                      <br />Sign in to <a href="{{ application_url }}">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
+                    </p>
+                    <p style="font-size:14px;line-height:24px;margin:16px 0">
+                      <b>Contacts</b>
+                      <br />For non-urgent queries, email
+                      <!-- -->
+                      <a href="mailto:NSPOCincidents@ukspaceagency.gov.uk">NSPOCincidents@ukspaceagency.gov.uk</a>. <br />For urgent queries, sign in to
+                      <!-- -->
+                      <a href="{{ application_url }}">Monitor Space Hazards</a>
+                      <!-- -->to view relevant contract details.
+                    </p>
+                    <p style="margin:0;font-size:14px;line-height:24px">
+                      <a href="{{ application_url }}">Unsubscribe</a>
+                    </p>
+                    <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+                      <!-- -->
+                      <b>full report, interactive mapping for this incident and the archive.</b>
+                    </p>
+                    <p style="font-size:14px;line-height:24px;margin:16px 0">We are dedicated to providing exceptional products to our customers. Please let us know if you have any feedback on this report or ideas to make future reports better. You can contact us at
+                      <!-- -->
+                      <a href="mailto:NSPOCincidents@ukspaceagency.gov.uk">NSPOCincidents@ukspaceagency.gov.uk</a>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
+<!--/$-->
