@@ -1,11 +1,13 @@
-{% set risk = reentry_event_report.probability|to_risk %}
-{% if risk == "Low" %}
-{% set risk_background_color = "#D4E7D0" %}
-{% elif risk == "Medium" %}
-{% set risk_background_color = "#FFF0C8" %}
-{% else %}
-{% set risk_background_color = "#F1C6C6" %}
-{% endif %}
+{# 
+Variables which need to be passed to this template
+
+reentry_event_report
+reentry_date: the date the reentry took place
+decay_time: the decay time (UTC)
+uncertainty: uncertainty window of decay time (minutes)
+UK_impacted: contains text describing impact on the UK if there was one. Should be an empty string if no impact
+#}
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!--$-->
 <html style="font-size:16px" dir="ltr" lang="en">
@@ -47,11 +49,7 @@
                       <tbody style="width:100%">
                         <tr style="width:100%">
                           <td data-id="__react-email-column">
-                            <h1 style="font-size:16px;color:rgb(255,255,255)">Uncontrolled Re-Entry Early Warning  Report
-                            {% if reentry_event.reentry_report_number > 1%}
-                              - Updated
-                            {% endif %}
-                            <br/>{{ reentry_event_report.object_name }} {{ reentry_event_report.object_type }}</h1>
+                            <h1 style="font-size:16px;color:rgb(255,255,255)">Re-entry close down alert <br>{{ reentry_event_report.object_name }} {{ reentry_event_report.object_type }}</h1>
                           </td>
                         </tr>
                       </tbody>
@@ -64,100 +62,7 @@
         </tr>
       </tbody>
     </table>
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
-      <tbody>
-        <tr style="width:100%">
-          <td>
-            <p style="margin:0;font-size:14px;line-height:24px">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
-              <!-- -->
-              <b>full report, interactive mapping for this incident and the archive.</b>
-            </p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
-      <tbody>
-        <tr style="width:100%">
-          <td>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="margin:0;border-collapse:collapse">
-              <tbody>
-                <tr>
-                  <td>
-                    <table style="width:100%;border-collapse:collapse">
-                      <tr style="width:100%">
-                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Risk Assessment</h4>
-                        </td>
-                        <td style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;background-color:{{ risk_background_color }}">
-                          <h4 style="text-align:center;font-size:14px;margin:0">{{ risk }}</h4>
-                        </td>
-                      </tr>
-                      <tr style="width:100%">
-                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Affected Territory(s)</h4>
-                        </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.impact.by_nation|to_affected_territories }}</td>
-                      </tr>
-                      <tr style="width:100%">
-                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Impact Probability</h4>
-                        </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ '%0.3f' % (100*reentry_event_report.probability)|float }}%</td>
-                      </tr>
-                      <tr style="width:100%">
-                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Time Frame</h4>
-                        </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ (reentry_event_report.time_window_start,
-                                                reentry_event_report.time_window_end)|to_time_frame }}</td>
-                      </tr>
-                      <tr style="width:100%">
-                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Object Type</h4>
-                        </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.object_type }} (NORAD ID {{
-                                                reentry_event_report.norad_id }} - {{ reentry_event_report.object_name }})
-                                  </td>
-                      </tr>
-                      <tr style="width:100%">
-                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Object Details</h4>
-                        </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">
-                            Estimated mass: {{ reentry_event_report.estimated_mass }} kg<br>
-                            Height: {{reentry_event_report.object_height }} m<br>
-                            Width: {{reentry_event_report.object_width }} m<br>
 
-                        </td>
-                      </tr>
-                      <tr style="width:100%">
-                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Report Number</h4>
-                        </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event.reentry_report_number }}</td>
-                      </tr>
-                      <tr style="width:100%">
-                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Liability</h4>
-                        </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.license_country if reentry_event_report.license_country else "Unknown" }}</td>
-                      </tr>
-                      <tr style="width:100%">
-                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Recommendation Actions</h4>
-                        </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">For information. No action required from response agencies.</td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
       <tbody>
         <tr style="width:100%">
@@ -175,121 +80,22 @@
               <tbody>
                 <tr>
                   <td>
-                    <p style="margin:0;font-size:14px;line-height:24px">
-                      We are monitoring <a
-                          href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert"
-                          target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name }}, launched in {{ reentry_event_report.launching_year }}</a>. {{ reentry_event_report.license_country if reentry_event_report.license_country else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
-                    </p>
-                    <p style="font-size:14px;line-height:24px;margin:16px 0"><b>Recommended actions</b><br>
-                        This is a
-                        {{ risk }} risk event: we expect organisations to keep a watching brief.</p>
-                    <p style="font-size:14px;line-height:24px;margin:16px 0">
-                        The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "Unknown Object" }} is expected to re-enter at approximately <b>{{
-                            (reentry_event_report.time_window_start,
-                            reentry_event_report.time_window_end)|to_time_frame }}.</b> The UK mainland
-                        is
-                        expected to have
-                        {{ reentry_event_report.overflight_time|length }} overflight(s) in the current
-                        uncertainty window. The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "Unknown Object" }} has a <b>{{ '%0.3f' %
-                            (100*reentry_event_report.probability)|float }}% probability of UK re-entry.</b> This
-                        meets the
-                        {{ risk }}-risk escalation threshold. We cannot rule out that hazardous material
-                        will
-                        have contaminated the re-entering objects. Hydrazine is commonly used as
-                        rocket-fuel.
+                    <p style="font-size:14px;line-height:24px;margin:0">
+                        The re-entry of object {{reentry_event_report.object_name}} has now passed. 
+                    </p><p style="font-size:14px;line-height:24px;margin:16px 0">
+                        We have received confirmation that the {{reentry_event_report.object_name}} re-entered on the {{reentry_date}}. We cannot confirm final re-entry time; however, the final US information for this event gives a decay time of {{decay_time}} UTC with an uncertainty window of ± {{uncertainty}} minutes.
+                    </p><p style="font-size:14px;line-height:24px;margin:16px 0">
+
+                      {% if UK_impacted == "" %}
+                        We have received no reports to suggest the UK was impacted but will continue to monitor in case new information arises. 
+                      {% else %}
+                        {{ UK_impacted }}
+                      {% endif %}
                     </p>
                     <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
                       <!-- -->
                       <b>full report, interactive mapping for this incident and the archive.</b>
                     </p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
-      <tbody>
-        <tr style="width:100%">
-          <td>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="background-color:rgb(38,92,89);padding:8px;margin:0">
-              <tbody>
-                <tr>
-                  <td>
-                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Impact Risk Locations</h1>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
-              <tbody>
-                <tr>
-                  <td>
-                    <img src="{{ reentry_event_map_url }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;border:none;text-decoration:none" width="580" />
-                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="margin:0;border-collapse:collapse">
-                      <tbody>
-                        <tr>
-                          <td>
-                            <table style="width:100%;border-collapse:collapse">
-                              <tr style="width:100%">
-                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                  <h4 style="text-align:left;font-size:14px;margin:0">England</h4>
-                                </td>
-                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.england|to_affected_territories or "No regions affected"}}</td>
-                              </tr>
-                              <tr style="width:100%">
-                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                  <h4 style="text-align:left;font-size:14px;margin:0">Scotland</h4>
-                                </td>
-                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.scotland|to_affected_territories or "No regions affected"}}</td>
-                              </tr>
-                              <tr style="width:100%">
-                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                  <h4 style="text-align:left;font-size:14px;margin:0">Wales</h4>
-                                </td>
-                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.wales|to_affected_territories or "No regions affected"}}</td>
-                              </tr>
-                              <tr style="width:100%">
-                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                  <h4 style="text-align:left;font-size:14px;margin:0">Northern Ireland</h4>
-                                </td>
-                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.northern_ireland|to_affected_territories or "No regions affected"}}</td>
-                              </tr>
-                              <tr style="width:100%">
-                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                  <h4 style="text-align:left;font-size:14px;margin:0">UK OSTs and CDs</h4>
-                                </td>
-                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{
-                                        reentry_event_report.impact.overseas_territories_and_crown_dependencies|to_affected_territories or
-                                        "No regions affected"}}</td>
-                              </tr>
-                              <tr style="width:100%">
-                                <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                  <h4 style="text-align:left;font-size:14px;margin:0">Airspace and Maritime</h4>
-                                </td>
-                                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{
-                                        reentry_event_report.impact.maritime_and_airspace|to_affected_territories or
-                                        "No regions affected"}}</td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation">
-                      <tbody>
-                        <tr>
-                          <td>
-                            <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
-                              <!-- -->
-                              <b>full report, interactive mapping for this incident and the archive.</b>
-                            </p>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
                   </td>
                 </tr>
               </tbody>
@@ -326,7 +132,7 @@
                       <a href="mailto:NSPOCincidents@ukspaceagency.gov.uk">NSPOCincidents@ukspaceagency.gov.uk</a>. <br />For urgent queries, sign in to
                       <!-- -->
                       <a href="{{ application_url }}">Monitor Space Hazards</a>
-                      <!-- -->to view relevant contact details.
+                      <!-- -->to view relevant contract details.
                     </p>
                     <p style="margin:0;font-size:14px;line-height:24px">
                       <a href="{{ application_url }}/account">Unsubscribe</a>
