@@ -92,7 +92,7 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
                     has now passed. </p>
                     <p style="margin:16px 0;font-size:14px;line-height:24px">
                     {% if fragmentation_bool == true %}
-                       {{fragmentation_text | default ('We have received confirmation that the conjunction event involving ' + conjunction_event_report.primary_object_common_name + ' and ' + conjunction_event_report.secondary_object_common_name + ' has resulted in a fragmentation. More detail on this fragmentation and the objects impacted can be found on either  Monitor Space Hazards or through direct communication with the National Space Operations Centre.')}}'
+                       {{fragmentation_text | default ('We have received confirmation that the conjunction event involving ' + conjunction_event_report.primary_object_common_name + ' and ' + conjunction_event_report.secondary_object_common_name + ' has resulted in a fragmentation. More detail on this fragmentation and the objects impacted can be found on either  Monitor Space Hazards or through direct communication with the National Space Operations Centre.')}}
                     </p>
                     {% else %}
                       <p style="margin:16px 0;font-size:14px;line-height:24px">{{ no_fragmentation_text | default('We have received no reports to suggest a fragmentation occurred as a result of this conjunction event but will continue to monitor in case new information arises.') }}</p>
@@ -152,6 +152,9 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
                       <!-- -->
                       <a href="mailto:NSPOCincidents@ukspaceagency.gov.uk">NSPOCincidents@ukspaceagency.gov.uk</a>
                     </p>
+                    <p style="font-size:14px;line-height:24px;margin:16px 0">
+                      Monitor Space Hazards is available to UK licensed satellite operators and UK Government departments. If you meet these criteria and would like access, please contact <a href="mailto:monitorspacehazards@ukspaceagency.gov.uk">monitorspacehazards@ukspaceagency.gov.uk</a>
+                    </p>                    
                   </td>
                 </tr>
               </tbody>

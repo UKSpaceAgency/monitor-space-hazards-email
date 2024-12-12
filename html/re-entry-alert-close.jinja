@@ -77,7 +77,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
       </tbody>
     </table>  
 
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-collapse:collapse;padding-bottom:16px;max-width:37.5em">
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-collapse:collapse;margin-bottom: 16px;padding-bottom:16px;max-width:37.5em">
       <tbody>
         <tr>
           <td>
@@ -123,7 +123,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
                 <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                   <h4 style="text-align:left;font-size:14px;margin:0">Liability</h4>
                 </td>
-                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.license_country if reentry_event_report.license_country else "Unknown" }}</td>
+                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "Unknown" }}</td>
               </tr>
               <tr style="width:100%">
                 <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
@@ -250,6 +250,9 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
                       <!-- -->
                       <a href="mailto:NSPOCincidents@ukspaceagency.gov.uk">NSPOCincidents@ukspaceagency.gov.uk</a>
                     </p>
+                    <p style="font-size:14px;line-height:24px;margin:16px 0">
+                      Monitor Space Hazards is available to UK licensed satellite operators and UK Government departments. If you meet these criteria and would like access, please contact <a href="mailto:monitorspacehazards@ukspaceagency.gov.uk">monitorspacehazards@ukspaceagency.gov.uk</a>
+                    </p>                    
                   </td>
                 </tr>
               </tbody>

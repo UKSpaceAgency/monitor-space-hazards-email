@@ -149,7 +149,7 @@ reentry_event_map_url: link to the reentry map showing where object may enter
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                           <h4 style="text-align:left;font-size:14px;margin:0">Liability</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.license_country if reentry_event_report.license_country else "Unknown" }}</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
@@ -187,21 +187,21 @@ reentry_event_map_url: link to the reentry map showing where object may enter
                     <p style="margin:0;font-size:14px;line-height:24px">
                       We have identified an update to  <a
                           href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert"
-                          target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name }}</a>, launched in {{ reentry_event_report.launching_year }}. {{ reentry_event_report.license_country if reentry_event_report.license_country else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
+                          target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name }}</a>, launched in {{ reentry_event_report.launching_year }}. {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
                     </p>
                   {% else %}
                     <p style="margin:0;font-size:14px;line-height:24px">
 
                       We are monitoring <a
                           href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert"
-                          target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name }}, launched in {{ reentry_event_report.launching_year }}</a>. {{ reentry_event_report.license_country if reentry_event_report.license_country else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
+                          target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name }}, launched in {{ reentry_event_report.launching_year }}</a>. {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
                     </p>
                   {% endif %}
                     <p style="font-size:14px;line-height:24px;margin:16px 0"><b>Recommended actions</b><br>
                         This is a
                         {{ risk }} risk event: we expect organisations to keep a watching brief.</p>
                     <p style="font-size:14px;line-height:24px;margin:16px 0">
-                        The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "Unknown Object" }} is expected to re-enter at approximately <b>{{
+                        The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "Unknown Object" }} is expected to re-enter at <b>{{
                             (reentry_event_report.time_window_start,
                             reentry_event_report.time_window_end)|to_time_frame }}.</b> The UK mainland
                         is
@@ -356,6 +356,9 @@ reentry_event_map_url: link to the reentry map showing where object may enter
                       <!-- -->
                       <a href="mailto:NSPOCincidents@ukspaceagency.gov.uk">NSPOCincidents@ukspaceagency.gov.uk</a>
                     </p>
+                    <p style="font-size:14px;line-height:24px;margin:16px 0">
+                      Monitor Space Hazards is available to UK licensed satellite operators and UK Government departments. If you meet these criteria and would like access, please contact <a href="mailto:monitorspacehazards@ukspaceagency.gov.uk">monitorspacehazards@ukspaceagency.gov.uk</a>
+                    </p>                    
                   </td>
                 </tr>
               </tbody>
