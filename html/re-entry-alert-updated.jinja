@@ -1,3 +1,11 @@
+{# 
+Variables which need to be passed to this template
+
+reentry_event_report
+application_url: MSH base url
+reentry_event_map_url: link to the reentry map showing where object may enter
+#}
+
 {% set risk = reentry_event_report.probability|to_risk %}
 {% if risk == "Low" %}
 {% set risk_background_color = "#D4E7D0" %}
@@ -147,7 +155,7 @@
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                           <h4 style="text-align:left;font-size:14px;margin:0">Recommendation Actions</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">For information. No action required from response agencies.</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">[Need variable here] For information. No action required from response agencies.</td>
                       </tr>
                     </table>
                   </td>
@@ -171,10 +179,10 @@
                 </tr>
               </tbody>
             </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
-              <tbody>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="">
+              <tbody >
                 <tr>
-                  <td>
+                  <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
                   {% if reentry_event.reentry_report_number > 1 %}
                     <p style="margin:0;font-size:14px;line-height:24px">
                       We have identified an update to  <a
@@ -232,10 +240,10 @@
                 </tr>
               </tbody>
             </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation">
               <tbody>
                 <tr>
-                  <td>
+                  <td style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
                     <img src="{{ reentry_event_map_url }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;border:none;text-decoration:none" width="580" />
                     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="margin:0;border-collapse:collapse">
                       <tbody>
@@ -320,10 +328,10 @@
                 </tr>
               </tbody>
             </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation">
               <tbody>
                 <tr>
-                  <td>
+                  <td style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
                     <p style="margin:0;font-size:14px;line-height:24px">
                       <b>Press and Public Lines</b>
                       <br />Sign in to <a href="{{ application_url }}">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
