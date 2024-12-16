@@ -1,8 +1,8 @@
 {#
-Variables to be passed to this page
-application_url - MSH url
-satellite_common_name
-satellite_norad_id
+Variables needed to be passed to this page
+application_url - MSH URL
+time - the time of outage
+date - the date of the outage
 #}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -46,8 +46,8 @@ satellite_norad_id
                       <tbody style="width:100%">
                         <tr style="width:100%">
                           <td data-id="__react-email-column">
-                            <h1 style="font-size:16px;color:rgb(255,255,255)">Satellite 
-                                          {{ satellite_common_name }} : New ephemeris data uploaded</h1>
+                            <h1 style="font-size:16px;color:rgb(255,255,255)">Scheduled outage of Monitor Space Hazards</h1>
+                            <h1 style="font-size:16px;color:rgb(255,255,255)">{{date}}</h1>
                           </td>
                         </tr>
                       </tbody>
@@ -79,10 +79,10 @@ satellite_norad_id
                 <tr>
                   <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
                     <p style="margin:0;font-size:14px;line-height:24px">
-                      A satellite operator has uploaded emphemeris data for satellite <a href="{{ application_url }}/satellites/{{ satellite_norad_id }}">{{ satellite_common_name }}</a> (NORAD ID: {{ satellite_norad_id }}). 
+                      Please be aware that Monitor Space Hazards will be unavailable from {{time}} on {{date}} while we make essential upgrades and improvements to the database. 
                     </p>
                     <p style="font-size:14px;line-height:24px;margin:16px 0">
-                      Sign in to <a href="{{ application_url }}/satellites/{{ satellite_norad_id }}">Monitor Space Hazards</a> to view this ephemeris data.</p>
+                      In order to see upcoming conjunction events affecting your satellites, we recommend you sign in to <!-- --> <a href="https://www.monitor-space-hazards.service.gov.uk/" target="_blank">Monitor Space Hazards</a> <!-- --> before this time. We expect this work to take several hours and the web portal and APIs will be unavailable during this period. We apologise for any inconvenience caused. </p>
 
                   </td>
                 </tr>

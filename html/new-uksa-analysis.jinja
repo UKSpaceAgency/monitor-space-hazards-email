@@ -1,8 +1,7 @@
 {#
 Variables to be passed to this page
 application_url - MSH url
-satellite_common_name
-satellite_norad_id
+conjunction_event_report
 #}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -46,8 +45,8 @@ satellite_norad_id
                       <tbody style="width:100%">
                         <tr style="width:100%">
                           <td data-id="__react-email-column">
-                            <h1 style="font-size:16px;color:rgb(255,255,255)">Satellite 
-                                          {{ satellite_common_name }} : New ephemeris data uploaded</h1>
+                            <h1 style="font-size:16px;color:rgb(255,255,255)">New UKSA analysis uploaded
+</h1>
                           </td>
                         </tr>
                       </tbody>
@@ -79,10 +78,10 @@ satellite_norad_id
                 <tr>
                   <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
                     <p style="margin:0;font-size:14px;line-height:24px">
-                      A satellite operator has uploaded emphemeris data for satellite <a href="{{ application_url }}/satellites/{{ satellite_norad_id }}">{{ satellite_common_name }}</a> (NORAD ID: {{ satellite_norad_id }}). 
-                    </p>
+                      <!-- --> The UK Space Agency has uploaded new analysis for conjunction event <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}">{{ conjunction_event_report.short_id }}</a> which involves your satellite <a href="{{ application_url }}/satellites/{{ conjunction_event_report.primary_object_common_name }}">{{ conjunction_event_report.primary_object_common_name }}</a>.</p>
+
                     <p style="font-size:14px;line-height:24px;margin:16px 0">
-                      Sign in to <a href="{{ application_url }}/satellites/{{ satellite_norad_id }}">Monitor Space Hazards</a> to view this ephemeris data.</p>
+                      Sign in to <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}">Monitor Space Hazards</a> to view this analysis and additional information regarding the event.</p>
 
                   </td>
                 </tr>
