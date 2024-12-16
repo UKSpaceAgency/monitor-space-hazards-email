@@ -1,8 +1,8 @@
 {#
-Variables to be passed to this page
+Variables in this template
 application_url - MSH url
-satellite_common_name
-satellite_norad_id
+new_conjunction_events - list of new conjunction events
+updated_conjunction_events - list of updated conjunction events
 #}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -46,8 +46,7 @@ satellite_norad_id
                       <tbody style="width:100%">
                         <tr style="width:100%">
                           <td data-id="__react-email-column">
-                            <h1 style="font-size:16px;color:rgb(255,255,255)">Satellite 
-                                          {{ satellite_common_name }} : New ephemeris data uploaded</h1>
+                            <h1 style="font-size:16px;color:rgb(255,255,255)"><!--{{ subject }}-->New and updated conjunction event(s)</h1>
                           </td>
                         </tr>
                       </tbody>
@@ -60,7 +59,10 @@ satellite_norad_id
         </tr>
       </tbody>
     </table>
-
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
+      <tbody>
+        <tr style="width:100%">
+          <td>
     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
       <tbody>
         <tr style="width:100%">
@@ -78,12 +80,63 @@ satellite_norad_id
               <tbody>
                 <tr>
                   <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
-                    <p style="margin:0;font-size:14px;line-height:24px">
-                      A satellite operator has uploaded emphemeris data for satellite <a href="{{ application_url }}/satellites/{{ satellite_norad_id }}">{{ satellite_common_name }}</a> (NORAD ID: {{ satellite_norad_id }}). 
-                    </p>
-                    <p style="font-size:14px;line-height:24px;margin:16px 0">
-                      Sign in to <a href="{{ application_url }}/satellites/{{ satellite_norad_id }}">Monitor Space Hazards</a> to view this ephemeris data.</p>
+                    <p style="margin:0 0 16px 0;font-size:14px;line-height:24px">
+                       The UK Space Agency’s Monitor Space Hazards service has identified new conjunction events involving your satellites and crossing your thresholds. Additionally, one or more conjunction events crossing your thresholds has been updated. The links to the events and their time of closest approach are listed below.
+                    </p> 
+                    <p style="margin:0;font-size:14px;line-height:24px"><b>New event(s)</b></p>
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);table-layout:fixed;word-wrap:break-word;font-size:14px;text-align:center;border-collapse:collapse;border-spacing:0">
+                      <thead>
+                        <tr style="width:100%;">
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Event</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Primary Object</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Time of Closest Approach (UTC)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for event in new_conjunction_events %}
+                          <tr>
+                            <th scope="row" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
+                              <a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.short_id }}</a> 
+                            </th>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ event.primary_object_common_name }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ event.tca_time }}</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                    <p style="margin:16px 0 0 0;font-size:14px;line-height:24px"><b>Updated event(s)</b></p>
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);table-layout:fixed;word-wrap:break-word;font-size:14px;text-align:center;border-collapse:collapse;border-spacing:0">
+                      <thead>
+                        <tr style="width:100%;">
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Event</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Primary Object</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Time of Closest Approach (UTC)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for event in updated_conjunction_events %}
+                          <tr>
+                            <th scope="row" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
+                              <a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.short_id }}</a> 
+                            </th>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ event.primary_object_common_name }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ event.tca_time }}</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
 
+
+                    <p style="margin:16px 0;font-size:14px;line-height:24px">
+                      </p>
+                    
+                    <p style="font-size:14px;line-height:24px;margin:16px 0"> Events where the objects have passed their time of closest approach will not show up in your “Upcoming events” table, but their links will still be active.</p>
+
+                    <p style="font-size:14px;line-height:24px;margin:16px 0">
+                      Sign in to 
+                      <a href="{{ application_url }}/conjunctions/">Monitor Space Hazards</a> for <b>additional analysis and information regarding these events.</b>
+                      You may also adjust your notification threshold settings using this service.
+                    </p>
                   </td>
                 </tr>
               </tbody>
@@ -119,7 +172,11 @@ satellite_norad_id
                       <!-- -->to view relevant contact details.
                     </p>
                     <p style="margin:0;font-size:14px;line-height:24px">
-                      <a href="{{ application_url }}/account">Unsubscribe</a>
+                      <a href="{{ application_url }}/account/notification-settings/">Unsubscribe</a>
+                    </p>
+                    <p style="font-size:14px;line-height:24px;margin:16px 0">
+                      Sign in to 
+                      <a href="{{ application_url }}/conjunctions/">Monitor Space Hazards</a> for <b>additional analysis and information regarding these events.</b> You may also adjust your notification threshold settings using this service.
                     </p>
                     <p style="font-size:14px;line-height:24px;margin:16px 0">We are dedicated to providing exceptional products to our customers. Please let us know if you have any feedback on this report or ideas to make future reports better. You can contact us at
                       <!-- -->
