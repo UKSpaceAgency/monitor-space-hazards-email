@@ -72,8 +72,10 @@
               <tbody>
                 <tr>
                   <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
+
+                    {% block additional_info %}
+
                     <p style="font-size:14px;line-height:24px;margin:0">
-                      {% block extend_additional_info } {% endblock %}
 
                       <b>Contacts</b>
                       <br />For non-urgent queries, email
@@ -93,6 +95,7 @@
                     <p style="font-size:14px;line-height:24px;margin:16px 0">
                       Monitor Space Hazards is available to UK licensed satellite operators and UK Government departments. If you meet these criteria and would like access, please contact <a href="mailto:monitorspacehazards@ukspaceagency.gov.uk">monitorspacehazards@ukspaceagency.gov.uk</a>
                     </p>
+                     {% endblock %}
                   </td>
                 </tr>
               </tbody>
