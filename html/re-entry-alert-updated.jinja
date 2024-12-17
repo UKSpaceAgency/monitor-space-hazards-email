@@ -6,7 +6,7 @@ application_url: MSH base url
 reentry_event_map_url: link to the reentry map showing where object may enter
 #}
 
-{% extends "base.html" %}
+{% extends "base.jinja" %}
 
 {% set risk = reentry_event_report.probability|to_risk %}
 {% if risk == "Low" %}
@@ -280,7 +280,7 @@ reentry_event_map_url: link to the reentry map showing where object may enter
     <b>Press and Public Lines</b>
     <br />Sign in to <a href="{{ application_url }}">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
   </p>
-
+  <br>
   {{ super() }}  {# this includes the rest of the default footer in base.jinja #}
 
 {% endblock %} 
