@@ -1,0 +1,492 @@
+{ 
+ "application_url": "https://dev.monitor-space-hazards.service.gov.uk",
+ "satellite_common_name": "DIAMOND GREEN",
+ "satellite_norad_id": "42785",
+ "time": "16:00",
+ "date": "16.01.2025",
+ "new_conjunction_events": [
+ {
+    "id": "69aa92d2-226c-49a1-9e9e-392fff0749b1",
+    "created_at": "2024-12-05T09:11:21.099635",
+    "updated_at": "2024-12-05T09:11:21.119125",
+    "short_id": "dgglkzj-olnqzwd-qxkxxr",
+    "primaryObjectNoradId": "49210",
+    "secondaryObjectNoradId": "43279",
+    "primary_object_common_name": "ONEWEB-0344",
+    "secondaryObjectCommonName": "WEINA 1B",
+    "tca_time": "2024-12-05T12:19:46.908000",
+    "collisionProbability": 0,
+    "collisionProbabilityMethod": "FOSTER-1992",
+    "dataSource": "Space-Track CDM",
+    "missDistance": 14926,
+    "radialMissDistance": 570.5,
+    "intrackMissDistance": 14365.2,
+    "crosstrackMissDistance": 4015.2,
+    "altitude": null,
+    "latitude": null,
+    "longitude": null,
+    "relativeVelocity": null,
+    "combinedMass": null,
+    "possibleFragments": null,
+    "cdmCreationDate": "2024-12-05T07:25:05",
+    "cdmExternalId": "883495827",
+    "userInterest": "Low",
+    "additionalAnalysis": null,
+    "reportNumber": null
+  }
+ ],
+ "updated_conjunction_events": [
+  {
+    "id": "9ec67de2-c3a7-4545-8296-5a466a9f5bc2",
+    "createdAt": "2024-12-05T09:26:38.315093",
+    "updatedAt": "2024-12-05T09:26:38.324782",
+    "short_id": "laalwob-oronzze-orpgew",
+    "primaryObjectNoradId": "61609",
+    "secondaryObjectNoradId": "27599",
+    "primary_object_common_name": "ONEWEB-0704",
+    "secondaryObjectCommonName": "WEOS",
+    "tca_time": "2024-12-05T12:20:53.637000",
+    "collisionProbability": 0,
+    "collisionProbabilityMethod": "FOSTER-1992",
+    "dataSource": "Space-Track CDM",
+    "missDistance": 25958,
+    "radialMissDistance": -481.3,
+    "intrackMissDistance": 8829.5,
+    "crosstrackMissDistance": 24405.8,
+    "altitude": null,
+    "latitude": null,
+    "longitude": null,
+    "relativeVelocity": null,
+    "combinedMass": null,
+    "possibleFragments": null,
+    "cdmCreationDate": "2024-12-05T08:28:15",
+    "cdmExternalId": "883573340",
+    "userInterest": "Low",
+    "additionalAnalysis": null,
+    "reportNumber": null
+  }   
+ ],
+ "conjunction_events": [
+   {
+    "id": "69aa92d2-226c-49a1-9e9e-392fff0749b1",
+    "created_at": "2024-12-05T09:11:21.099635",
+    "updated_at": "2024-12-05T09:11:21.119125",
+    "short_id": "dgglkzj-olnqzwd-qxkxxr",
+    "primaryObjectNoradId": "49210",
+    "secondaryObjectNoradId": "43279",
+    "primary_object_common_name": "ONEWEB-0344",
+    "secondaryObjectCommonName": "WEINA 1B",
+    "tca_time": "2024-12-05T12:19:46.908000",
+    "collisionProbability": 0,
+    "collisionProbabilityMethod": "FOSTER-1992",
+    "dataSource": "Space-Track CDM",
+    "missDistance": 14926,
+    "radialMissDistance": 570.5,
+    "intrackMissDistance": 14365.2,
+    "crosstrackMissDistance": 4015.2,
+    "altitude": null,
+    "latitude": null,
+    "longitude": null,
+    "relativeVelocity": null,
+    "combinedMass": null,
+    "possibleFragments": null,
+    "cdmCreationDate": "2024-12-05T07:25:05",
+    "cdmExternalId": "883495827",
+    "userInterest": "Low",
+    "additionalAnalysis": null,
+    "reportNumber": null
+  },
+  {
+    "id": "9ec67de2-c3a7-4545-8296-5a466a9f5bc2",
+    "createdAt": "2024-12-05T09:26:38.315093",
+    "updatedAt": "2024-12-05T09:26:38.324782",
+    "short_id": "laalwob-oronzze-orpgew",
+    "primaryObjectNoradId": "61609",
+    "secondaryObjectNoradId": "27599",
+    "primary_object_common_name": "ONEWEB-0704",
+    "secondaryObjectCommonName": "WEOS",
+    "tca_time": "2024-12-05T12:20:53.637000",
+    "collisionProbability": 0,
+    "collisionProbabilityMethod": "FOSTER-1992",
+    "dataSource": "Space-Track CDM",
+    "missDistance": 25958,
+    "radialMissDistance": -481.3,
+    "intrackMissDistance": 8829.5,
+    "crosstrackMissDistance": 24405.8,
+    "altitude": null,
+    "latitude": null,
+    "longitude": null,
+    "relativeVelocity": null,
+    "combinedMass": null,
+    "possibleFragments": null,
+    "cdmCreationDate": "2024-12-05T08:28:15",
+    "cdmExternalId": "883573340",
+    "userInterest": "Low",
+    "additionalAnalysis": null,
+    "reportNumber": null
+  }   
+ ],
+ "UK_impacted": "variable text describing impact on UK",
+ "reentry_date": "12/11/2024",
+ "decay_time": "17:41:21",
+ "uncertainty": "uncertainty window of decay time (minutes)",
+ "fragmentation_bool": true, 
+ "conjunction_event_report": { 
+    "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "created_at": "2024-12-05T12:23:51.395Z",
+    "updated_at": "2024-12-05T12:23:51.395Z",
+    "short_id": "sjdhkshd_kjksjkdj_aisdoio",
+    "report_number": 1,
+    "report_time": "2024-12-05T12:23:51.395Z",
+    "risk": "Low",
+    "tca_time": "2024-12-05T12:23:51.395Z",
+    "collision_probability": 0,
+    "manoeuvre_expected": "string",
+    "primary_object_common_name": "ONEWEB-0344",
+    "primary_object_norad_id": "string",
+    "primary_object_licensing_country": "string",
+    "primary_object_type": "string",
+    "primary_object_mission": "string",
+    "primary_object_mass": 0,
+    "primary_object_manoeuvrable": "string",
+    "secondary_object_common_name": "WEINA 1B",
+    "secondary_object_norad_id": "string",
+    "secondary_object_licensing_country": "string",
+    "secondary_object_type": "string",
+    "secondary_object_mission": "string",
+    "secondary_object_mass": 0,
+    "secondary_object_manoeuvrable": "string",
+    "exec_summary_addition": "string",
+    "manoeuvre_addition": "string",
+    "immediate_impact_addition": "string",
+    "short_term_impact_addition": "string",
+    "risk_at_altitude": "string",
+    "long_term_impact_addition": "string",
+    "uk_response_addition": "string",
+    "press_attention_addition": "string",
+    "miss_distance": 14926,
+    "impact_speed": 0,
+    "altitude": 0,
+    "latitude": 0,
+    "longitude": 0,
+    "predicted_fragments": 0,
+    "increase_in_future_collisions": 0,
+    "is_active": true,
+    "uploaded_by_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "deleted_by_id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    "presigned_url": "string",
+    "file_name": "string"
+  },
+  "reentry_event_report": {
+    "short_id": "re-20240214-56073",
+    "report_number": 2,
+    "report_time": "2024-10-02T02:22:35",
+    "time_window_start": "2024-02-14 09:01:00",
+    "time_window_end": "2024-02-14 14:01:00",
+    "tip_external_id": "22557",
+    "probability": 0.04,
+    "norad_id": "56073",
+    "object_name": "CZ-2C R/B",
+    "object_type": "Rocket body",
+    "estimated_mass": "4006",
+    "license_country": "People's Republic of China",
+    "international_designator": "2014-071B",
+    "object_height": 8,
+    "object_width": 3.4,
+    "object_span": 2.7,
+    "launching_year": "2014",
+    "apogee": 202,
+    "perigee": 197,
+    "inclination": 97.4,
+    "overflight_time": [
+      "2024-10-03T11:33:00",
+      "2024-10-03T13:33:00",
+      "2024-10-03T15:33:00"
+    ],
+    "survivability": "Likely",
+    "survivability_comment": "The high-density components and physical shape of rocket bodies can result in an increased chance of survival upon re-entry",
+    "impact": {
+      "by_nation": {
+        "england_nation": {
+          "probability": 0.0028,
+          "overflight_time": [
+            "2024-08-17T08:16:13.635",
+            "2024-08-17T09:48:28.410"
+          ]
+        },
+        "northern_ireland_nation": {
+          "probability": 0.0,
+          "overflight_time": []
+        },
+        "scotland_nation": {
+          "probability": 0.0,
+          "overflight_time": []
+        },
+        "wales_nation": {
+          "probability": 2.3333334e-4,
+          "overflight_time": ["2024-08-17T09:48:48.466"]
+        }
+      },
+      "england": {
+        "east_of_england": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "east_midlands": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "london": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "north_east": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "north_west": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "south_east": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "south_west": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "west_midlands": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "yorkshire_and_north_humber": {
+          "probability": 0,
+          "overflight_time": null
+        }
+      },
+      "northern_ireland": {
+        "antrim_and_newtownabbey": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "ards_and_north_down": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "armagh_city_banbridge_and_craigavon": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "belfast": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "causeway_coast_and_glens": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "derry_and_strabane": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "fermanagh_and_omagh": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "lisburn_and_castlereagh": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "mid_and_east_antrim": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "mid_ulster": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "newry_mourne_and_down": {
+          "probability": 0,
+          "overflight_time": null
+        }
+      },
+      "scotland": {
+        "central_scotland": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "glasgow": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "highlands_and_islands": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "lothian": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "mid_scotland_and_fife": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "north_east_scotland": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "south_scotland": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "west_scotland": {
+          "probability": 0,
+          "overflight_time": null
+        }
+      },
+      "wales": {
+        "north_wales": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "mid_wales": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "south_west_wales": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "south_east_wales": {
+          "probability": 0,
+          "overflight_time": null
+        }
+      },
+      "overseas_territories_and_crown_dependencies": {
+        "anguilla": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "bermuda": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "british_antarctic_territory": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "british_indian_ocean_territory": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "british_virgin_islands": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "cayman_islands": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "falkland_islands": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "gibraltar": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "montserrat": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "pitcairn_islands": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "saint_helena_ascension_and_tristan_da_cunha": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "south_georgia_and_the_south_sandwich_islands": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "sovereign_base_areas_of_akrotiri_and_dhekelia": {
+          "probability": 0,
+          "overflight_time": null
+        },
+        "turks_and_caicos_islands": {
+          "probability": 0,
+          "overflight_time": null
+        }
+      },
+      "maritime_and_airspace": {
+        "shanwick_airspace": {
+          "probability": 0.0,
+          "overflight_time": []
+        },
+        "uk_navarea": {
+          "probability": 0.0,
+          "overflight_time": []
+        }
+      }
+    },
+    "map_points": [
+      {
+        "overflight": "2024-08-17T03:05:29.927",
+        "latitude": 33.856,
+        "longitude": -77.0384,
+        "pass": 1,
+        "region": "england.east_of_england",
+        "fragments": [
+          {
+            "latitude": 51.789777009283156,
+            "longitude": -10.741834510453879,
+            "numFrags": 0.004549678415060043,
+            "region": "england.east_of_england"
+          }
+        ]
+      }
+    ]
+  },
+  "reentry_event": {
+    "id": "be0c5b9b-c8bd-4da1-9256-871663fb79e8",
+    "created_at": "2024-09-20T17:41:41.753442",
+    "updated_at": "2024-09-20T17:41:41.753442",
+    "norad_id": "56073",
+    "time_window_start": "2024-02-14T09:01:00",
+    "time_window_end": "2024-02-14T14:01:00",
+    "tip_external_id": "22557",
+    "reentry_report_number": 2,
+    "probability": 0.04,
+    "overflight_time": [
+      "2024-10-03T11:33:00",
+      "2024-10-03T13:33:00",
+      "2024-10-03T15:33:00"
+    ],
+    "survivability": "Likely",
+    "survivability_comment": "The high-density components and physical shape of rocket bodies can result in an increased chance of survival upon re-entry",
+    "exec_summary": "The UKSA will coordinate response",
+    "immediate_response": "Immediate response test",
+    "recovery_and_clean_up": "Recovery and clean up test",
+    "damages_liability": "Liability for damages test",
+    "press_attention": "Press attention test",
+    "object_name": "CZ-2C R/B",
+    "object_type": "Rocket body",
+    "estimated_mass": 4006,
+    "license_country": "People's Republic of China",
+    "international_designator": "2014-071B",
+    "object_height": 8,
+    "object_width": 3.4,
+    "object_span": 2.7,
+    "launching_year": 2014,
+    "apogee": 202,
+    "perigee": 197,
+    "inclination": 97.4,
+    "approved_by_id": null,
+    "approved_at": null,
+    "short_id": "re-20151129-eAZAXfWUPJSyGTxYilja"
+  },
+    "reentry_event_map_url": "https://i.ibb.co/M532kYj/20240917-overflight.png"
+}
