@@ -1,7 +1,7 @@
 {#
 Variables to be passed to this page
 application_url - MSH url
-conjunction_event_report
+conjunction_event_reports - reports of all events involving user's satellites with new UKSA analysis
 #}
 
 
@@ -30,10 +30,32 @@ conjunction_event_report
                 <tr>
                   <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
                     <p style="margin:0;font-size:14px;line-height:24px">
-                      <!-- --> The UK Space Agency has uploaded new analysis for conjunction event <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}">{{ conjunction_event_report.short_id }}</a> which involves your satellite <a href="{{ application_url }}/satellites/{{ conjunction_event_report.primary_object_common_name }}">{{ conjunction_event_report.primary_object_common_name }}</a>.</p>
+                      <!-- --> The UK Space Agency has uploaded new analysis for the following conjunction events involving your satellites
+                    </p>
+
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);table-layout:fixed;word-wrap:break-word;font-size:14px;text-align:center;border-collapse:collapse;border-spacing:0">
+                      <thead>
+                        <tr style="width:100%;">
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Event</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Primary Object</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Time of Closest Approach (UTC)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for event in conjunction_event_reports %}
+                          <tr>
+                            <th scope="row" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
+                              <a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.short_id }}</a> 
+                            </th>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ event.primary_object_common_name }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ event.tca_time }}</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
 
                     <p style="font-size:14px;line-height:24px;margin:16px 0">
-                      Sign in to <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}">Monitor Space Hazards</a> to view this analysis and additional information regarding the event.</p>
+                      Sign in to <a href="{{ application_url }}/conjunctions">Monitor Space Hazards</a> to view this analysis and additional information regarding the event.</p>
 
                   </td>
                 </tr>
