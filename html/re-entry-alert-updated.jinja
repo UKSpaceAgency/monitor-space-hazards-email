@@ -10,11 +10,15 @@ reentry_event_map_url: link to the reentry map showing where object may enter
 
 {% set risk = reentry_event_report.probability|to_risk %}
 {% if risk == "Low" %}
-{% set risk_background_color = "#D4E7D0" %}
+  {% set risk_background_color = "#D4E7D0" %}
+  {% set recommended_actions = "We would not normally expect stakeholders to take action on this report." %}
+ 
 {% elif risk == "Medium" %}
-{% set risk_background_color = "#FFF0C8" %}
+  {% set risk_background_color = "#FFF0C8" %}
+  {% set recommended_actions = "Stakeholders may wish to consider internal escalation." %}
 {% else %}
-{% set risk_background_color = "#F1C6C6" %}
+  {% set risk_background_color = "#F1C6C6" %}
+  {% set recommended_actions = "Stakeholders may wish to ensure response plans are in place." %} 
 {% endif %}
 
 {% block title %}
@@ -111,7 +115,7 @@ reentry_event_map_url: link to the reentry map showing where object may enter
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                           <h4 style="text-align:left;font-size:14px;margin:0">Recommendation Actions</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">[Need variable here] For information. No action required from response agencies.</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ recommended_actions }}</td>
                       </tr>
                     </table>
                   </td>
