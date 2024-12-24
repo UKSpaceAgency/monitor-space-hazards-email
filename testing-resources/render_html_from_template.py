@@ -2,7 +2,7 @@ from jinja2 import Environment, FileSystemLoader
 import json
 
 
-file_to_test = "scheduled-outage.jinja" # change this value to test different files
+file_to_test = "conjunction-alert-updated.jinja" # change this value to test different files
 
 
 def to_risk(probability):

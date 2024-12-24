@@ -189,7 +189,7 @@
     "report_time": "2024-12-05T12:23:51.395Z",
     "risk": "Low",
     "tca_time": "2024-12-05T12:23:51.395Z",
-    "collision_probability": 0,
+    "collision_probability": 0.00043433,
     "manoeuvre_expected": "string",
     "primary_object_common_name": "ONEWEB-0344",
     "primary_object_norad_id": "string",
