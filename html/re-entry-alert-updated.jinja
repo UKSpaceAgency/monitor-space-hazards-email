@@ -1,7 +1,12 @@
 {# 
 Variables which need to be passed to this template
 
-reentry_event_report
+reentry_event_report 
+  reentry_event_report.damages_liability
+  reentry_event_report.press_attention
+  reentry_event_report.exec_summary
+  reentry_event_report.immediate_response
+
 application_url: MSH base url
 reentry_event_map_url: link to the reentry map showing where object may enter
 #}
@@ -63,9 +68,9 @@ reentry_event_map_url: link to the reentry map showing where object may enter
                       </tr>
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Affected Territory(s)</h4>
+                          <h4 style="text-align:left;font-size:14px;margin:0">Affected Territories</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.impact.by_nation|to_affected_territories }}</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.impact.by_nation|to_affected_territories or "No regions affected" }}</td>
                       </tr>
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
@@ -109,7 +114,11 @@ reentry_event_map_url: link to the reentry map showing where object may enter
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                           <h4 style="text-align:left;font-size:14px;margin:0">Liability</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}
+                        {% if reentry_event_report.damages_liability %}
+                          <br>{{ reentry_event_report.damages_liability }}
+                        {% endif %}
+                        </td>
                       </tr>
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
@@ -117,6 +126,15 @@ reentry_event_map_url: link to the reentry map showing where object may enter
                         </td>
                         <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ recommended_actions }}</td>
                       </tr>
+                      {% if reentry_event_report.immediate_response %}
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Guidance on Response</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.immediate_response }}</td>
+                      </tr>
+                      {% endif %}
+
                     </table>
                   </td>
                 </tr>
@@ -174,6 +192,9 @@ reentry_event_map_url: link to the reentry map showing where object may enter
                         have contaminated the re-entering objects. Hydrazine is commonly used as
                         rocket-fuel.
                     </p>
+                    {% if reentry_event_report.exec_summary %}
+                    <p style="font-size:14px;line-height:24px;margin:16px 0">{{ reentry_event_report.exec_summary }}</p>
+                    {% endif %}
                     <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
                       <!-- -->
                       <b>full report, interactive mapping for this incident and the archive.</b>
@@ -203,7 +224,7 @@ reentry_event_map_url: link to the reentry map showing where object may enter
               <tbody>
                 <tr>
                   <td style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
-                    <img src="{{ reentry_event_map_url }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;border:1px solid white;text-decoration:none;" width="580" />
+                    <img src="{{ reentry_event_map_url }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;text-decoration:none;" width="580" />
                     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="margin:0;border-collapse:collapse;border-spacing:0">
                       <tbody>
                         <tr>
@@ -281,7 +302,12 @@ reentry_event_map_url: link to the reentry map showing where object may enter
 
   <p style="margin:0;font-size:14px;line-height:24px">
     <b>Press and Public Lines</b>
-    <br />Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
+    {% if reentry_event_report.press_attention %}
+      <br>{{ reentry_event_report.press_attention }}
+    {% else %}
+      <br />Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
+    {% endif %}
+
   </p>
   <br>
   {{ super() }}  {# this includes the rest of the default footer in base.jinja #}
