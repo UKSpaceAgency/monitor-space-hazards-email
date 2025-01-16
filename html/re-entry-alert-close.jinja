@@ -2,6 +2,9 @@
 Variables which need to be passed to this template
 
 reentry_event_report
+  reentry_event_report.damages_liability
+  reentry_event_report.press_attention
+  
 application_url: MSH base url
 reentry_event_map_url: link to the reentry map showing where object entered
 reentry_date: the date the reentry took place
@@ -78,7 +81,12 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
                 <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                   <h4 style="text-align:left;font-size:14px;margin:0">Liability</h4>
                 </td>
-                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "Unknown" }}</td>
+                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">
+                {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "Unknown" }}
+                {% if reentry_event_report.damages_liability %}
+                  <br>{{ reentry_event_report.damages_liability }}
+                {% endif %}
+                </td>
               </tr>
               <tr style="width:100%">
                 <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
@@ -171,7 +179,11 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
 
   <p style="margin:0;font-size:14px;line-height:24px">
     <b>Press and Public Lines</b>
-    <br />Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
+    {% if reentry_event_report.press_attention %}
+      <br>{{ reentry_event_report.press_attention }}
+    {% else %}
+      <br />Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
+    {% endif %}
   </p>
   <br>
 
