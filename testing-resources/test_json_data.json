@@ -4,6 +4,78 @@
  "satellite_norad_id": "42785",
  "time": "16:00",
  "date": "16.01.2025",
+ "view_all_assets": false,
+ "fragmentation_event_report": {
+  "short_id": "frag-20250101-5917-19120",
+  "risk_rating": "Low",
+  "report_number": 1,
+  "event_epoch": "2025-10-02T02:22:35",
+  "model_frags": 162,
+  "known_frags": 30,
+  "frag_type": "collision",
+  "frag_type_comment": "collision reported by 18th SDS",
+  "affected_regime": "LEO",
+  "conjunction_event_id": "qjjzqdv-zwbdkbb-rlxjza",
+  "conjunction_commentary": "Conjunction commentary here....",
+  "object_history": "[FOR EXPLOSION/FAILURE BASED FRAGS – IF INFO IS AVAILIABLE] Outside of the direct risk based on the fragments generated, there is potential longer term risk to objects on orbit due to other RSOs with similar bus or components thought to be related to the cause of this fragmentation.  There is likely >XX number of satellites on orbit that share a {bus type/known problematic component}. ",
+  "risk": "Due to the high mass and energy of this event, a substantial number of fragments have been generated. Work is ongoing to assess the risk to UK licensed satellites however it’s likely that those at lower altitudes such as newly launched OneWeb satellites, Davinci and the Diamond series of CubeSats will have a significant increase in the number of potential collisions due to tracked and untracked debris. Both the International Space Station and the Tiangong Space Station orbit within the affected region and so we would expect to see a significant increase in risk over the short-medium term because of this event.",
+  "primary_object": {
+      "norad_id": "5917",
+      "common_name": "METEOR 1-11",
+      "object_type": "PAYLOAD",
+      "estimated_mass": 1280,
+      "licensing_country": "CIS",
+      "international_designator": "1972-022A",
+      "launching_year": 1972,
+      "apogee": 887,
+      "perigee": 838,
+      "inclination": 81.22
+  },
+  "secondary_object": {
+      "norad_id": "19120",
+      "common_name": "SL-16 R/B",
+      "object_type": "ROCKET BODY",
+      "estimated_mass": 8225.97,
+      "licensing_country": "CIS",
+      "international_designator": "1988-039B",
+      "launching_year": 1988,
+      "apogee": 844,
+      "perigee": 810,
+      "inclination": 71.01
+  },
+  "screening_results": [
+    {
+        "norad_id": "56996",
+        "object_name": "AAC-AIS-SAT2",
+        "mass": null,
+        "current_tally": 11.3,
+        "frag_tally": 10.8,
+        "apogee": 674.2,
+        "perigee": 584.3,
+        "inclination": 98.1
+    },
+    {
+        "norad_id": "51645",
+        "object_name": "ONEWEB-0455",
+        "mass": 148,
+        "current_tally": 16,
+        "frag_tally": 8.8,
+        "apogee": 828.2,
+        "perigee": 801,
+        "inclination": 87.5
+    }
+  ],
+  "actual_frag_tles": [
+    [
+        "1 80600U          24227.94720388 +.00001687 +00000-0 +38166-3 0 00019",
+        "2 80600 089.0442 350.2429 0116052 040.8068 320.1758 14.51616761001089"
+    ],
+    [
+        "1 80601U          24227.92726760 +.00011657 +00000-0 +23785-2 0 00019",
+        "2 80601 089.0349 350.2217 0134094 042.7198 318.4342 14.55287309001089"
+    ]
+  ]
+ },
  "conjunction_event_reports": [
   { 
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -36,7 +108,7 @@
     "short_term_impact_addition": "string",
     "risk_at_altitude": "string",
     "long_term_impact_addition": "string",
-    "uk_response_addition": "string",
+    "uk_response_addition": null,
     "press_attention_addition": "string",
     "miss_distance": 14926,
     "impact_speed": 0,
@@ -211,7 +283,7 @@
     "short_term_impact_addition": "string",
     "risk_at_altitude": "string",
     "long_term_impact_addition": "string",
-    "uk_response_addition": "string",
+    "uk_response_addition": null,
     "press_attention_addition": "string",
     "miss_distance": 14926,
     "impact_speed": 0,
@@ -240,10 +312,6 @@
     "estimated_mass": "4006",
     "license_country": "People's Republic of China",
     "international_designator": "2014-071B",
-    "press_attention": "Approver update on press attention",
-    "damages_liability": "Approver update on liability",
-    "exec_summary": "Approver exec summary update",
-    "immediate_response": "Approver update on response",
     "object_height": 8,
     "object_width": 3.4,
     "object_span": 2.7,
