@@ -1,0 +1,296 @@
+{# 
+WARNING: ensure fragmentation_event_report in test_json_data.json has been updated in line
+with most recent version of fragmentation.json before relying on it for testing as it was based on
+an early version of the JSON which is subject to change
+
+Variables which need to be passed to this template
+
+fragmentation_event_report 
+  - risk_rating
+
+view_all_assets: boolean, true if user has permissions to view all satellites (eg CAA), false if user is operator and can only view their assets
+application_url: MSH base url
+#}
+
+{# will need to decide how risk is being determined #}
+{% set risk = fragmentation_event_report.risk_rating %}
+{% if risk == "Low" %}
+  {% set risk_background_color = "#D4E7D0" %}
+  {% set recommended_actions = "We would not normally expect stakeholders to take action on this report." %}
+ 
+{% elif risk == "Medium" %}
+  {% set risk_background_color = "#FFF0C8" %}
+  {% set recommended_actions = "Stakeholders may wish to consider internal escalation." %}
+{% else %}
+  {% set risk_background_color = "#F1C6C6" %}
+  {% set recommended_actions = "Stakeholders may wish to ensure response plans are in place." %} 
+{% endif %}
+
+
+{% extends "base.jinja" %}
+
+{% block title %}
+
+  <h1 style="font-size:16px;color:rgb(255,255,255)">Fragmentation alert for object {{ fragmentation_event_report.primary_object.common_name }}
+  {% if fragmentation_event_report.report_number > 1 %}
+    - Updated
+  {% endif %}
+  </h1>
+
+{% endblock %}
+
+{% block content %}
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <p style="margin:0;font-size:14px;line-height:24px">Sign in to <a href="{{ application_url }}/fragmentation">Monitor Space Hazards</a> for the
+              <!-- -->
+              <b>full report for this event.</b>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="margin:0;border-collapse:collapse">
+              <tbody>
+                <tr>
+                  <td>
+                    <table style="width:100%;border-collapse:collapse">
+                        <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Initial risk assessment</h4>
+                        </td>
+                        <td style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;background-color:{{ risk_background_color }}">
+                          <h4 style="text-align:center;font-size:14px;margin:0">{{ risk }}</h4>
+                        </td>
+                      </tr>
+
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Fragmenting object common name</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;">{{ fragmentation_event_report.primary_object.common_name }}
+                        </td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Event time (UTC)</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.event_epoch }}</td>
+                      </tr>
+                      <!--
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Inclination (°)</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">Not sure if this should be the inclination of the primary object?</td>
+                      </tr>-->
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Number of known fragments</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.known_frags }}</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Number of modelled fragments</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.model_frags }}</td>
+                      </tr>
+
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">
+                            {% if view_all_assets %}
+                              Number of UK satellites with increased risk of conjunction
+                            {% else %}
+                              Number of your satellites with increased risk of conjunction
+                            {% endif %}
+                          </h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">
+                          {{ fragmentation_event_report.screening_results|length }}
+                        </td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Affected regime</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.affected_regime }}</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Inclination</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.primary_object.inclination }}</td>
+                      </tr>
+
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Object type</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">
+                          {{ fragmentation_event_report.primary_object.object_type }}
+                        </td>
+                      </tr>
+                      {% if fragmentation_event_report.licensing_country|to_full_country_name  %}
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0">Liabliity</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.primary_object.licensing_country }}</td>
+                      </tr>
+                      {% endif %}
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em;">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="background-color:rgb(38,92,89);padding:8px;margin:0">
+              <tbody>
+                <tr>
+                  <td>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Summary</h1>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);border-spacing:0;border-collapse:collapse;">
+              <tbody >
+                <tr>
+                  <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
+                  {% if fragmentation_event_report.report_number > 1 %}
+                    <p style="margin:0;font-size:14px;line-height:24px">
+                      We have identified an update to the <a href="">fragmentation event involving {{ fragmentation_event_report.primary_object.common_name }}</a>. 
+                      Initial analysis  shows the most likely time of event – {{ fragmentation_event_report.event_epoch }}
+                    </p>
+                  {% else %}
+                    <p style="margin:0;font-size:14px;line-height:24px;">
+                      The UKSA and NSpOC are actively monitoring a <a href="">fragmentation event involving {{ fragmentation_event_report.primary_object.common_name }}</a>. 
+                      Initial analysis  shows the most likely time of event – {{ fragmentation_event_report.event_epoch }}
+                    </p>
+                  {% endif %}
+
+                    <p style="margin:0;font-size:14px;line-height:24px;margin:16px 0">
+                      Current tracking shows approximately {{ fragmentation_event_report.known_frags }} pieces of debris associated with this fragmentation, though work continues to identify and
+                      catalogue other potential debris objects. This number could therefore change significantly as more data is
+                      received. 
+                    </p>
+                    <p style="margin:0;font-size:14px;line-height:24px;margin:16px 0">
+                      {{ fragmentation_event_report.risk|replace("â€™", "'") }}
+                    </p>
+                    <p style="margin:0;font-size:14px;line-height:24px;margin:16px 0">
+                      {% if fragmentation_event_report.frag_type == "collision" %}
+                        The most likely cause of the event is a conjunction. {{ fragmentation_event_report.conjunction_commentary|replace("â€™", "'") }}
+                        This section is pending further detail on conjunction event, including logic on what to do if the event ID and secondary object are unknown. 
+                      {% else %}
+                        The cause of the fragmentation event is unknown.
+                        (Need to add more logic here for fragmentation types other than collision)
+                      {% endif %}
+                    </p>
+                    <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+                      <!-- -->
+                      <b>full report, interactive mapping for this incident and the archive.</b>
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em;">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="background-color:rgb(38,92,89);padding:8px;margin:0">
+              <tbody>
+                <tr>
+                  <td>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">
+                      {% if view_all_assets %}
+                        Risk to UK assets
+                      {% else %}
+                        Risk to your assets
+                      {% endif %}
+                    </h1>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);border-spacing:0;border-collapse:collapse;">
+              <tbody >
+                <tr>
+                  <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
+                    <p style="font-size:14px;line-height:24px;margin:0 0 16px 0">
+                      {% if view_all_assets %}
+                        Each UK satellite was screened against the current population of objects as well as the fragments generated by the breakup model.
+                      {% else %}
+                        Each of your satellites was screened against the current population of objects as well as the fragments generated by the breakup model.
+                      {% endif %}
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);table-layout:fixed;word-wrap:break-word;font-size:14px;text-align:center;border-collapse:collapse;border-spacing:0;">
+                      <thead>
+                        <tr style="width:100%;">
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Object</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Norad ID</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Current tally</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Fragments tally</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for object in fragmentation_event_report.screening_results %}
+                          <tr>
+                            <th scope="row" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
+                              <a href="" target="_blank">{{ object.object_name }}</a> 
+                            </th>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ object.norad_id }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ object.current_tally }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ object.frag_tally }}</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+  
+                    </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  {% endblock %}
+
+{% block additional_info %}
+
+  <p style="margin:0;font-size:14px;line-height:24px">
+    <b>Press and Public Lines</b>
+    {% if reentry_event_report.press_attention %}
+      <br>{{ reentry_event_report.press_attention }}
+    {% else %}
+      <br />Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
+    {% endif %}
+
+  </p>
+  <br>
+  {{ super() }}  {# this includes the rest of the default footer in base.jinja #}
+
+{% endblock %} 
