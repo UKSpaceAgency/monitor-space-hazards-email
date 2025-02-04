@@ -2,12 +2,10 @@
   Variables which need to be passed to this template
   
   reentry_event_report 
-  
-  reentry_event
-    reentry_event.damages_liability
-    reentry_event.press_attention
-    reentry_event.exec_summary
-    reentry_event.immediate_response
+    reentry_event_report.damages_liability
+    reentry_event_report.press_attention
+    reentry_event_report.exec_summary
+    reentry_event_report.immediate_response
   
   application_url: MSH base url
   reentry_event_map_url: link to the reentry map showing where object may enter
@@ -30,7 +28,7 @@
   
   {% block title %}
   
-    <h1 style="font-size:16px;color:rgb(255,255,255)">Uncontrolled Re-Entry Early Warning Report
+    <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;">Uncontrolled Re-Entry Early Warning Report
     {% if reentry_event.reentry_report_number > 1 %}
       - Updated
     {% endif %}
@@ -117,8 +115,8 @@
                             <h4 style="text-align:left;font-size:14px;margin:0">Liability</h4>
                           </td>
                           <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}
-                          {% if reentry_event.damages_liability %}
-                            <br>{{ reentry_event.damages_liability }}
+                          {% if reentry_event_report.damages_liability %}
+                            <br>{{ reentry_event_report.damages_liability }}
                           {% endif %}
                           </td>
                         </tr>
@@ -128,12 +126,12 @@
                           </td>
                           <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ recommended_actions }}</td>
                         </tr>
-                        {% if reentry_event.immediate_response %}
+                        {% if reentry_event_report.immediate_response %}
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                             <h4 style="text-align:left;font-size:14px;margin:0">Guidance on Response</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event.immediate_response }}</td>
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.immediate_response }}</td>
                         </tr>
                         {% endif %}
   
@@ -194,8 +192,8 @@
                           have contaminated the re-entering objects. Hydrazine is commonly used as
                           rocket-fuel.
                       </p>
-                      {% if reentry_event.exec_summary %}
-                      <p style="font-size:14px;line-height:24px;margin:16px 0">{{ reentry_event.exec_summary }}</p>
+                      {% if reentry_event_report.exec_summary %}
+                      <p style="font-size:14px;line-height:24px;margin:16px 0">{{ reentry_event_report.exec_summary }}</p>
                       {% endif %}
                       <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
                         <!-- -->
@@ -226,7 +224,7 @@
                 <tbody>
                   <tr>
                     <td style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
-                      <img src="{{ reentry_event_map_url }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;text-decoration:none;" width="100%" />
+                      <img src="{{ reentry_event_map_url }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;text-decoration:none;" width="580" />
                       <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="margin:0;border-collapse:collapse;border-spacing:0">
                         <tbody>
                           <tr>
@@ -304,8 +302,8 @@
   
     <p style="margin:0;font-size:14px;line-height:24px">
       <b>Press and Public Lines</b>
-      {% if reentry_event.press_attention %}
-        <br>{{ reentry_event.press_attention }}
+      {% if reentry_event_report.press_attention %}
+        <br>{{ reentry_event_report.press_attention }}
       {% else %}
         <br />Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
       {% endif %}
