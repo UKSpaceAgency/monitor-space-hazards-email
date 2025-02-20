@@ -1,6 +1,7 @@
 {#
 Variables used in this template
 conjunction_event_report
+conjunction_event
 application_url - MSH url
 #}
 
@@ -144,9 +145,9 @@ application_url - MSH url
                         <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{conjunction_event_report.short_id}}</a>, which is classified as {{risk}} risk. A potential collision could damage the objects involved, limiting or eliminating their capability, as well as releasing new fragments, which would increase the risk of future collisions for other objects.
                       </p>
                     {% endif %}
-                    {% if conjunction_event_report.exec_summary_addition %}
+                    {% if conjunction_event.exec_summary_addition %}
                       <p style="margin:16px 0;font-size:14px;line-height:24px">
-                        {{ conjunction_event_report.exec_summary_addition }}
+                        {{ conjunction_event.exec_summary_addition }}
                       </p>
                     {% endif %}
                     <p style="margin:16px 0;font-size:14px;line-height:24px">
@@ -157,9 +158,9 @@ application_url - MSH url
                             actions</b><br>
                       The UK Space Agency are the leads for conjunction reporting.
 
-                      {% if conjunction_event_report.uk_response_addition %}
+                      {% if conjunction_event.uk_response_addition %}
                        <br>
-                       {{ conjunction_event_report.uk_response_addition }} 
+                       {{ conjunction_event.uk_response_addition }} 
                       {% endif %}
                     </p> 
                     <p style="font-size:14px;line-height:24px;margin:16px 0">
@@ -186,8 +187,8 @@ application_url - MSH url
 
   <p style="margin:0;font-size:14px;line-height:24px">
     <b>Press and Public Lines</b><br />
-    {% if conjunction_event_report.press_attention_addition %}
-      {{ conjunction_event_report.press_attention_addition }}
+    {% if conjunction_event.press_attention_addition %}
+      {{ conjunction_event.press_attention_addition }}
     {% else %}
       Sign in to <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
     {% endif %}
