@@ -1,7 +1,7 @@
 {#
 Variables to be passed to this page
 application_url - MSH url
-conjunction_event_reports - reports of all events involving user's satellites with new UKSA analysis
+conjunction_events - events involving user's satellites with new UKSA analysis
 #}
 
 
@@ -42,7 +42,7 @@ conjunction_event_reports - reports of all events involving user's satellites wi
                         </tr>
                       </thead>
                       <tbody>
-                        {% for event in conjunction_event_reports %}
+                        {% for event in conjunction_events %}
                           <tr>
                             <th scope="row" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
                               <a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.short_id }}</a> 
