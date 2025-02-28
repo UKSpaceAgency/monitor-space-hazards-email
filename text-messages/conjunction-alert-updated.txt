@@ -1,0 +1,5 @@
+Monitor Space Hazards: The UK Space Agency has identified an update to the upcoming ((risk))-Risk conjunction event involving ((primary_object_common_name)) and ((secondary_object_common_name)).
+
+Sign in to Monitor Space Hazards (www.monitor-space-hazards.service.gov.uk/conjunctions/((event_id))/alert) to view further analysis of the event.
+
+This is an automated message. Do not reply.

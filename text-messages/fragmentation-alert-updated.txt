@@ -1,0 +1,5 @@
+Monitor Space Hazards: The UK Space Agency has identified an update to the fragmentation event involving ((object_name)).
+
+Sign in to Monitor Space Hazards (www.monitor-space-hazards.service.gov.uk/fragmentations/((event_id))) to view further analysis of the event.
+
+This is an automated message. Do not reply.
