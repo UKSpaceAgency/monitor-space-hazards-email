@@ -1,5 +1,6 @@
-{#
-Variables to be passed to this page
+{# subject - New ephemeris data uploaded
+
+variables to be passed to this page
 application_url - MSH url
 satellite_common_name
 satellite_norad_id
@@ -34,7 +35,7 @@ satellite_norad_id
                 <tr>
                   <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
                     <p style="margin:0;font-size:14px;line-height:24px">
-                      A satellite operator has uploaded emphemeris data for satellite <a href="{{ application_url }}/satellites/{{ satellite_norad_id }}">{{ satellite_common_name }}</a> (NORAD ID: {{ satellite_norad_id }}). 
+                      A satellite operator has uploaded ephemeris data for satellite <a href="{{ application_url }}/satellites/{{ satellite_norad_id }}">{{ satellite_common_name }}</a> (NORAD ID: {{ satellite_norad_id }}). 
                     </p>
                     <p style="font-size:14px;line-height:24px;margin:16px 0">
                       Sign in to <a href="{{ application_url }}/satellites/{{ satellite_norad_id }}">Monitor Space Hazards</a> to view this ephemeris data.</p>
