@@ -31,7 +31,7 @@ application_url: MSH base url
 
 {% block title %}
 
-  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;">Fragmentation alert for object {{ fragmentation_event_report.primary_object.common_name }}
+  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif">Fragmentation alert for object {{ fragmentation_event_report.primary_object.common_name }}
   {% if fragmentation_event_report.report_number > 1 %}
     - Updated
   {% endif %}
@@ -44,7 +44,7 @@ application_url: MSH base url
       <tbody>
         <tr style="width:100%">
           <td>
-            <p style="margin:0;font-size:14px;line-height:24px">Sign in to <a href="{{ application_url }}/fragmentation">Monitor Space Hazards</a> for the
+            <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">Sign in to <a href="{{ application_url }}/fragmentation">Monitor Space Hazards</a> for the
               <!-- -->
               <b>full report for this event.</b>
             </p>
@@ -63,49 +63,49 @@ application_url: MSH base url
                     <table style="width:100%;border-collapse:collapse">
                         <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Initial risk assessment</h4>
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Initial risk assessment</h4>
                         </td>
                         <td style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;background-color:{{ risk_background_color }}">
-                          <h4 style="text-align:center;font-size:14px;margin:0">{{ risk }}</h4>
+                          <h4 style="text-align:center;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">{{ risk }}</h4>
                         </td>
                       </tr>
 
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Fragmenting object common name</h4>
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Fragmenting object common name</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;">{{ fragmentation_event_report.primary_object.common_name }}
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ fragmentation_event_report.primary_object.common_name }}
                         </td>
                       </tr>
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Event time (UTC)</h4>
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Event time (UTC)</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.event_epoch }}</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ fragmentation_event_report.event_epoch }}</td>
                       </tr>
                       <!--
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Inclination (°)</h4>
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Inclination (°)</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">Not sure if this should be the inclination of the primary object?</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">Not sure if this should be the inclination of the primary object?</td>
                       </tr>-->
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Number of known fragments</h4>
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Number of known fragments</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.known_frags }}</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ fragmentation_event_report.known_frags }}</td>
                       </tr>
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Number of modelled fragments</h4>
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Number of modelled fragments</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.model_frags }}</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ fragmentation_event_report.model_frags }}</td>
                       </tr>
 
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">
                             {% if view_all_assets %}
                               Number of UK satellites with increased risk of conjunction
                             {% else %}
@@ -113,37 +113,37 @@ application_url: MSH base url
                             {% endif %}
                           </h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">
                           {{ fragmentation_event_report.screening_results|length }}
                         </td>
                       </tr>
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Affected regime</h4>
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Affected regime</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.affected_regime }}</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ fragmentation_event_report.affected_regime }}</td>
                       </tr>
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Inclination</h4>
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Inclination</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.primary_object.inclination }}</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ fragmentation_event_report.primary_object.inclination }}</td>
                       </tr>
 
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Object type</h4>
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Object type</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">
                           {{ fragmentation_event_report.primary_object.object_type }}
                         </td>
                       </tr>
                       {% if fragmentation_event_report.licensing_country|to_full_country_name  %}
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                          <h4 style="text-align:left;font-size:14px;margin:0">Liabliity</h4>
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Liabliity</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ fragmentation_event_report.primary_object.licensing_country }}</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ fragmentation_event_report.primary_object.licensing_country }}</td>
                       </tr>
                       {% endif %}
                     </table>
@@ -163,7 +163,7 @@ application_url: MSH base url
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Summary</h1>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">Summary</h1>
                   </td>
                 </tr>
               </tbody>
@@ -173,26 +173,26 @@ application_url: MSH base url
                 <tr>
                   <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
                   {% if fragmentation_event_report.report_number > 1 %}
-                    <p style="margin:0;font-size:14px;line-height:24px">
+                    <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                       We have identified an update to the <a href="">fragmentation event involving {{ fragmentation_event_report.primary_object.common_name }}</a>. 
                       Initial analysis  shows the most likely time of event – {{ fragmentation_event_report.event_epoch }}
                     </p>
                   {% else %}
-                    <p style="margin:0;font-size:14px;line-height:24px;">
+                    <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                       The UKSA and NSpOC are actively monitoring a <a href="">fragmentation event involving {{ fragmentation_event_report.primary_object.common_name }}</a>. 
                       Initial analysis  shows the most likely time of event – {{ fragmentation_event_report.event_epoch }}
                     </p>
                   {% endif %}
 
-                    <p style="margin:0;font-size:14px;line-height:24px;margin:16px 0">
+                    <p style="margin:0;font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
                       Current tracking shows approximately {{ fragmentation_event_report.known_frags }} pieces of debris associated with this fragmentation, though work continues to identify and
                       catalogue other potential debris objects. This number could therefore change significantly as more data is
                       received. 
                     </p>
-                    <p style="margin:0;font-size:14px;line-height:24px;margin:16px 0">
+                    <p style="margin:0;font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
                       {{ fragmentation_event_report.risk|replace("â€™", "'") }}
                     </p>
-                    <p style="margin:0;font-size:14px;line-height:24px;margin:16px 0">
+                    <p style="margin:0;font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
                       {% if fragmentation_event_report.frag_type == "collision" %}
                         The most likely cause of the event is a conjunction. {{ fragmentation_event_report.conjunction_commentary|replace("â€™", "'") }}
                         This section is pending further detail on conjunction event, including logic on what to do if the event ID and secondary object are unknown. 
@@ -201,7 +201,7 @@ application_url: MSH base url
                         (Need to add more logic here for fragmentation types other than collision)
                       {% endif %}
                     </p>
-                    <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
                       <!-- -->
                       <b>full report, interactive mapping for this incident and the archive.</b>
                     </p>
@@ -222,7 +222,7 @@ application_url: MSH base url
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">
                       {% if view_all_assets %}
                         Risk to UK assets
                       {% else %}
@@ -237,7 +237,7 @@ application_url: MSH base url
               <tbody >
                 <tr>
                   <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
-                    <p style="font-size:14px;line-height:24px;margin:0 0 16px 0">
+                    <p style="font-size:14px;line-height:24px;margin:0 0 16px 0;font-family:Calibri, Arial, sans-serif">
                       {% if view_all_assets %}
                         Each UK satellite was screened against the current population of objects as well as the fragments generated by the breakup model.
                       {% else %}
@@ -246,26 +246,25 @@ application_url: MSH base url
                     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);table-layout:fixed;word-wrap:break-word;font-size:14px;text-align:center;border-collapse:collapse;border-spacing:0;">
                       <thead>
                         <tr style="width:100%;">
-                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Object</th>
-                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Norad ID</th>
-                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Current tally</th>
-                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Fragments tally</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Object</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Norad ID</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Current tally</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Fragments tally</th>
                         </tr>
                       </thead>
                       <tbody>
                         {% for object in fragmentation_event_report.screening_results %}
                           <tr>
-                            <th scope="row" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
+                            <th scope="row" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">
                               <a href="" target="_blank">{{ object.object_name }}</a> 
                             </th>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ object.norad_id }}</td>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ object.current_tally }}</td>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ object.frag_tally }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ object.norad_id }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ object.current_tally }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ object.frag_tally }}</td>
                           </tr>
                         {% endfor %}
                       </tbody>
                     </table>
-  
                     </p>
                   </td>
                 </tr>
@@ -281,7 +280,7 @@ application_url: MSH base url
 
 {% block additional_info %}
 
-  <p style="margin:0;font-size:14px;line-height:24px">
+  <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
     <b>Press and Public Lines</b>
     {% if reentry_event_report.press_attention %}
       <br>{{ reentry_event_report.press_attention }}

@@ -20,7 +20,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
 
 {% block title %}
 
-  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;">Re-entry close down alert <br>{{ reentry_event_report.object_name }} {{ reentry_event_report.object_type }}</h1>
+  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif">Re-entry close down alert <br>{{ reentry_event_report.object_name }} {{ reentry_event_report.object_type }}</h1>
 
 {% endblock %}
 
@@ -29,7 +29,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
       <tbody>
         <tr>
           <td>
-            <p style="font-size:14px;line-height:24px;margin:0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+            <p style="font-size:14px;line-height:24px;margin:0;font-family:Calibri, Arial, sans-serif">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
               <!-- -->
               <b>full report, interactive mapping for this incident and the archive.</b>
             </p>
@@ -45,23 +45,23 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
             <table style="width:100%;border-collapse:collapse">
               <tr style="width:100%">
                 <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                  <h4 style="text-align:left;font-size:14px;margin:0">Time Frame</h4>
+                  <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Time Frame</h4>
                 </td>
-                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px"> We cannot confirm final re-entry time; however, the final US information for this event gives a decay time of {{decay_time}} UTC with an uncertainty window of ± {{uncertainty}} minutes.</td>
+                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif"> We cannot confirm final re-entry time; however, the final US information for this event gives a decay time of {{decay_time}} UTC with an uncertainty window of ± {{uncertainty}} minutes.</td>
               </tr>
               <tr style="width:100%">
                 <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                  <h4 style="text-align:left;font-size:14px;margin:0">Object Type</h4>
+                  <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Object Type</h4>
                 </td>
-                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.object_type }} (NORAD ID {{
+                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ reentry_event_report.object_type }} (NORAD ID {{
                                         reentry_event_report.norad_id }} - {{ reentry_event_report.object_name }})
                           </td>
               </tr>
               <tr style="width:100%">
                 <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                  <h4 style="text-align:left;font-size:14px;margin:0">Object Details</h4>
+                  <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Object Details</h4>
                 </td>
-                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">
+                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">
                     Estimated mass: {{ reentry_event_report.estimated_mass }} kg<br>
                     Height: {{reentry_event_report.object_height }} m<br>
                     Width: {{reentry_event_report.object_width }} m<br>
@@ -70,9 +70,9 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
               </tr>
               <tr style="width:100%">
                 <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                  <h4 style="text-align:left;font-size:14px;margin:0">Impact</h4>
+                  <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Impact</h4>
                 </td>
-                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">                      
+                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">                      
                   {% if UK_impacted == "" %}
                     We have received no reports to suggest the UK was impacted but will continue to monitor in case new information arises. 
                   {% else %}
@@ -82,9 +82,9 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
               </tr>
               <tr style="width:100%">
                 <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                  <h4 style="text-align:left;font-size:14px;margin:0">Liability</h4>
+                  <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Liability</h4>
                 </td>
-                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">
+                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">
                 {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "Unknown" }}
                 {% if reentry_event.damages_liability %}
                   <br>{{ reentry_event.damages_liability }}
@@ -93,9 +93,9 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
               </tr>
               <tr style="width:100%">
                 <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                  <h4 style="text-align:left;font-size:14px;margin:0">Recommended Actions</h4>
+                  <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Recommended Actions</h4>
                 </td>
-                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">No further actions required</td>
+                <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">No further actions required</td>
               </tr>
 
             </table>
@@ -111,7 +111,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Summary</h1>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">Summary</h1>
                   </td>
                 </tr>
               </tbody>
@@ -120,11 +120,11 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
               <tbody>
                 <tr>
                   <td style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
-                    <p style="font-size:14px;line-height:24px;margin:0">
+                    <p style="font-size:14px;line-height:24px;margin:0;font-family:Calibri, Arial, sans-serif">
                         The re-entry of object {{reentry_event_report.object_name}} has now passed. 
-                    </p><p style="font-size:14px;line-height:24px;margin:16px 0">
+                    </p><p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
                         We have received confirmation that the {{reentry_event_report.object_name}} re-entered on the {{reentry_date}}. We cannot confirm final re-entry time; however, the final US information for this event gives a decay time of {{decay_time}} UTC with an uncertainty window of ± {{uncertainty}} minutes.
-                    </p><p style="font-size:14px;line-height:24px;margin:16px 0">
+                    </p><p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
 
                       {% if UK_impacted == "" %}
                         We have received no reports to suggest the UK was impacted but will continue to monitor in case new information arises. 
@@ -132,7 +132,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
                         {{ UK_impacted }}
                       {% endif %}
                     </p>
-                    <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
                       <!-- -->
                       <b>full report, interactive mapping for this incident and the archive.</b>
                     </p>
@@ -152,7 +152,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Impact Location(s)</h1>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">Impact Location(s)</h1>
                   </td>
                 </tr>
               </tbody>
@@ -161,9 +161,9 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
               <tbody>
                 <tr>
                   <td style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
-                    <p style="font-size:14px;line-height:24px;margin:0 0 16px 0">The ground trace of the object is shown in red on the map below.</p>
-                    <img src="{{ reentry_event_map_url }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;border:none;text-decoration:none" width="580" />
-                    <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+                    <p style="font-size:14px;line-height:24px;margin:0 0 16px 0;font-family:Calibri, Arial, sans-serif">The ground trace of the object is shown in red on the map below.</p>
+                    <img src="{{ reentry_event_map_url }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;border:none;text-decoration:none;font-family:Calibri, Arial, sans-serif" width="580" />
+                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
                       <!-- -->
                       <b>full report, interactive mapping for this incident and the archive.</b>
                     </p>
@@ -180,7 +180,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
 
 {% block additional_info %}
 
-  <p style="margin:0;font-size:14px;line-height:24px">
+  <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
     <b>Press and Public Lines</b>
     {% if reentry_event.press_attention %}
       <br>{{ reentry_event.press_attention }}

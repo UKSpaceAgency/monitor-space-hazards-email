@@ -29,7 +29,7 @@
   
   {% block title %}
   
-    <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;">Uncontrolled Re-Entry Early Warning Report
+    <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif;">Uncontrolled Re-Entry Early Warning Report
     {% if reentry_event.reentry_report_number > 1 %}
       - Updated
     {% endif %}
@@ -42,7 +42,7 @@
         <tbody>
           <tr style="width:100%">
             <td>
-              <p style="margin:0;font-size:14px;line-height:24px">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+              <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
                 <!-- -->
                 <b>full report, interactive mapping for this incident and the archive.</b>
               </p>
@@ -61,44 +61,44 @@
                       <table style="width:100%;border-collapse:collapse">
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                            <h4 style="text-align:left;font-size:14px;margin:0">Risk Assessment</h4>
+                            <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Risk Assessment</h4>
                           </td>
                           <td style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;background-color:{{ risk_background_color }}">
-                            <h4 style="text-align:center;font-size:14px;margin:0">{{ risk }}</h4>
+                            <h4 style="text-align:center;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">{{ risk }}</h4>
                           </td>
                         </tr>
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                            <h4 style="text-align:left;font-size:14px;margin:0">Affected Territories</h4>
+                            <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Affected Territories</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.impact.by_nation|to_affected_territories or "No regions affected" }}</td>
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ reentry_event_report.impact.by_nation|to_affected_territories or "No regions affected" }}</td>
                         </tr>
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                            <h4 style="text-align:left;font-size:14px;margin:0">Impact Probability</h4>
+                            <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Impact Probability</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ '%0.3f' % (100*reentry_event_report.probability)|float }}%</td>
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ '%0.3f' % (100*reentry_event_report.probability)|float }}%</td>
                         </tr>
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                            <h4 style="text-align:left;font-size:14px;margin:0">Time Frame</h4>
+                            <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Time Frame</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ (reentry_event_report.time_window_start,
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ (reentry_event_report.time_window_start,
                                                   reentry_event_report.time_window_end)|to_time_frame }}</td>
                         </tr>
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                            <h4 style="text-align:left;font-size:14px;margin:0">Object Type</h4>
+                            <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Object Type</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.object_type }} (NORAD ID {{
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ reentry_event_report.object_type }} (NORAD ID {{
                                                   reentry_event_report.norad_id }} - {{ reentry_event_report.object_name }})
                                     </td>
                         </tr>
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                            <h4 style="text-align:left;font-size:14px;margin:0">Object Details</h4>
+                            <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Object Details</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">
                               Estimated mass: {{ reentry_event_report.estimated_mass }} kg<br>
                               Height: {{reentry_event_report.object_height }} m<br>
                               Width: {{reentry_event_report.object_width }} m<br>
@@ -107,15 +107,15 @@
                         </tr>
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                            <h4 style="text-align:left;font-size:14px;margin:0">Report Number</h4>
+                            <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Report Number</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event.reentry_report_number }}</td>
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ reentry_event.reentry_report_number }}</td>
                         </tr>
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                            <h4 style="text-align:left;font-size:14px;margin:0">Liability</h4>
+                            <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Liability</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}
                           {% if reentry_event_report.damages_liability %}
                             <br>{{ reentry_event_report.damages_liability }}
                           {% endif %}
@@ -123,16 +123,16 @@
                         </tr>
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                            <h4 style="text-align:left;font-size:14px;margin:0">Recommended Actions</h4>
+                            <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Recommended Actions</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ recommended_actions }}</td>
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ recommended_actions }}</td>
                         </tr>
                         {% if reentry_event_report.immediate_response %}
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                            <h4 style="text-align:left;font-size:14px;margin:0">Guidance on Response</h4>
+                            <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Guidance on Response</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{ reentry_event_report.immediate_response }}</td>
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ reentry_event_report.immediate_response }}</td>
                         </tr>
                         {% endif %}
   
@@ -153,7 +153,7 @@
                 <tbody>
                   <tr>
                     <td>
-                      <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Summary</h1>
+                      <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">Summary</h1>
                     </td>
                   </tr>
                 </tbody>
@@ -163,22 +163,22 @@
                   <tr>
                     <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
                     {% if reentry_event.reentry_report_number > 1 %}
-                      <p style="margin:0;font-size:14px;line-height:24px">
+                      <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                         We have identified an update to  <a
                             href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert"
                             target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name }}</a>, launched in {{ reentry_event_report.launching_year }}. {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
                       </p>
                     {% else %}
-                      <p style="margin:0;font-size:14px;line-height:24px">
+                      <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
   
                         We are monitoring <a
                             href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert"
                             target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name }}, launched in {{ reentry_event_report.launching_year }}</a>. {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
                       </p>
                     {% endif %}
-                      <p style="font-size:14px;line-height:24px;margin:16px 0"><b>Recommended actions</b><br>
+                      <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif"><b>Recommended actions</b><br>
                           {{ recommended_actions }}</p>
-                      <p style="font-size:14px;line-height:24px;margin:16px 0">
+                      <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
                           The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "Unknown Object" }} is expected to re-enter at <b>{{
                               (reentry_event_report.time_window_start,
                               reentry_event_report.time_window_end)|to_time_frame }}.</b> The UK mainland
@@ -194,9 +194,9 @@
                           rocket-fuel.
                       </p>
                       {% if reentry_event_report.exec_summary %}
-                      <p style="font-size:14px;line-height:24px;margin:16px 0">{{ reentry_event_report.exec_summary }}</p>
+                      <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">{{ reentry_event_report.exec_summary }}</p>
                       {% endif %}
-                      <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+                      <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
                         <!-- -->
                         <b>full report, interactive mapping for this incident and the archive.</b>
                       </p>
@@ -216,7 +216,7 @@
                 <tbody>
                   <tr>
                     <td>
-                      <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Impact Risk Locations</h1>
+                      <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">Impact Risk Locations</h1>
                     </td>
                   </tr>
                 </tbody>
@@ -233,41 +233,41 @@
                               <table style="width:100%;border-collapse:collapse;border-spacing:0">
                                 <tr style="width:100%">
                                   <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                    <h4 style="text-align:left;font-size:14px;margin:0">England</h4>
+                                    <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">England</h4>
                                   </td>
                                   <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.england|to_affected_territories or "No regions affected"}}</td>
                                 </tr>
                                 <tr style="width:100%">
                                   <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                    <h4 style="text-align:left;font-size:14px;margin:0">Scotland</h4>
+                                    <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Scotland</h4>
                                   </td>
-                                  <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.scotland|to_affected_territories or "No regions affected"}}</td>
+                                  <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{reentry_event_report.impact.scotland|to_affected_territories or "No regions affected"}}</td>
                                 </tr>
                                 <tr style="width:100%">
                                   <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                    <h4 style="text-align:left;font-size:14px;margin:0">Wales</h4>
+                                    <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Wales</h4>
                                   </td>
-                                  <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.wales|to_affected_territories or "No regions affected"}}</td>
+                                  <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{reentry_event_report.impact.wales|to_affected_territories or "No regions affected"}}</td>
                                 </tr>
                                 <tr style="width:100%">
                                   <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                    <h4 style="text-align:left;font-size:14px;margin:0">Northern Ireland</h4>
+                                    <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Northern Ireland</h4>
                                   </td>
-                                  <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{reentry_event_report.impact.northern_ireland|to_affected_territories or "No regions affected"}}</td>
+                                  <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{reentry_event_report.impact.northern_ireland|to_affected_territories or "No regions affected"}}</td>
                                 </tr>
                                 <tr style="width:100%">
                                   <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                    <h4 style="text-align:left;font-size:14px;margin:0">UK OSTs and CDs</h4>
+                                    <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">UK OSTs and CDs</h4>
                                   </td>
-                                  <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{
+                                  <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{
                                           reentry_event_report.impact.overseas_territories_and_crown_dependencies|to_affected_territories or
                                           "No regions affected"}}</td>
                                 </tr>
                                 <tr style="width:100%">
-                                  <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
-                                    <h4 style="text-align:left;font-size:14px;margin:0">Airspace and Maritime</h4>
+                                  <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">
+                                    <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Airspace and Maritime</h4>
                                   </td>
-                                  <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px">{{
+                                  <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{
                                           reentry_event_report.impact.maritime_and_airspace|to_affected_territories or
                                           "No regions affected"}}</td>
                                 </tr>
@@ -280,7 +280,7 @@
                         <tbody>
                           <tr>
                             <td>
-                              <p style="font-size:14px;line-height:24px;margin:16px 0">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+                              <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
                                 <!-- -->
                                 <b>full report, interactive mapping for this incident and the archive.</b>
                               </p>
@@ -301,7 +301,7 @@
   
   {% block additional_info %}
   
-    <p style="margin:0;font-size:14px;line-height:24px">
+    <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
       <b>Press and Public Lines</b>
       {% if reentry_event_report.press_attention %}
         <br>{{ reentry_event_report.press_attention }}

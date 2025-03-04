@@ -10,7 +10,7 @@ satellite_norad_id
 
 {% block title %}
 
-  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;">Satellite 
+  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif">Satellite 
                 {{ satellite_common_name }} : New ephemeris data uploaded</h1>
 
 {% endblock %}
@@ -25,7 +25,7 @@ satellite_norad_id
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Summary</h1>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">Summary</h1>
                   </td>
                 </tr>
               </tbody>
@@ -34,10 +34,10 @@ satellite_norad_id
               <tbody>
                 <tr>
                   <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
-                    <p style="margin:0;font-size:14px;line-height:24px">
+                    <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                       A satellite operator has uploaded ephemeris data for satellite <a href="{{ application_url }}/satellites/{{ satellite_norad_id }}">{{ satellite_common_name }}</a> (NORAD ID: {{ satellite_norad_id }}). 
                     </p>
-                    <p style="font-size:14px;line-height:24px;margin:16px 0">
+                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
                       Sign in to <a href="{{ application_url }}/satellites/{{ satellite_norad_id }}">Monitor Space Hazards</a> to view this ephemeris data.</p>
 
                   </td>
