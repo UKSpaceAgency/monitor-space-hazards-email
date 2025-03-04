@@ -8,7 +8,7 @@ application_url - MSH url
 {% extends "base.jinja" %}
 
 {% block title %}
-  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;">New conjunction event(s)</h1>
+  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif">New conjunction event(s)</h1>
 
 {% endblock %}
 
@@ -21,7 +21,7 @@ application_url - MSH url
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Summary</h1>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">Summary</h1>
                   </td>
                 </tr>
               </tbody>
@@ -30,25 +30,25 @@ application_url - MSH url
               <tbody>
                 <tr>
                   <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
-                    <p style="margin:0 0 16px 0;font-size:14px;line-height:24px">
+                    <p style="margin:0 0 16px 0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                       The UK Space Agency’s Monitor Space Hazards service has identified new conjunction events involving your satellites and crossing your thresholds. The links to the events and their time of closest approach are listed below.
                     </p> 
                     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);table-layout:fixed;word-wrap:break-word;font-size:14px;text-align:center;border-collapse:collapse;border-spacing:0;">
                       <thead>
                         <tr style="width:100%;">
-                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Event</th>
-                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Primary Object</th>
-                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">Time of Closest Approach (UTC)</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Event</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Primary Object</th>
+                          <th scope="col" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Time of Closest Approach (UTC)</th>
                         </tr>
                       </thead>
                       <tbody>
                         {% for event in conjunction_events %}
                           <tr>
-                            <th scope="row" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
+                            <th scope="row" style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">
                               <a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.short_id }}</a> 
                             </th>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ event.primary_object_common_name }}</td>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">{{ event.tca_time }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ event.primary_object_common_name }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ event.tca_time }}</td>
                           </tr>
                         {% endfor %}
                       </tbody>
@@ -57,7 +57,7 @@ application_url - MSH url
                     <p style="margin:16px 0;font-size:14px;line-height:24px">
                       </p>
                     
-                    <p style="font-size:14px;line-height:24px;margin:16px 0">
+                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
                       Sign in to 
                       <a href="{{ application_url }}/conjunctions/">Monitor Space Hazards</a> for <b>additional analysis and information regarding these events.</b> You may also adjust your notification threshold settings using this service.
                     </p>

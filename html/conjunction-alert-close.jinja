@@ -20,7 +20,7 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
 {% endif %}
 
 {% block title %}
-  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;">{{ risk }}-Risk Conjunction Alert:
+  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif;">{{ risk }}-Risk Conjunction Alert:
     <br/>Event passed for {{ conjunction_event_report.primary_object_common_name }} vs. {{ conjunction_event_report.secondary_object_common_name }}</h1>
 {% endblock %}
 
@@ -34,7 +34,7 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255)">Summary</h1>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">Summary</h1>
                   </td>
                 </tr>
               </tbody>
@@ -43,18 +43,18 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
               <tbody>
                 <tr>
                   <td style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
-                    <p style="margin:0;font-size:14px;line-height:24px">
+                    <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                       Conjunction event 
                       <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert"  target="_blank">{{conjunction_event_report.short_id}}</a> 
                     has now passed. </p>
-                    <p style="margin:16px 0;font-size:14px;line-height:24px">
+                    <p style="margin:16px 0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                     {% if fragmentation_bool == true %}
                        {{fragmentation_text|default ('We have received confirmation that the conjunction event involving ' + conjunction_event_report.primary_object_common_name + ' and ' + conjunction_event_report.secondary_object_common_name + ' has resulted in a fragmentation. More detail on this fragmentation and the objects impacted can be found on either  Monitor Space Hazards or through direct communication with the National Space Operations Centre.', true)}}
                     </p>
                     {% else %}
-                      <p style="margin:16px 0;font-size:14px;line-height:24px">{{ no_fragmentation_text|default('We have received no reports to suggest a fragmentation occurred as a result of this conjunction event but will continue to monitor in case new information arises.', true) }}</p>
+                      <p style="margin:16px 0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">{{ no_fragmentation_text|default('We have received no reports to suggest a fragmentation occurred as a result of this conjunction event but will continue to monitor in case new information arises.', true) }}</p>
                     {% endif %}
-                    <p style="font-size:14px;line-height:24px;margin:16px 0">
+                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
                         
                             Sign in to <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert"
                                 target="_blank">Monitor Space Hazards</a> <!-- -->for the <b>
