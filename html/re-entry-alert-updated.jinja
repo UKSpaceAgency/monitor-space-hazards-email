@@ -33,7 +33,11 @@
     {% if reentry_event.reentry_report_number > 1 %}
       - Updated
     {% endif %}
-    <br/>{{ reentry_event_report.object_type }} {{ reentry_event_report.object_name }}</h1>
+    <br/>
+    {% if reentry_event_report.object_type != "UNKNOWN" %}
+      {{ reentry_event_report.object_type }} 
+    {% endif %}
+    {{ reentry_event_report.object_name }}</h1>
   
   {% endblock %}
   
