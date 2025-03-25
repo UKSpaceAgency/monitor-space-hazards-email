@@ -19,6 +19,8 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
     {% set risk_background_color = "#F1C6C6" %}
 {% endif %}
 
+{% block header_colour %}#646464{% endblock %}
+
 {% block title %}
   <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif;">{{ risk }}-Risk Conjunction Alert:
     <br/>Event passed for {{ conjunction_event_report.primary_object_common_name }} vs. {{ conjunction_event_report.secondary_object_common_name }}</h1>
@@ -46,6 +48,8 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
                     <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                       Conjunction event 
                       <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert"  target="_blank">{{conjunction_event_report.short_id}}</a> 
+                      involving {{conjunction_event_report.primary_object_common_name}} (NORAD ID: {{ conjunction_event_report.primary_object_norad_id }})
+                      and {{conjunction_event_report.secondary_object_common_name}} (NORAD ID: {{ conjunction_event_report.secondary_object_norad_id }})
                     has now passed. </p>
                     <p style="margin:16px 0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                     {% if fragmentation_bool == true %}

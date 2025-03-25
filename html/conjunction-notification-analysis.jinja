@@ -33,7 +33,7 @@ conjunction_events - events involving user's satellites with new UKSA analysis
                     <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                       <!-- --> The UK Space Agency has uploaded new analysis for the following conjunction events involving your satellites.
                     </p>
-
+                    <!--
                     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);table-layout:fixed;word-wrap:break-word;font-size:14px;text-align:center;border-collapse:collapse;border-spacing:0">
                       <thead>
                         <tr style="width:100%;">
@@ -49,6 +49,23 @@ conjunction_events - events involving user's satellites with new UKSA analysis
                               <a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.short_id }}</a> 
                             </th>
                             <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ event.primary_object_common_name }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ event.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                    -->
+                                        <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);table-layout:fixed;word-wrap:break-word;font-size:14px;text-align:center;border-collapse:collapse;border-spacing:0">
+                      <thead>
+                        <tr style="width:100%;">
+                          <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Objects</th>
+                          <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Time of Closest Approach (UTC)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for event in conjunction_events %}
+                          <tr>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif"><a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.primary_object_common_name }} vs {{ event.secondary_object_common_name }}</a></td>
                             <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ event.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}</td>
                           </tr>
                         {% endfor %}
