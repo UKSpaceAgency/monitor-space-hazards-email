@@ -27,6 +27,7 @@
     {% set recommended_actions = "Stakeholders may wish to ensure response plans are in place." %} 
   {% endif %}
   
+  {% block header_colour %}#000000{% endblock %}
   {% block title %}
   
     <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif;">Uncontrolled Re-Entry Early Warning
@@ -316,6 +317,17 @@
       </table>
   
     {% endblock %}
+
+  {% block availability %}
+  <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
+    This report has been generated for UK and Partner Government Departments. We kindly request that it is not distributed outside of UK Government or recipient partner organisations.
+  </p>
+  <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
+    Monitor Space Hazards is available to UK and Partner Government Departments.
+    If you meet these criteria and would like access, please contact <a href="mailto:monitorspacehazards@ukspaceagency.gov.uk">monitorspacehazards@ukspaceagency.gov.uk</a>.
+  </p>
+  {% endblock %}
+
   
   {% block additional_info %}
   
@@ -332,3 +344,4 @@
     {{ super() }}  {# this includes the rest of the default footer in base.jinja #}
   
   {% endblock %} 
+
