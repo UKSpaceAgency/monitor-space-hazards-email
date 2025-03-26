@@ -167,12 +167,21 @@ application_url - MSH url
                     <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
                       The relevant UK response organisations have received an alert for this event.
                     </p>
-                                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
-                                        
-                                            Sign in to <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert"
-                                                target="_blank">Monitor Space Hazards</a> <!-- -->for the <b>
-                                          full report for this event.</b>
-                                    </p>
+
+                      <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
+                      <b>Press and Public Lines</b><br />
+                      {% if conjunction_event.press_attention_addition %}
+                        {{ conjunction_event.press_attention_addition }}
+                      {% else %}
+                        We have not seen any press attention on this event.
+                      {% endif %}
+                    </p>
+                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
+                        
+                            Sign in to <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert"
+                                target="_blank">Monitor Space Hazards</a> <!-- -->for the <b>
+                          full report for this event.</b>
+                    </p>
                   </td>
                 </tr>
               </tbody>
@@ -181,21 +190,5 @@ application_url - MSH url
         </tr>
       </tbody>
     </table>
-
-{% endblock %}
-
-{% block additional_info %}
-
-  <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
-    <b>Press and Public Lines</b><br />
-    {% if conjunction_event.press_attention_addition %}
-      {{ conjunction_event.press_attention_addition }}
-    {% else %}
-      Sign in to <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
-    {% endif %}
-  </p>
-  <br>
-
-  {{ super() }}  {# this includes the rest of the default footer in base.jinja #}
 
 {% endblock %}
