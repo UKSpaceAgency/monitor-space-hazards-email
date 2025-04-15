@@ -23,7 +23,7 @@ application_url - MSH url
     {% if conjunction_event_report.report_number > 1 %}
       - Updated
     {% endif %}
-    <br/>{{ conjunction_event_report.primary_object_common_name }} vs. {{ conjunction_event_report.secondary_object_common_name }}</h1>
+    <br/>{{ conjunction_event_report.primary_object_common_name if conjunction_event_report.primary_object_common_name else "Unknown" }} vs. {{ conjunction_event_report.secondary_object_common_name if conjunction_event_report.secondary_object_common_name else "Unknown" }}</h1>
 
 {% endblock %}
 
@@ -82,7 +82,7 @@ application_url - MSH url
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                           <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Time of closest approach (UTC)</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ conjunction_event_report.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ conjunction_event_report.tca_time.strftime('%d/%m/%Y %H:%M:%S') if conjunction_event_report.tca_time.strftime('%d/%m/%Y %H:%M:%S') else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
@@ -100,13 +100,13 @@ application_url - MSH url
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                           <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Primary object</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ conjunction_event_report.primary_object_common_name }} (NORAD ID: {{ conjunction_event_report.primary_object_norad_id }})</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ conjunction_event_report.primary_object_common_name if conjunction_event_report.primary_object_common_name else "Unknown" }} (NORAD ID: {{ conjunction_event_report.primary_object_norad_id }})</td>
                       </tr>
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                           <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Secondary object</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ conjunction_event_report.secondary_object_common_name }} (NORAD ID: {{ conjunction_event_report.secondary_object_norad_id }})</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ conjunction_event_report.secondary_object_common_name if conjunction_event_report.secondary_object_common_name else "Unknown" }} (NORAD ID: {{ conjunction_event_report.secondary_object_norad_id }})</td>
                       </tr>
                     </table>
                   </td>

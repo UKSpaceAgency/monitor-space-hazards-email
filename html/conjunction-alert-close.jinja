@@ -23,7 +23,7 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
 
 {% block title %}
   <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif;">{{ risk }}-Risk Conjunction Alert:
-    <br/>Event passed for {{ conjunction_event_report.primary_object_common_name }} vs. {{ conjunction_event_report.secondary_object_common_name }}</h1>
+    <br/>Event passed for {{ conjunction_event_report.primary_object_common_name if conjunction_event_report.primary_object_common_name else "Unknown"}} vs. {{ conjunction_event_report.secondary_object_common_name if conjunction_event_report.secondary_object_common_name else "Unknown"}}</h1>
 {% endblock %}
 
 
@@ -48,12 +48,12 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
                     <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                       Conjunction event 
                       <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert"  target="_blank">{{conjunction_event_report.short_id}}</a> 
-                      involving {{conjunction_event_report.primary_object_common_name}} (NORAD ID: {{ conjunction_event_report.primary_object_norad_id }})
-                      and {{conjunction_event_report.secondary_object_common_name}} (NORAD ID: {{ conjunction_event_report.secondary_object_norad_id }})
+                      involving {{conjunction_event_report.primary_object_common_name if conjunction_event_report.primary_object_common_name else "Unknown"}} (NORAD ID: {{ conjunction_event_report.primary_object_norad_id }})
+                      and {{conjunction_event_report.secondary_object_common_name if conjunction_event_report.secondary_object_common_name else "Unknown"}} (NORAD ID: {{ conjunction_event_report.secondary_object_norad_id }})
                     has now passed. </p>
                     <p style="margin:16px 0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                     {% if fragmentation_bool == true %}
-                       {{fragmentation_text|default ('We have received confirmation that the conjunction event involving ' + conjunction_event_report.primary_object_common_name + ' and ' + conjunction_event_report.secondary_object_common_name + ' has resulted in a fragmentation. More detail on this fragmentation and the objects impacted can be found on either  Monitor Space Hazards or through direct communication with the National Space Operations Centre.', true)}}
+                       {{fragmentation_text|default ('We have received confirmation that the conjunction event involving ' + {{conjunction_event_report.primary_object_common_name if conjunction_event_report.primary_object_common_name else "Unknown"}} + ' and ' + {{conjunction_event_report.secondary_object_common_name if conjunction_event_report.secondary_object_common_name else "Unknown"}} + ' has resulted in a fragmentation. More detail on this fragmentation and the objects impacted can be found on either  Monitor Space Hazards or through direct communication with the National Space Operations Centre.', true)}}
                     </p>
                     {% else %}
                       <p style="margin:16px 0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">{{ no_fragmentation_text|default('We have received no reports to suggest a fragmentation occurred as a result of this conjunction event but will continue to monitor in case new information arises.', true) }}</p>

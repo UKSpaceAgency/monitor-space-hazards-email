@@ -34,10 +34,17 @@
       - Updated
     {% endif %}
     <br/>
-    {% if reentry_event_report.object_type|lower != "unknown" %}
+    {% if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" %}
       {{ reentry_event_report.object_type }} 
+    {% else %}
+      Unknown
     {% endif %}
-    {{ reentry_event_report.object_name }}</h1>
+    
+    {% if reentry_event_report.object_name and reentry_event_report.object_name|lower != "unknown" %}
+      {{ reentry_event_report.object_name }} 
+    {% else %}
+      Unknown
+    {% endif %}</h1>
   
   {% endblock %}
   
@@ -94,8 +101,8 @@
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                             <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Object Type</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ reentry_event_report.object_type }} (NORAD ID {{
-                                                  reentry_event_report.norad_id }} - {{ reentry_event_report.object_name }})
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ reentry_event_report.object_type if reentry_event_report.object_type else "Unknown" }} (NORAD ID {{
+                                                  reentry_event_report.norad_id if reentry_event_report.norad_id else "Unknown"}} - {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }})
                                     </td>
                         </tr>
                         <tr style="width:100%">
@@ -103,7 +110,7 @@
                             <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Estimated mass</h4>
                           </td>
                           <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">
-                              {{ reentry_event_report.estimated_mass }} kg
+                              {{ reentry_event_report.estimated_mass if reentry_event_report.estimated_mass else "Unknown" }} kg
                           </td>
                         </tr>
                         <tr style="width:100%">
@@ -111,7 +118,7 @@
                             <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Height</h4>
                           </td>
                           <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">
-                              {{reentry_event_report.object_height }} m
+                              {{reentry_event_report.object_height if reentry_event_report.object_height else "Unknown" }} m
                           </td>
                         </tr>
                         <tr style="width:100%">
@@ -119,7 +126,7 @@
                             <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Width</h4>
                           </td>
                           <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">
-                              {{reentry_event_report.object_width }} m
+                              {{reentry_event_report.object_width if reentry_event_report.object_width else "Unknown" }} m
                           </td>
                         </tr>
 
@@ -127,7 +134,7 @@
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                             <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Report Number</h4>
                           </td>
-                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ reentry_event.reentry_report_number }}</td>
+                          <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ reentry_event.reentry_report_number if reentry_event.reentry_report_number else "Unknown" }}</td>
                         </tr>
                         <tr style="width:100%">
                           <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
@@ -136,6 +143,8 @@
                           <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}
                           {% if reentry_event_report.damages_liability %}
                             <br>{{ reentry_event_report.damages_liability }}
+                          {% else %}
+                            Unknown
                           {% endif %}
                           </td>
                         </tr>
@@ -184,14 +193,14 @@
                       <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                         We have identified an update to  <a
                             href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert"
-                            target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name }}</a>, launched in {{ reentry_event_report.launching_year }}. {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
+                            target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name if reentry_event_report.object_name and reentry_event_report.object_name|lower != "unknown" else "an unknown object name" }}</a>, launched in {{ reentry_event_report.launching_year }}. {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
                       </p>
                     {% else %}
                       <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
   
                         We are monitoring <a
                             href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert"
-                            target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name }}, launched in {{ reentry_event_report.launching_year }}</a>. {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
+                            target="_blank">the upcoming re-entry of {{ "a " + reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "an unknown object type" }}, {{ reentry_event_report.object_name if reentry_event_report.object_name and reentry_event_report.object_name|lower != "unknown" else "and unknown object name"}}, launched in {{ reentry_event_report.launching_year }}</a>. {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "It is unknown who" }} is liable for any damages and associated costs of the response and recovery efforts caused.
                       </p>
                     {% endif %}
                       <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif"><b>Recommended actions</b><br>
