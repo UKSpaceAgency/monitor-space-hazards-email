@@ -25,10 +25,17 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
 
   <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif">
     Re-entry close down <br>
-    {% if reentry_event_report.object_type|lower != "unknown" %}
+    {% if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" %}
       {{ reentry_event_report.object_type }} 
+    {% else %}
+      Unknown
     {% endif %}
-    {{ reentry_event_report.object_name }}
+
+    {% if reentry_event_report.object_name and reentry_event_report.object_name|lower != "unknown" %}
+      {{ reentry_event_report.object_name }} 
+    {% else %}
+      Unknown
+    {% endif %}
   </h1>
 
 {% endblock %}
@@ -71,9 +78,9 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
                   <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Object Details</h4>
                 </td>
                 <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">
-                    Estimated mass: {% if reentry_event_report.estimated_mass is not none %}{{ reentry_event_report.estimated_mass }} kg{% else %}Unknown{% endif %}<br>
-                    Height: {% if reentry_event_report.object_height is not none %}{{ reentry_event_report.object_height }} m{% else %}Unknown{% endif %}<br>
-                    Width: {% if reentry_event_report.object_width is not none %}{{ reentry_event_report.object_width }} m{% else %}Unknown{% endif %}<br>
+                    Estimated mass: {% reentry_event_report.estimated_mass if reentry_event_report.estimated_mass else "Unknown"} kg<br>
+                    Height: {% reentry_event_report.object_height if reentry_event_report.object_height else "Unknown"} m<br>
+                    Width: {% reentry_event_report.object_width if reentry_event_report.object_width else "Unknown"} m<br>
 
                 </td>
               </tr>
@@ -97,6 +104,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
                 {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name else "Unknown" }}
                 {% if reentry_event.damages_liability %}
                   <br>{{ reentry_event.damages_liability }}
+                {% else %}
                 {% endif %}
                 </td>
               </tr>
@@ -132,7 +140,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
                     <p style="font-size:14px;line-height:24px;margin:0;font-family:Calibri, Arial, sans-serif">
                         The re-entry of object {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }} has now passed. 
                     </p><p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
-                        Final re-entry analysis shows that {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }} re-entered at {% if decay_time %}{{ decay_time.strftime('%d/%m/%Y %H:%M:%S') }}{% else %}Unknown{% endif %} UTC with an uncertainty window of ± {% if uncertainty is not none %}{{ uncertainty }}{% else %}Unknown{% endif %} minutes.
+                        Final re-entry analysis shows that {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }} re-entered at {% if decay_time %}{{ decay_time.strftime('%d/%m/%Y %H:%M:%S') }}{% else %}Unknown{% endif %} UTC with an uncertainty window of ± {{ uncertainty if uncertainty else "Unknown"}} minutes.
                     </p><p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
 
                       {% if UK_impacted == "" %}
