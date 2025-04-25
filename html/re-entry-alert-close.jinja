@@ -20,7 +20,13 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
 
 {% block title %}
 
-  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif">Re-entry close down <br>{{ reentry_event_report.object_type }} {{ reentry_event_report.object_name }}</h1>
+  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif">
+    Re-entry close down <br>
+    {% if reentry_event_report.object_type != "UNKNOWN" %}
+      {{ reentry_event_report.object_type }} 
+    {% endif %}
+    {{ reentry_event_report.object_name }}
+  </h1>
 
 {% endblock %}
 
@@ -123,7 +129,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
                     <p style="font-size:14px;line-height:24px;margin:0;font-family:Calibri, Arial, sans-serif">
                         The re-entry of object {{reentry_event_report.object_name}} has now passed. 
                     </p><p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
-                        We have received confirmation that the {{reentry_event_report.object_name}} re-entered on the {{reentry_date.strftime('%d/%m/%Y %H:%M:%S')}}. We cannot confirm final re-entry time; however, the final US information for this event gives a decay time of {{decay_time.strftime('%d/%m/%Y %H:%M:%S')}} UTC with an uncertainty window of ± {{uncertainty}} minutes.
+                        We cannot confirm final re-entry time; however, the final US information for this event gives a decay time of {{decay_time.strftime('%d/%m/%Y %H:%M:%S')}} UTC with an uncertainty window of ± {{uncertainty}} minutes.
                     </p><p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
 
                       {% if UK_impacted == "" %}

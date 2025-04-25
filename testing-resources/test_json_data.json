@@ -5,6 +5,7 @@
  "time": "16:00",
  "date": "16.01.2025",
  "view_all_assets": false,
+
  "fragmentation_event_report": {
   "short_id": "frag-20250101-5917-19120",
   "risk_rating": "Low",
@@ -278,9 +279,13 @@
  ],
  "UK_impacted": "variable text describing impact on UK",
  "reentry_date": "12/11/2024",
- "decay_time": "17:41:21",
- "uncertainty": "uncertainty window of decay time (minutes)",
- "fragmentation_bool": true, 
+ "decay_time": "2025-03-17T14:30:00",
+ "uncertainty": "10",
+ "fragmentation_bool": false, 
+ "no_fragmentation_text": false,
+
+ "fragmentation_text": false,
+
  "conjunction_event_report": { 
     "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
     "created_at": "2024-12-05T12:23:51.395Z",
@@ -334,7 +339,7 @@
     "time_window_start": "2024-02-14 09:01:00",
     "time_window_end": "2024-02-14 14:01:00",
     "tip_external_id": "22557",
-    "probability": 0.04,
+    "monte_carlo_probability": 0.04,
     "norad_id": "56073",
     "object_name": "CZ-2C R/B",
     "object_type": "Rocket body",
