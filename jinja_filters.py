@@ -10,12 +10,12 @@ def to_affected_territories(value: dict[str, dict[str, Any]]) -> str:
 
 
 def to_time_frame(value: list[str | datetime]) -> str:
-    """20/09/2024 10:10:00 +/- 2160 mins"""
+    """Sunday 20/09/2024 10:10:00 UTC +/- 2160 mins"""
     time_frame_start = value[0] if isinstance(value[0], datetime) else datetime.fromisoformat(value[0])
     time_frame_end = value[1] if isinstance(value[1], datetime) else datetime.fromisoformat(value[1])
     delta = (time_frame_end - time_frame_start) / 2
     return (time_frame_start + delta).strftime(
-        "%A %d %B %Y at %H:%M:%S +/- " + str(int(delta.total_seconds()) // 60) + " minutes"
+        "%A %d %B %Y at %H:%M:%S UTC +/- " + str(int(delta.total_seconds()) // 60) + " minutes"
     )
 
 
