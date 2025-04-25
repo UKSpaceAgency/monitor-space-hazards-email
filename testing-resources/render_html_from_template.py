@@ -2,7 +2,7 @@ from jinja2 import Environment, FileSystemLoader
 import json
 from datetime import datetime
 
-file_to_test = "re-entry-alert-updated.jinja"  # Change this value to test different files
+file_to_test = "conjunction-alert-updated.jinja"  # Change this value to test different files
 
 def to_risk(probability):
     return "Low"
@@ -30,9 +30,13 @@ with open('test_json_data.json', 'r') as file:
 
 my_dict = json.loads(json_string)
 
-# Convert decay_time to a datetime object if present in the JSON data
-if "decay_time" in my_dict:
-    my_dict["decay_time"] = datetime.fromisoformat(my_dict["decay_time"])
+# Convert times to datetime objects
+my_dict["decay_time"] = datetime.fromisoformat(my_dict["decay_time"])
+my_dict["conjunction_event_report"]["tca_time"] = datetime.fromisoformat(my_dict["conjunction_event_report"]["tca_time"])
+for event in my_dict["conjunction_events"] + my_dict["new_conjunction_events"] + my_dict["updated_conjunction_events"]:
+    event["tca_time"] = datetime.fromisoformat(event["tca_time"])
+my_dict["conjunction_event"]["tca_time"] = datetime.fromisoformat(my_dict["conjunction_event"]["tca_time"])
+
 
 filename = "test.html"
 content = template.render(
