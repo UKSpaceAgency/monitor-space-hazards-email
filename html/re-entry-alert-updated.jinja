@@ -220,8 +220,8 @@
                           have contaminated the re-entering objects. Hydrazine is commonly used as
                           rocket-fuel.
                       </p>
-                      {% if reentry_event_report.exec_summary_addition %}
-                      <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">{{ reentry_event_report.exec_summary_addition }}</p>
+                      {% if reentry_event.exec_summary %}
+                      <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">{{ reentry_event.exec_summary }}</p>
                       {% endif %}
                       <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                         <b>Press and Public Lines</b>
