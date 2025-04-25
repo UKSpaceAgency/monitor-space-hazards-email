@@ -22,7 +22,7 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
 
   <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif">
     Re-entry close down <br>
-    {% if reentry_event_report.object_type != "UNKNOWN" %}
+    {% if reentry_event_report.object_type|lower != "unknown" %}
       {{ reentry_event_report.object_type }} 
     {% endif %}
     {{ reentry_event_report.object_name }}
