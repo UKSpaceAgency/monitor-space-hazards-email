@@ -34,7 +34,7 @@
       - Updated
     {% endif %}
     <br/>
-    {% if reentry_event_report.object_type != "UNKNOWN" %}
+    {% if reentry_event_report.object_type|lower != "unknown" %}
       {{ reentry_event_report.object_type }} 
     {% endif %}
     {{ reentry_event_report.object_name }}</h1>
@@ -197,13 +197,13 @@
                       <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif"><b>Recommended actions</b><br>
                           {{ recommended_actions }}</p>
                       <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
-                          The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "Unknown Object" }} is expected to re-enter at <b>{{
+                          The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "object" }} is expected to re-enter at <b>{{
                               (reentry_event_report.time_window_start,
                               reentry_event_report.time_window_end)|to_time_frame }}.</b> The UK mainland
                           is
                           expected to have
                           {{ reentry_event_report.overflight_time|length }} overflight(s) in the current
-                          uncertainty window. The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "Unknown Object" }} has a <b>{{ '%0.3f' %
+                          uncertainty window. The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "object" }} has a <b>{{ '%0.3f' %
                               (100*reentry_event_report.monte_carlo_probability)|float }}% probability of UK re-entry.</b> This
                           meets the
                           {{ risk }}-risk escalation threshold. We cannot rule out that hazardous material
