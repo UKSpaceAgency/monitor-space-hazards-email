@@ -2,7 +2,7 @@ from jinja2 import Environment, FileSystemLoader
 import json
 from datetime import datetime
 
-file_to_test = "conjunction-alert-updated.jinja"  # Change this value to test different files
+file_to_test = "re-entry-alert-close.jinja"  # Change this value to test different files
 
 def to_risk(probability):
     return "Low"

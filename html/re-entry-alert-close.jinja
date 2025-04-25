@@ -141,6 +141,15 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
                         {{ UK_impacted }}
                       {% endif %}
                     </p>
+                      <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
+                        <b>Press and Public Lines</b>
+                        {% if reentry_event.press_attention %}
+                          <br>{{ reentry_event.press_attention }}
+                        {% else %}
+                          <br>We have not seen any press attention on this event.
+                        {% endif %}
+                      </p>
+
                     <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
                       <!-- -->
                       <b>full report, interactive mapping for this incident and the archive.</b>
@@ -188,28 +197,8 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
 {% endblock %}
 
 {% block availability %}
-<p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
-  This report has been generated for UK and Partner Government Departments. We kindly request that it is not distributed outside of UK Government or recipient partner organisations.
-</p>
-<p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
-  Monitor Space Hazards is available to UK and Partner Government Departments.
-  If you meet these criteria and would like access, please contact <a href="mailto:monitorspacehazards@ukspaceagency.gov.uk">monitorspacehazards@ukspaceagency.gov.uk</a>.
-</p>
+If you're part of a UK Government department or partner organisation and would like access to the Monitor Space Hazards: Track Re-entry Events service, please contact us.
+<br><br><b>Note:</b> This report must not be shared outside the UK Government or its partner organisations.
 {% endblock %}
 
 
-{% block additional_info %}
-
-  <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
-    <b>Press and Public Lines</b>
-    {% if reentry_event.press_attention %}
-      <br>{{ reentry_event.press_attention }}
-    {% else %}
-      <br />Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> for press and public lines (opens Monitor Space Hazards)
-    {% endif %}
-  </p>
-  <br>
-
-  {{ super() }}  {# this includes the rest of the default footer in base.jinja #}
-
-{% endblock %}
