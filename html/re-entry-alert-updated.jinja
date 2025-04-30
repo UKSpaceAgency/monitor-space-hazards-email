@@ -4,8 +4,8 @@
   
   reentry_event_report 
     reentry_event_report.damages_liability
-    reentry_event_report.press_attention
-    reentry_event_report.exec_summary
+    reentry_event.press_attention
+    reentry_event.exec_summary
     reentry_event_report.immediate_response
   
   application_url: MSH base url
@@ -225,8 +225,8 @@
                       {% endif %}
                       <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                         <b>Press and Public Lines</b>
-                        {% if reentry_event_report.press_attention_addition %}
-                          <br>{{ reentry_event_report.press_attention_addition }}
+                        {% if reentry_event.press_attention %}
+                          <br>{{ reentry_event.press_attention }}
                         {% else %}
                           <br>We have not seen any press attention on this event.
                         {% endif %}
