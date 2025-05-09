@@ -39,7 +39,7 @@ updated_conjunction_events - list of updated conjunction events
                         <tr style="width:100%;">
                           <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Objects</th>
                           <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Time of Closest Approach (UTC)</th>
-                          <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Space-Track Probability of Collisions (%)</th>
+                          <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Space-Track Probability of Collision </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -47,7 +47,7 @@ updated_conjunction_events - list of updated conjunction events
                           <tr>
                             <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif"><a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.primary_object_common_name }} vs {{ event.secondary_object_common_name }}</a></td>
                             <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ event.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}</td>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{'%0.2f' % (100*event.collision_probability)|float }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{'%0.4f' % (100*event.collisionProbability)|float }}</td>
                           </tr>
                         {% endfor %}
                       </tbody>
@@ -58,7 +58,7 @@ updated_conjunction_events - list of updated conjunction events
                         <tr style="width:100%;">
                           <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Objects</th>
                           <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Time of Closest Approach (UTC)</th>
-                          <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Space-Track Probability of Collisions (%)</th>
+                          <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Space-Track Probability of Collision </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -66,7 +66,7 @@ updated_conjunction_events - list of updated conjunction events
                           <tr>
                             <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif"><a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.primary_object_common_name }} vs {{ event.secondary_object_common_name }}</a></td>
                             <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ event.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}</td>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{'%0.2f' % (100*event.collision_probability)|float }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{'%0.4f' % (100*event.collisionProbability)|float }}</td>
                           </tr>
                         {% endfor %}
                       </tbody>
