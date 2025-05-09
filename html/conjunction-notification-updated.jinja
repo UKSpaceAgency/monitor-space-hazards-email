@@ -45,7 +45,7 @@ conjunction_events - list of conjunction events
                           <tr>
                             <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif"><a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.primary_object_common_name }} vs {{ event.secondary_object_common_name }}</a></td>
                             <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ event.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}</td>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{'%0.4f' % (100*event.collisionProbability)|float }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{'%0.4f' % (100*event.collision_probability)|float }}</td>
                           </tr>
                         {% endfor %}
                       </tbody>
