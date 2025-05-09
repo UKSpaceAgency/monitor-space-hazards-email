@@ -4,8 +4,8 @@
   
   reentry_event_report 
     reentry_event_report.damages_liability
-    reentry_event_report.press_attention
-    reentry_event_report.exec_summary
+    reentry_event.press_attention
+    reentry_event.exec_summary
     reentry_event_report.immediate_response
   
   application_url: MSH base url
@@ -220,6 +220,7 @@
                           have contaminated the re-entering objects. Hydrazine is commonly used as
                           rocket-fuel.
                       </p>
+                      
                       {% if reentry_event_report.exec_summary_addition %}
                       <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">{{ reentry_event_report.exec_summary_addition }}</p>
                       {% endif %}
