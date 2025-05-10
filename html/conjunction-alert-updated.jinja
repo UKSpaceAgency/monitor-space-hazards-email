@@ -88,7 +88,7 @@ application_url - MSH url
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
                           <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Probability of collision</h4>
                         </td>
-                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ '%0.2f' % (100*conjunction_event_report.collision_probability)|float }}%</td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ '{:.4E}'.format(100 * conjunction_event_report.collision_probability) }}%</td>
                       </tr>
                       <tr style="width:100%">
                         <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
