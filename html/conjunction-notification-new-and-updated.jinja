@@ -66,7 +66,7 @@ updated_conjunction_events - list of updated conjunction events
                           <tr>
                             <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif"><a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.primary_object_common_name }} vs {{ event.secondary_object_common_name }}</a></td>
                             <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ event.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}</td>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ 'Unknown' if event.collision_probability is none else '{:.4e}'.format(100 * event.collision_probability) }}</td>
+                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ 'Unknown' if event.collision_probability is none else '{:.4e}'.format(100 * event.collision_probability).replace('e+0', 'e+') }}</td>
                           </tr>
                         {% endfor %}
                       </tbody>
