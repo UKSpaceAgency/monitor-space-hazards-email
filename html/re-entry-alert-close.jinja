@@ -78,9 +78,9 @@ UK_impacted: contains text describing impact on the UK if there was one. Should 
                   <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Object Details</h4>
                 </td>
                 <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">
-                    Estimated mass: {% reentry_event_report.estimated_mass if reentry_event_report.estimated_mass else "Unknown"} kg<br>
-                    Height: {% reentry_event_report.object_height if reentry_event_report.object_height else "Unknown"} m<br>
-                    Width: {% reentry_event_report.object_width if reentry_event_report.object_width else "Unknown"} m<br>
+                    Estimated mass: {{ reentry_event_report.estimated_mass if reentry_event_report.estimated_mass else "Unknown" }} kg<br>
+                    Height: {{ reentry_event_report.object_height if reentry_event_report.object_height else "Unknown" }} m<br>
+                    Width: {{ reentry_event_report.object_width if reentry_event_report.object_width else "Unknown" }} m<br>
 
                 </td>
               </tr>
