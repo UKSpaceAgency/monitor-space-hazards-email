@@ -27,31 +27,12 @@
                 </tr>
               </tbody>
             </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem;padding-bottom:1rem">
-              <tbody>
-                <tr>
-                  <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">{% block title %}{% endblock %}</h1>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.5rem;padding-bottom:0.5rem;border-color:rgb(0,110,187);border-style:solid;border-top-width:2px;border-bottom-width:2px">
-              <tbody>
-                <tr>
-                  <td>
-                    <h3 style="font-size:1rem;line-height:1.5rem;margin:0px">{% block subtitle %}{% endblock %}</h3>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
           </td>
         </tr>
       </tbody>
     </table>
     {% block content %}{% endblock %}
+
     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
       style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
       <tbody>
@@ -73,22 +54,30 @@
                 <tr>
                   <td>
                     <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-top:0px;margin-bottom:0.5rem">
-                      For urgent queries about this event, email:<br />
-                      <a href="mailto:NSpOCincidents@ukspaceagency.gov.uk" style="color:rgb(0,110,187)">NSpOCincidents@ukspaceagency.gov.uk</a> and <a
-                        href="mailto:OrbitalAnalysts@ukspaceagency.gov.uk" style="color:rgb(0,110,187)">OrbitalAnalysts@ukspaceagency.gov.uk</a>
-                    </p>
+                      For assistance in managing an incident, or for more information, please do not hesitate to contact our Operations, Analysis and Response Team:<br />
+                      <a href="mailto:NSpOCincidents@ukspaceagency.gov.uk" style="color:rgb(0,110,187)">Operations Support</a><br />
+                      Or email us: <a href="mailto:NSpOCincidents@ukspaceagency.gov.uk"
+                        style="color:rgb(0,110,187)">NSpOCincidents@ukspaceagency.gov.uk</a> and <a
+                        href="mailto:OrbitalAnalysts@ukspaceagency.gov.uk"
+                        style="color:rgb(0,110,187)">OrbitalAnalysts@ukspaceagency.gov.uk</a>
+                      </p>
                     <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-top:0px;margin-bottom:0.5rem">
-                      Additional contact details are available via Monitor Space Hazards (for registered users).
-                    </p>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-top:0px;margin-bottom:0.5rem">
-                      We welcome your feedback and ideas to improve future reports. If you're not signed up to Monitor Space Hazards and would like access to the service, please contact us.
-                    </p>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin-top:0px;margin-bottom:0.5rem;margin:16px 0">
-                      Monitor Space Hazards is a service provided by the UK Space Agency via the National Space Operations
-                      Centre.</p>
+                      Additional contact details are available via <a
+                        href="{{ application_url }}/contact" style="color:rgb(0,110,187)">Monitor Space
+                        Hazards</a>. Monitor Space Hazards is a service provided by the UK Space Agency via the National Space Operations Centre
+                      </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
+              style="padding-top:1rem">
+              <tbody>
+                <tr>
+                  <td>
                       <img src="{{ uksa_logo.src }}"
                       style="width:7rem;height:auto;display:block;outline:none;border:none;text-decoration:none" />
-                      <a href="mailto:monitorspacehazards@ukspaceagency.gov.uk?subject=Unsubscribe" style="font-size:0.875rem;line-height:1.25rem;color:rgb(0,110,187)">Unsubscribe</a>
+                      <a href="mailto:monitorspacehazards@ukspaceagency.gov.uk?subject=Unsubscribe" style="color:rgb(0,110,187)">Unsubscribe</a>
                   </td>
                 </tr>
               </tbody>
