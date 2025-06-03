@@ -16,14 +16,17 @@
   
   {% set risk = reentry_event_report.monte_carlo_probability|to_risk %}
   {% if risk == "Low" %}
-    {% set risk_background_color = "#F0F0F0" %}
+    {% set risk_background_color = "#cce2d8" %}
+    {% set risk_text_color = "#005930" %}
     {% set recommended_actions = "We would not normally expect stakeholders to take action on this report." %}
    
   {% elif risk == "Medium" %}
-    {% set risk_background_color = "#FFF0C8" %}
+    {% set risk_background_color = "#ffe0a3" %}
+    {% set risk_text_color = "#594d00" %}
     {% set recommended_actions = "Stakeholders may wish to consider internal escalation." %}
   {% else %}
-    {% set risk_background_color = "#F1C6C6" %}
+    {% set risk_background_color = "#f4ccca" %}
+    {% set risk_text_color = "#2a1a0e" %}
     {% set recommended_actions = "Stakeholders may wish to ensure response plans are in place." %} 
   {% endif %}
   
@@ -68,7 +71,7 @@
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:0.5rem">Risk Assessment</th>
                         <td align="center"
-                          style="width:66.666667%;padding:0.5rem;background-color:{{ risk_background_color }};font-weight:700">{{ risk }}
+                          style="width:66.666667%;padding:0.5rem;background-color:{{ risk_background_color }};font-weight:700;color:{{ risk_text_color }}">{{ risk }}
                         </td>
                       </tr>
                       <tr style="width:100%">
@@ -149,7 +152,7 @@
               <tbody>
                 <tr>
                   <td>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px">The National Space Operations Centre is monitoring the upcoming re-entry of a <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">{{ reentry_event_report.object_type if reentry_event_report.object_type else "Unknown" }} (NORAD ID {{reentry_event_report.norad_id if reentry_event_report.norad_id else "Unknown"}} - {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }}), launched in {{ reentry_event_report.launch_year if reentry_event_report.launch_year else "Unknown" }}</a>. The launching state is likely to be liable for any damages and associated costs of the response and recovery efforts caused.</p>
+                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px">The National Space Operations Centre is monitoring the upcoming re-entry of a <a style="color:rgb(0,110,187)" href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">{{ reentry_event_report.object_type if reentry_event_report.object_type else "Unknown" }} (NORAD ID {{reentry_event_report.norad_id if reentry_event_report.norad_id else "Unknown"}} - {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }}), launched in {{ reentry_event_report.launch_year if reentry_event_report.launch_year else "Unknown" }}</a>. The launching state is likely to be liable for any damages and associated costs of the response and recovery efforts caused.</p>
                   </td>
                 </tr>
               </tbody>
@@ -247,7 +250,7 @@
                         </tr>
                       </tbody>
                     </table>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-top:1rem">Sign in to <a href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> to view
+                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-top:1rem">Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> to view
                       analysis and additional information.</p>
                   </td>
                 </tr>

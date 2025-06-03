@@ -6,55 +6,46 @@ conjunction_events - events involving user's satellites with new UKSA analysis
 #}
 
 
-{% extends "base.jinja" %}
-
-{% block title %}
-  <h1 style="font-size:16px;color:rgb(255,255,255);line-height:24px;margin-top:10px;font-family:Calibri, Arial, sans-serif;">New UKSA analysis uploaded</h1>
-{% endblock %}
+{% extends "base-notification.jinja" %}
 
 {% block content %}
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
       <tbody>
         <tr style="width:100%">
           <td>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="background-color:rgb(38,92,89);padding:8px;margin:0">
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
+              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">Summary</h1>
+                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">New UKSA analysis uploaded</h1>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89);border-spacing:0;border-collapse:collapse;">
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
+              style="padding-top:1rem">
               <tbody>
                 <tr>
-                  <td style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px">
-                    <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
-                      <!-- --> The UK Space Agency has uploaded new analysis for the following conjunction events involving your satellites.
-                    </p>
-                                        <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-width:1px;border-style:solid;border-color:rgb(38,92,89);table-layout:fixed;word-wrap:break-word;font-size:14px;text-align:center;border-collapse:collapse;border-spacing:0">
-                      <thead>
-                        <tr style="width:100%;">
-                          <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Objects</th>
-                          <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">Time of Closest Approach (UTC)</th>
-                          <th scope="col" style="width:50%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px;font-family:Calibri, Arial, sans-serif">UKSA Probability of Collision </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {% for event in conjunction_events %}
-                          <tr>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif"><a href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.primary_object_common_name }} vs {{ event.secondary_object_common_name }}</a></td>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ event.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}</td>
-                            <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);padding:8px;font-family:Calibri, Arial, sans-serif">{{ 'Unknown' if event.collision_probability is none else '{:.4e}'.format(100 * event.collision_probability).replace('e-0', 'e-') }}</td>
+                  <td>
+                  <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem">The National Space Operations Centre has uploaded new analysis for the following conjunction events involving your satellites. For full information on each event please visit Monitor Space Hazards via the event link.</p>
+                    <table
+                      style="width:100%;text-align:left;font-size:0.875rem;line-height:1.25rem;border-collapse:collapse">
+                      <tr>
+                        <th style="width:33.333333%;padding:0.5rem" align="center">Primary and Secondary Object</th>
+                        <th style="width:33.333333%;padding:0.5rem" align="center">Time of Closest Approach (UTC)</th>
+                        <th style="width:33.333333%;padding:0.5rem" align="center">Probability of Collision</th>
+                      </tr>
+                      {% for event in conjunction_events %}
+                          <tr style="width:100%;{% if loop.index0 is even %}background-color:rgb(240,240,240){% endif %}">
+                            <td style="width:33.333333%;padding:0.5rem" align="center"><a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.primary_object_common_name }} vs {{ event.secondary_object_common_name }}</a></td>
+                            <td style="width:33.333333%;padding:0.5rem" align="center">{{ event.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}</td>
+                            <td style="width:33.333333%;padding:0.5rem" align="center">{{ 'Unknown' if event.collision_probability is none else '{:.4e}'.format(100 * event.collision_probability).replace('e-0', 'e-') }}</td>
                           </tr>
-                        {% endfor %}
-                      </tbody>
+                      {% endfor %}
                     </table>
-
-                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
-                      Sign in to <a href="{{ application_url }}/conjunctions">Monitor Space Hazards</a> to view this analysis and additional information regarding the event.</p>
-
+                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-top:1rem">Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions">Monitor Space Hazards</a> to view
+                      analysis and additional information.</p>
                   </td>
                 </tr>
               </tbody>
@@ -63,5 +54,4 @@ conjunction_events - events involving user's satellites with new UKSA analysis
         </tr>
       </tbody>
     </table>
-
 {% endblock %}

@@ -10,11 +10,15 @@ application_url - MSH url
 
 {% set risk = conjunction_event_report.risk %}
 {% if risk == "Low" %}
-  {% set risk_background_color = "#F0F0F0" %}
+  {% set risk_background_color = "#cce2d8" %}
+  {% set risk_text_color = "#005930" %}
+  
 {% elif risk == "Medium" %}
-  {% set risk_background_color = "#FFF0C8" %}
+  {% set risk_background_color = "#ffe0a3" %}
+  {% set risk_text_color = "#594d00" %}
 {% else %}
-  {% set risk_background_color = "#F1C6C6" %}
+  {% set risk_background_color = "#f4ccca" %}
+  {% set risk_text_color = "#2a1a0e" %}
 {% endif %}
 
 {% set primary_object_common_name = conjunction_event_report.primary_object_common_name if conjunction_event_report.primary_object_common_name else "Unknown" %}
@@ -43,7 +47,7 @@ application_url - MSH url
               <tbody>
                 <tr>
                   <td>
-                    The UK Space Agency is monitoring the conjunction event <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{ primary_object_common_name }} vs. {{ secondary_object_common_name }}</a>, which is classified as {{ risk }} risk. A potential collision could damage the objects involved, limiting or eliminating their capability, as well as releasing new fragments, which would increase the risk of future collisions for other objects.
+                    The UK Space Agency is monitoring the conjunction event <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{ primary_object_common_name }} vs. {{ secondary_object_common_name }}</a>, which is classified as {{ risk }} risk. A potential collision could damage the objects involved, limiting or eliminating their capability, as well as releasing new fragments, which would increase the risk of future collisions for other objects.
                   </td>
                 </tr>
               </tbody>
@@ -76,7 +80,7 @@ application_url - MSH url
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:0.5rem">Risk Assessment</th>
                         <td align="center"
-                          style="width:66.666667%;padding:0.5rem;background-color:{{ risk_background_color }};font-weight:700">{{ risk }}
+                          style="width:66.666667%;padding:0.5rem;background-color:{{ risk_background_color }};font-weight:700;color:{{ risk_text_color }}">{{ risk }}
                         </td>
                       </tr>
                       <tr style="width:100%">
@@ -148,7 +152,7 @@ application_url - MSH url
               <tbody>
                 <tr>
                   <td>
-                    <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">Sign in to <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+                    <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
                       <!-- -->
                       <b>full report for this event.</b>
                     </p>
@@ -249,12 +253,12 @@ application_url - MSH url
                     {% if conjunction_event_report.report_number > 1 %}
                       <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                         The UK Space Agency has identified an update to the conjunction event 
-                        <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{conjunction_event_report.short_id}}</a>, which is now classified as {{risk}} risk. A potential collision could damage the objects involved, limiting or eliminating their capability, as well as releasing new fragments, which would increase the risk of future collisions for other objects.
+                        <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{conjunction_event_report.short_id}}</a>, which is now classified as {{risk}} risk. A potential collision could damage the objects involved, limiting or eliminating their capability, as well as releasing new fragments, which would increase the risk of future collisions for other objects.
                       </p>
                     {% else %}
                       <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                         The UK Space Agency is monitoring the conjunction event 
-                        <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{conjunction_event_report.short_id}}</a>, which is classified as {{risk}} risk. A potential collision could damage the objects involved, limiting or eliminating their capability, as well as releasing new fragments, which would increase the risk of future collisions for other objects.
+                        <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{conjunction_event_report.short_id}}</a>, which is classified as {{risk}} risk. A potential collision could damage the objects involved, limiting or eliminating their capability, as well as releasing new fragments, which would increase the risk of future collisions for other objects.
                       </p>
                     {% endif %}
                     {% if conjunction_event.exec_summary_addition %}
@@ -288,8 +292,8 @@ application_url - MSH url
                       {% endif %}
                     </p>
                     <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
-                        
-                            Sign in to <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert"
+                      
+                            Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert"
                                 target="_blank">Monitor Space Hazards</a> <!-- -->for the <b>
                           full report for this event.</b>
                     </p>
