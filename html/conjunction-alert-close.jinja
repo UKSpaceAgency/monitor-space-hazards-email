@@ -45,7 +45,7 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
                       style="width:100%;text-align:left;font-size:0.875rem;line-height:1.25rem;border-collapse:collapse">
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:0.5rem">Event Time (UTC)</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ conjunction_event_report.tca_time }}</td>
+                        <td style="width:66.666667%;padding:0.5rem">{{ conjunction_event_report.tca_time.strftime('%d/%m/%Y %H:%M:%S')  }}</td>
                       </tr>
                       <tr style="width:100%">
                         <th style="width:33.333333%;padding:0.5rem">Primary Object</th>
@@ -57,7 +57,7 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
                       </tr>
                       <tr style="width:100%">
                         <th style="width:33.333333%;padding:0.5rem">Manoeuvred?</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ conjunction_event_report.manoeuvre_addition if conjunction_event_report.manoeuvre_addition else "Unknown" }}</td>
+                        <td style="width:66.666667%;padding:0.5rem">{{ conjunction_event_report.manoeuvre_expected }}</td>
                       </tr>
                     </table>
                   </td>
@@ -89,8 +89,8 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
                 <tr>
                   <td>
                     <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem"><b>Event Information:</b><br />
-                      The Conjunction event <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{ conjunction_event_report.short_id }}</a> has now passed.<br /><br />
-                      The UK Space Agency has completed tracking of the close approach between <b>{{ primary_object_common_name }}</b> and <b>{{ secondary_object_common_name }}</b>, which occurred on {{ conjunction_event_report.tca_time }}. The event was assessed as <b>{{ conjunction_event_report.risk }}</b> risk, with a probability of collision (PoC) of <b>{{ '%0.3f' % (100*conjunction_event_report.collision_probability)|float }}%</b>.
+                      The Conjunction event <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{ conjunction_event_report.short_id }}</a> has now passed.<br /><br />
+                      The UK Space Agency has completed tracking of the close approach between <b>{{ primary_object_common_name }}</b> and <b>{{ secondary_object_common_name }}</b>, which occurred on {{ conjunction_event_report.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}. The event was assessed as <b>{{ conjunction_event_report.risk }}</b> risk, with a probability of collision (PoC) of <b>{{ '%0.3f' % (100*conjunction_event_report.collision_probability)|float }}%</b>.
                     </p>
                     <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem">
                       <b>Press and Public Lines</b><br />
@@ -100,7 +100,7 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
                         We have not seen any press attention on this event.
                       {% endif %}
                     </p>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;f">Sign in to <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">Monitor Space Hazards</a> to view analysis and additional information.
+                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;f">Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">Monitor Space Hazards</a> to view analysis and additional information.
                     </p>
                   </td>
                 </tr>
