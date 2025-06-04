@@ -44,68 +44,60 @@ application_url: MSH base url
 
 
 {% block content %}
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Summary</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
-              <tbody>
-                <tr>
-                  <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Summary</h1>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem">
+              style="padding-top:16px">
               <tbody>
                 <tr>
                   <td>
                     <table
-                      style="width:100%;text-align:left;font-size:0.875rem;line-height:1.25rem;border-collapse:collapse">
+                      style="width:100%;text-align:left;font-size:14px;line-height:20px;border-collapse:collapse">
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Report Number</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ fragmentation_event_report.report_number }}</td>
+                        <th style="width:33.333333%;padding:8px">Report Number</th>
+                        <td style="width:66.666667%;padding:8px">{{ fragmentation_event_report.report_number }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Risk Assessment</th>
+                        <th style="width:33.333333%;padding:8px">Risk Assessment</th>
                         <td align="center"
-                          style="width:66.666667%;padding:0.5rem;background-color:{{ risk_background_color }};font-weight:700;color:{{ risk_text_color }}">{{ risk }}
+                          style="width:66.666667%;padding:8px;background-color:{{ risk_background_color }};font-weight:700;color:{{ risk_text_color }}">{{ risk }}
                         </td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Fragmenting Object Name</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ fragmentation_event_report.primary_object.common_name }}</td>
+                        <th style="width:33.333333%;padding:8px">Fragmenting Object Name</th>
+                        <td style="width:66.666667%;padding:8px">{{ fragmentation_event_report.primary_object.common_name }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Event Time (UTC)</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ fragmentation_event_report.event_epoch }}</td>
+                        <th style="width:33.333333%;padding:8px">Event Time (UTC)</th>
+                        <td style="width:66.666667%;padding:8px">{{ fragmentation_event_report.event_epoch }}</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Known Fragments</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ fragmentation_event_report.known_frags }}</td>
+                        <th style="width:33.333333%;padding:8px">Known Fragments</th>
+                        <td style="width:66.666667%;padding:8px">{{ fragmentation_event_report.known_frags }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Modeled Fragments</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ fragmentation_event_report.model_frags }}</td>
+                        <th style="width:33.333333%;padding:8px">Modeled Fragments</th>
+                        <td style="width:66.666667%;padding:8px">{{ fragmentation_event_report.model_frags }}</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Fragmentation Type</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ fragmentation_event_report.frag_type }} DO WE HAVE THIS?</td>
+                        <th style="width:33.333333%;padding:8px">Fragmentation Type</th>
+                        <td style="width:66.666667%;padding:8px">{{ fragmentation_event_report.frag_type }} DO WE HAVE THIS?</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Affected Regime</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ fragmentation_event_report.affected_regime }}</td>
+                        <th style="width:33.333333%;padding:8px">Affected Regime</th>
+                        <td style="width:66.666667%;padding:8px">{{ fragmentation_event_report.affected_regime }}</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Inclination</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ fragmentation_event_report.primary_object.inclination }}</td>
+                        <th style="width:33.333333%;padding:8px">Inclination</th>
+                        <td style="width:66.666667%;padding:8px">{{ fragmentation_event_report.primary_object.inclination }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Liability</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ fragmentation_event_report.primary_object.licensing_country }}</td>
+                        <th style="width:33.333333%;padding:8px">Liability</th>
+                        <td style="width:66.666667%;padding:8px">{{ fragmentation_event_report.primary_object.licensing_country }}</td>
                       </tr>
                     </table>
                   </td>
@@ -117,26 +109,18 @@ application_url: MSH base url
       </tbody>
     </table>
     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-      style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+      style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Additional Information</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
+              style="padding-top:16px">
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Additional Information</h1>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem">
-              <tbody>
-                <tr>
-                  <td>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem"><b>Event Details:</b><br />
+                    <p style="font-size:14px;line-height:20px;margin:0px;margin-bottom:16px"><b>Event Details:</b><br />
                       {% if fragmentation_event_report.report_number > 1 %}
                           We have identified an update to the <a href="">fragmentation event involving {{ fragmentation_event_report.primary_object.common_name }}</a>. 
                           Initial analysis  shows the most likely time of event – {{ fragmentation_event_report.event_epoch }}
@@ -145,7 +129,7 @@ application_url: MSH base url
                           Initial analysis  shows the most likely time of event – {{ fragmentation_event_report.event_epoch }}
                       {% endif %}
                     </p>
-                  <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem">
+                  <p style="font-size:14px;line-height:20px;margin:0px;margin-bottom:16px">
                     <b>Press and Public Lines</b>
                     {% if fragmentation_event_report.press_attention %}
                       <br>{{ fragmentation_event_report.press_attention }}
@@ -162,20 +146,12 @@ application_url: MSH base url
       </tbody>
     </table>
     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-      style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+      style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
-              <tbody>
-                <tr>
-                  <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Risk to your assets</h1>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Risk to your assets</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
               style="padding-top:1rem">
               <tbody>

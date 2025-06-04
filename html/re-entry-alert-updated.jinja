@@ -47,76 +47,68 @@
 
   
   {% block content %}
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Summary</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
-              <tbody>
-                <tr>
-                  <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Summary</h1>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem">
+              style="padding-top:4px;padding-bottom:4px;">
               <tbody>
                 <tr>
                   <td>
                     <table
-                      style="width:100%;text-align:left;font-size:0.875rem;line-height:1.25rem;border-collapse:collapse">
+                      style="width:100%;text-align:left;font-size:14px;line-height:20px;border-collapse:collapse">
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Risk Assessment</th>
+                        <th style="width:33.333333%;padding:8px">Risk Assessment</th>
                         <td align="center"
-                          style="width:66.666667%;padding:0.5rem;background-color:{{ risk_background_color }};font-weight:700;color:{{ risk_text_color }}">{{ risk }}
+                          style="width:66.666667%;padding:8px;background-color:{{ risk_background_color }};font-weight:700;color:{{ risk_text_color }}">{{ risk }}
                         </td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Affected UK Interests</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.impact.by_nation|to_affected_territories or "No regions affected" }}</td>
+                        <th style="width:33.333333%;padding:8px">Affected UK Interests</th>
+                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.impact.by_nation|to_affected_territories or "No regions affected" }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Debris Impact in UK</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ '%0.3f' % (100*reentry_event_report.monte_carlo_probability)|float }}%</td>
+                        <th style="width:33.333333%;padding:8px">Debris Impact in UK</th>
+                        <td style="width:66.666667%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.monte_carlo_probability)|float }}%</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Time Frame</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ (reentry_event_report.time_window_start,reentry_event_report.time_window_end)|to_time_frame }}</td>
+                        <th style="width:33.333333%;padding:8px">Time Frame</th>
+                        <td style="width:66.666667%;padding:8px">{{ (reentry_event_report.time_window_start,reentry_event_report.time_window_end)|to_time_frame }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Object Type</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.object_type if reentry_event_report.object_type else "Unknown" }}</td>
+                        <th style="width:33.333333%;padding:8px">Object Type</th>
+                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.object_type if reentry_event_report.object_type else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Object Name</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }}</td>
+                        <th style="width:33.333333%;padding:8px">Object Name</th>
+                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">NORAD ID</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.norad_id if reentry_event_report.norad_id else "Unknown" }}</td>
+                        <th style="width:33.333333%;padding:8px">NORAD ID</th>
+                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.norad_id if reentry_event_report.norad_id else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Estimated mass</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.estimated_mass if reentry_event_report.estimated_mass else "Unknown" }} kg</td>
+                        <th style="width:33.333333%;padding:8px">Estimated mass</th>
+                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.estimated_mass if reentry_event_report.estimated_mass else "Unknown" }} kg</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Height</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.object_height if reentry_event_report.object_height else "Unknown" }} m</td>
+                        <th style="width:33.333333%;padding:8px">Height</th>
+                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.object_height if reentry_event_report.object_height else "Unknown" }} m</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Width</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.object_width if reentry_event_report.object_width else "Unknown" }} m</td>
+                        <th style="width:33.333333%;padding:8px">Width</th>
+                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.object_width if reentry_event_report.object_width else "Unknown" }} m</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Report Number</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event.reentry_report_number if reentry_event.reentry_report_number else "Unknown" }}</td>
+                        <th style="width:33.333333%;padding:8px">Report Number</th>
+                        <td style="width:66.666667%;padding:8px">{{ reentry_event.reentry_report_number if reentry_event.reentry_report_number else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Launching State</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}
+                        <th style="width:33.333333%;padding:8px">Launching State</th>
+                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}
                           {% if reentry_event_report.damages_liability %}
                             <br>{{ reentry_event_report.damages_liability }}
                           {% else %}
@@ -133,22 +125,14 @@
         </tr>
       </tbody>
     </table>
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Additional Information</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
-              <tbody>
-                <tr>
-                  <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Additional Information</h1>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem">
+              style="padding-top:16px">
               <tbody>
                 <tr>
                   <td>
@@ -191,16 +175,8 @@
       <tbody>
         <tr style="width:100%">
           <td>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
-              <tbody>
-                <tr>
-                  <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Impact Risk Locations</h1>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Impact Risk Locations</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
               style="padding-top:1rem">
               <tbody>

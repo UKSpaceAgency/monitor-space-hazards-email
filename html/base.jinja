@@ -4,95 +4,112 @@
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta name="x-apple-disable-message-reformatting" />
-    <meta name="color-scheme" content="only" />
-    <style>
-      table {
-        border-spacing: 0;
-        mso-table-lspace: 0pt !important;
-        mso-table-rspace: 0pt !important;
-      }
-    </style>
+    <meta name="color-scheme" content="light" />
   </head>
   <body style="background-color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">
     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-    style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+      style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation">
               <tbody>
                 <tr>
-                  <td><img src="{{ nspoc_logo.src }}"
-                      style="width:7rem;height:auto;display:block;outline:none;border:none;text-decoration:none" /></td>
-                </tr>
-              </tbody>
-            </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem;padding-bottom:1rem">
-              <tbody>
-                <tr>
                   <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">{% block title %}{% endblock %}</h1>
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation">
+                      <tbody style="width:100%">
+                        <tr style="width:100%">
+                          <td data-id="__react-email-column" style="width:20%"><img
+                              width="113"
+                              height="50"
+                              src="{{ nspoc_logo.src }}"
+                              style="width:100%;height:auto;display:block;outline:none;border:none;text-decoration:none" />
+                          </td>
+                          <td data-id="__react-email-column" style="width:80%" />
+                        </tr>
+                      </tbody>
+                    </table>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.5rem;padding-bottom:0.5rem;border-color:rgb(0,110,187);border-style:solid;border-top-width:1px;border-bottom-width:1px">
-              <tbody>
-                <tr>
-                  <td>
-                    <h3 style="font-size:1rem;line-height:1.5rem;margin:0px">{% block subtitle %}{% endblock %}</h3>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <h1 style="font-size:16px;line-height:24px">{% block title %}{% endblock %}</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
+            <h1 style="font-size:16px;line-height:24px;margin:0px">{% block subtitle %}{% endblock %}</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
           </td>
         </tr>
       </tbody>
     </table>
     {% block content %}{% endblock %}
     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-      style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+      style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Support and Assistance</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
+              style="padding-top:16px">
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Support and Assistance</h1>
+                    <p
+                      style="font-size:14px;line-height:20px;margin:0px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
+                      For urgent queries about this event, email:<br /><a
+                        href="mailto:NSpOCincidents@ukspaceagency.gov.uk"
+                        style="color:rgb(0,110,187)">NSpOCincidents@ukspaceagency.gov.uk</a> and <a
+                        href="mailto:OrbitalAnalysts@ukspaceagency.gov.uk"
+                        style="color:rgb(0,110,187)">OrbitalAnalysts@ukspaceagency.gov.uk</a></p>
+                    <p
+                      style="font-size:14px;line-height:20px;margin:0px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
+                      We welcome your feedback and ideas to improve future reports. If you&#x27;re not signed up to
+                      Monitor Space Hazards and would like access to the service, please contact us.</p>
+                    <p
+                      style="font-size:14px;line-height:20px;margin:0px;margin-top:0px;margin-bottom:0px;margin-left:0px;margin-right:0px">
+                      Additional contact details are available via <a
+                        href="https://www.monitor-space-hazards.service.gov.uk" style="color:rgb(0,110,187)">Monitor Space
+                        Hazards</a>.</p>
                   </td>
                 </tr>
               </tbody>
             </table>
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem">
+              style="padding-top:16px">
               <tbody>
                 <tr>
                   <td>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-top:0px;margin-bottom:0.5rem">
-                      For urgent queries about this event, email:<br />
-                      <a href="mailto:NSpOCincidents@ukspaceagency.gov.uk" style="color:rgb(0,110,187)">NSpOCincidents@ukspaceagency.gov.uk</a> and <a
-                        href="mailto:OrbitalAnalysts@ukspaceagency.gov.uk" style="color:rgb(0,110,187)">OrbitalAnalysts@ukspaceagency.gov.uk</a>
-                    </p>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-top:0px;margin-bottom:0.5rem">
-                      Additional contact details are available via Monitor Space Hazards (for registered users).
-                    </p>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-top:0px;margin-bottom:0.5rem">
-                      We welcome your feedback and ideas to improve future reports. If you're not signed up to Monitor Space Hazards and would like access to the service, please contact us.
-                    </p>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin-top:0px;margin-bottom:0.5rem;margin:16px 0">
-                      Monitor Space Hazards is a service provided by the UK Space Agency via the National Space Operations
-                      Centre.</p>
-                      <img src="{{ uksa_logo.src }}"
-                      style="width:7rem;height:auto;display:block;outline:none;border:none;text-decoration:none" />
-                      <a href="mailto:monitorspacehazards@ukspaceagency.gov.uk?subject=Unsubscribe" style="font-size:0.875rem;line-height:1.25rem;color:rgb(0,110,187)">Unsubscribe</a>
+                    <p style="font-size:14px;line-height:20px;margin-top:0px;margin-bottom:8px">Monitor Space
+                      Hazards is a service provided by the UK Space Agency via the National Space Operations Centre.</p>
                   </td>
                 </tr>
               </tbody>
             </table>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
+              style="padding-top:16px;padding-bottom:16px">
+              <tbody>
+                <tr>
+                  <td>
+                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation">
+                      <tbody style="width:100%">
+                        <tr style="width:100%">
+                          <td data-id="__react-email-column" style="width:20%">
+                            <img
+                              width="113"
+                              height="50"
+                              src="{{ uksa_logo.src }}"
+                              style="width:100%;height:auto;display:block;outline:none;border:none;text-decoration:none" />
+                          </td>
+                          <td data-id="__react-email-column" style="width:80%"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <a href="https://www.monitor-space-hazards.service.gov.uk"
+              style="color:#067df7;text-decoration-line:none" target="_blank">Unsubscribe</a>
           </td>
         </tr>
       </tbody>

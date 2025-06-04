@@ -47,7 +47,7 @@ application_url - MSH url
               <tbody>
                 <tr>
                   <td>
-                    The National Space Operations Centre is monitoring the conjunction event <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{ primary_object_common_name }} vs. {{ secondary_object_common_name }}</a>, which is classified as {{ risk }} risk. A potential collision could damage the objects involved, limiting or eliminating their capability, as well as releasing new fragments, which would increase the risk of future collisions for other objects.
+                    The UK Space Agency is monitoring the conjunction event <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{ primary_object_common_name }} vs. {{ secondary_object_common_name }}</a>, which is classified as {{ risk }} risk. A potential collision could damage the objects involved, limiting or eliminating their capability, as well as releasing new fragments, which would increase the risk of future collisions for other objects.
                   </td>
                 </tr>
               </tbody>
@@ -60,16 +60,8 @@ application_url - MSH url
       <tbody>
         <tr style="width:100%">
           <td>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
-              <tbody>
-                <tr>
-                  <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Summary</h1>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Summary</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
               style="padding-top:1rem">
               <tbody>
@@ -84,44 +76,54 @@ application_url - MSH url
                         </td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Time of Closest Approach (UTC)</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ conjunction_event_report.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}</td>
+                        <th style="width:33.333333%;padding:0.5rem">Affected UK Interests</th>
+                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.impact.by_nation|to_affected_territories or "No regions affected" }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Probability of Collision</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ '%0.3f' % (100*conjunction_event_report.collision_probability)|float }}%</td>
+                        <th style="width:33.333333%;padding:0.5rem">Debris Impact in UK</th>
+                        <td style="width:66.666667%;padding:0.5rem">{{ '%0.3f' % (100*reentry_event_report.monte_carlo_probability)|float }}%</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Manoeuvre Expected?</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ conjunction_event_report.manoeuvre_expected }}</td>
+                        <th style="width:33.333333%;padding:0.5rem">Time Frame</th>
+                        <td style="width:66.666667%;padding:0.5rem">{{ (reentry_event_report.time_window_start,reentry_event_report.time_window_end)|to_time_frame }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Primary Object</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ primary_object_common_name }}</td>
+                        <th style="width:33.333333%;padding:0.5rem">Object Type</th>
+                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.object_type if reentry_event_report.object_type else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Primary NORAD ID</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ primary_object_norad_id }}</td>
+                        <th style="width:33.333333%;padding:0.5rem">Object Name</th>
+                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Primary Object Launching State</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ conjunction_event_report.primary_object_licensing_country }}</td>
+                        <th style="width:33.333333%;padding:0.5rem">NORAD ID</th>
+                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.norad_id if reentry_event_report.norad_id else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Secondary Object</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ secondary_object_common_name }}</td>
+                        <th style="width:33.333333%;padding:0.5rem">Estimated mass</th>
+                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.estimated_mass if reentry_event_report.estimated_mass else "Unknown" }} kg</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Secondary NORAD ID</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ secondary_object_norad_id }}</td>
+                        <th style="width:33.333333%;padding:0.5rem">Height</th>
+                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.object_height if reentry_event_report.object_height else "Unknown" }} m</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Secondary Object Launching State</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ conjunction_event_report.secondary_object_licensing_country }}</td>
+                        <th style="width:33.333333%;padding:0.5rem">Width</th>
+                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.object_width if reentry_event_report.object_width else "Unknown" }} m</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:0.5rem">Report Number</th>
                         <td style="width:66.666667%;padding:0.5rem">{{ reentry_event.reentry_report_number if reentry_event.reentry_report_number else "Unknown" }}</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <th style="width:33.333333%;padding:0.5rem">Launching State</th>
+                        <td style="width:66.666667%;padding:0.5rem">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}
+                          {% if reentry_event_report.damages_liability %}
+                            <br>{{ reentry_event_report.damages_liability }}
+                          {% else %}
+                            Unknown
+                          {% endif %}
+                        </td>
                       </tr>
                     </table>
                   </td>
@@ -132,36 +134,148 @@ application_url - MSH url
         </tr>
       </tbody>
     </table>
-        <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-      style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;width:100%;text-align:center;">
       <tbody>
-        <tr style="width:100%">
-          <td>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
+        <tr>
+          <div align="center"> <!-- wrapper div to center align contents-->
+          <td align="center">
+            <table align="center" border="0" cellPadding="0" cellSpacing="0" style="width:37.5em;text-align:left;">
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Additional Information</h1>
+                    <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">Monitor Space Hazards</a> for the
+                      <!-- -->
+                      <b>full report for this event.</b>
+                    </p>
                   </td>
                 </tr>
               </tbody>
             </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem">
+          </td>
+          </div>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;width:100%;"><!-- setting width with styling to fix gmail issue -->
+      <tbody>
+        <tr style="width:100%">
+          <div align="center"> <!-- wrapper div to align to center-->
+
+          <td align="center">
+            <table align="center" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="margin:0;border-collapse:collapse;width:37.5em">
               <tbody>
                 <tr>
                   <td>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem">
-                      <b>Recommended Actions:</b><br />
+                    <table style="width:100%;border-collapse:collapse">
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Report number</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">
+                          {{ conjunction_event_report.report_number }}
+                        </td>
+                      </tr>
+
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Risk assessment</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;background-color:{{ risk_background_color }};font-family:Calibri, Arial, sans-serif">
+                          {{ risk }}
+                        </td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Time of closest approach (UTC)</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ conjunction_event_report.tca_time.strftime('%d/%m/%Y %H:%M:%S') if conjunction_event_report.tca_time.strftime('%d/%m/%Y %H:%M:%S') else "Unknown" }}</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Probability of collision</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ 'Unknown' if conjunction_event_report.collision_probability is none else '{:.4e}'.format(100 * conjunction_event_report.collision_probability).replace('e-0', 'e-') }}</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Manoeuvre expected?</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ conjunction_event_report.manoeuvre_expected }}</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Primary object</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ conjunction_event_report.primary_object_common_name if conjunction_event_report.primary_object_common_name else "Unknown" }} (NORAD ID: {{ conjunction_event_report.primary_object_norad_id }})</td>
+                      </tr>
+                      <tr style="width:100%">
+                        <td style="width:33.333333%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);background-color:rgb(245,248,248);padding:8px">
+                          <h4 style="text-align:left;font-size:14px;margin:0;font-family:Calibri, Arial, sans-serif">Secondary object</h4>
+                        </td>
+                        <td align="center" style="width:66.666667%;border-width:1px;border-style:solid;border-color:rgb(38,92,89);font-size:14px;padding:8px;font-family:Calibri, Arial, sans-serif">{{ conjunction_event_report.secondary_object_common_name if conjunction_event_report.secondary_object_common_name else "Unknown" }} (NORAD ID: {{ conjunction_event_report.secondary_object_norad_id }})</td>
+                      </tr>
+                    </table>
+                  </td>
+                  </div>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-bottom:16px;max-width:37.5em">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="background-color:rgb(38,92,89);padding:8px;margin:0">
+              <tbody>
+                <tr>
+                  <td>
+                    <h1 style="margin:0;text-align:center;font-size:16px;color:rgb(255,255,255);font-family:Calibri, Arial, sans-serif">Summary</h1>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="border-spacing:0;border-collapse:collapse;border-width:1px;border-style:solid;border-color:rgb(38,92,89);">
+              <tbody>
+                <tr>
+                  <td style="padding:8px;border-width:1px;border-style:solid;border-color:rgb(38,92,89)">
+                    {% if conjunction_event_report.report_number > 1 %}
+                      <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
+                        The UK Space Agency has identified an update to the conjunction event 
+                        <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{conjunction_event_report.short_id}}</a>, which is now classified as {{risk}} risk. A potential collision could damage the objects involved, limiting or eliminating their capability, as well as releasing new fragments, which would increase the risk of future collisions for other objects.
+                      </p>
+                    {% else %}
+                      <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
+                        The UK Space Agency is monitoring the conjunction event 
+                        <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{conjunction_event_report.short_id}}</a>, which is classified as {{risk}} risk. A potential collision could damage the objects involved, limiting or eliminating their capability, as well as releasing new fragments, which would increase the risk of future collisions for other objects.
+                      </p>
+                    {% endif %}
+                    {% if conjunction_event.exec_summary_addition %}
+                      <p style="margin:16px 0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
+                        {{ conjunction_event.exec_summary_addition }}
+                      </p>
+                    {% endif %}
+                    <p style="margin:16px 0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
+                      Risk levels are determined by the probability of collision and the number of future conjunction events that would be generated by a collision (according to statistical modelling).
+                    </p>
+
+                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif"><b>Recommended
+                            actions</b><br>
                       The UK Space Agency are the leads for conjunction reporting.
+
                       {% if conjunction_event.uk_response_addition %}
                        <br>
                        {{ conjunction_event.uk_response_addition }} 
                       {% endif %}
+                    </p> 
+                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
+                      The relevant UK response organisations have received an alert for this event.
                     </p>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem">The relevant UK response organisations have received an alert for this event.</p>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem">
+
+                      <p style="margin:0;font-size:14px;line-height:24px;font-family:Calibri, Arial, sans-serif">
                       <b>Press and Public Lines</b><br />
                       {% if conjunction_event.press_attention_addition %}
                         {{ conjunction_event.press_attention_addition }}
@@ -169,8 +283,11 @@ application_url - MSH url
                         We have not seen any press attention on this event.
                       {% endif %}
                     </p>
-
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;f">Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> to view analysis and additional information. 
+                    <p style="font-size:14px;line-height:24px;margin:16px 0;font-family:Calibri, Arial, sans-serif">
+                      
+                            Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert"
+                                target="_blank">Monitor Space Hazards</a> <!-- -->for the <b>
+                          full report for this event.</b>
                     </p>
                   </td>
                 </tr>
@@ -180,4 +297,5 @@ application_url - MSH url
         </tr>
       </tbody>
     </table>
+
 {% endblock %}

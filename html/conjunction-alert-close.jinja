@@ -22,42 +22,34 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
 {% endblock %}
 
 {% block content %}
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Summary</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
-              <tbody>
-                <tr>
-                  <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Summary</h1>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem">
+              style="padding-top:16px">
               <tbody>
                 <tr>
                   <td>
                     <table
-                      style="width:100%;text-align:left;font-size:0.875rem;line-height:1.25rem;border-collapse:collapse">
+                      style="width:100%;text-align:left;font-size:14px;line-height:20px;border-collapse:collapse">
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Event Time (UTC)</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ conjunction_event_report.tca_time.strftime('%d/%m/%Y %H:%M:%S')  }}</td>
+                        <th align="left" style="width:33.333333%;padding:8px">Event Time (UTC)</th>
+                        <td style="width:66.666667%;padding:8px">{{ conjunction_event_report.tca_time }}</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Primary Object</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ primary_object_common_name }}</td>
+                        <th align="left" style="width:33.333333%;padding:8px">Primary Object</th>
+                        <td style="width:66.666667%;padding:8px">{{ primary_object_common_name }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Secondary Object</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ secondary_object_common_name }}</td>
+                        <th align="left" style="width:33.333333%;padding:8px">Secondary Object</th>
+                        <td style="width:66.666667%;padding:8px">{{ secondary_object_common_name }}</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Manoeuvred?</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ conjunction_event_report.manoeuvre_expected }}</td>
+                        <th align="left" style="width:33.333333%;padding:8px">Manoeuvred?</th>
+                        <td style="width:66.666667%;padding:8px">{{ conjunction_event_report.manoeuvre_addition if conjunction_event_report.manoeuvre_addition else "Unknown" }}</td>
                       </tr>
                     </table>
                   </td>
@@ -69,30 +61,22 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
       </tbody>
     </table>
     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-      style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+      style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Additional Information</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
+              style="padding-top:16px">
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Additional Information</h1>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem">
-              <tbody>
-                <tr>
-                  <td>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem"><b>Event Information:</b><br />
-                      The Conjunction event <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{ conjunction_event_report.short_id }}</a> has now passed.<br /><br />
-                      The UK Space Agency has completed tracking of the close approach between <b>{{ primary_object_common_name }}</b> and <b>{{ secondary_object_common_name }}</b>, which occurred on {{ conjunction_event_report.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}. The event was assessed as <b>{{ conjunction_event_report.risk }}</b> risk, with a probability of collision (PoC) of <b>{{ '%0.3f' % (100*conjunction_event_report.collision_probability)|float }}%</b>.
+                    <p style="font-size:14px;line-height:20px;margin:0px;margin-bottom:16px"><b>Event Information:</b><br />
+                      The Conjunction event <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">{{ conjunction_event_report.short_id }}</a> has now passed.<br /><br />
+                      The UK Space Agency has completed tracking of the close approach between <b>{{ primary_object_common_name }}</b> and <b>{{ secondary_object_common_name }}</b>, which occurred on {{ conjunction_event_report.tca_time }}. The event was assessed as <b>{{ conjunction_event_report.risk }}</b> risk, with a probability of collision (PoC) of <b>{{ '%0.3f' % (100*conjunction_event_report.collision_probability)|float }}%</b>.
                     </p>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem">
+                    <p style="font-size:14px;line-height:20px;margin:0px;margin-bottom:16px">
                       <b>Press and Public Lines</b><br />
                       {% if conjunction_event_report.press_attention %}
                         {{ conjunction_event_report.press_attention }}
@@ -100,7 +84,7 @@ no_fragmentation_text - optional text stating that a fragmentation didn't take p
                         We have not seen any press attention on this event.
                       {% endif %}
                     </p>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;f">Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">Monitor Space Hazards</a> to view analysis and additional information.
+                    <p style="font-size:14px;line-height:20px;margin:0px;f">Sign in to <a href="{{ application_url }}/conjunctions/{{ conjunction_event_report.short_id }}/alert">Monitor Space Hazards</a> to view analysis and additional information.
                     </p>
                   </td>
                 </tr>
