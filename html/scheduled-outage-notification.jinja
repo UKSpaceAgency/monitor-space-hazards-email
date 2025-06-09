@@ -9,27 +9,27 @@ date - the date of the outage
 {% extends "base-notification.jinja" %}
 
 {% block content %}
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:0.25rem;padding-bottom:0.25rem;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
+              style="padding-top:4px;padding-bottom:4px;border-color:rgb(0,110,187);border-style:solid;border-bottom-width:1px">
               <tbody>
                 <tr>
                   <td>
-                    <h1 style="font-size:1rem;line-height:1.5rem;margin:0px">Scheduled outage of Monitor Space Hazards {{date}}</h1>
+                    <h1 style="font-size:16px;line-height:24px;margin:0px">Scheduled outage of Monitor Space Hazards {{date}}</h1>
                   </td>
                 </tr>
               </tbody>
             </table>
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem">
+              style="padding-top:16px">
               <tbody>
                 <tr>
                   <td>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem">Please be aware that Monitor Space Hazards will be unavailable from {{time}} on {{date}} while we make essential upgrades and improvements to the database.</p>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem">In order to see upcoming conjunction events affecting your satellites, we recommend you sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}" target="_blank">Monitor Space Hazards</a> before this time. We expect this work to take several hours and the web portal and APIs will be unavailable during this period. We apologise for any inconvenience caused. </p>
+                    <p style="font-size:14px;line-height:20px;margin:0px;margin-bottom:16px">Please be aware that Monitor Space Hazards will be unavailable from {{time}} on {{date}} while we make essential upgrades and improvements to the database.</p>
+                    <p style="font-size:14px;line-height:20px;margin:0px;margin-bottom:16px">In order to see upcoming conjunction events affecting your satellites, we recommend you sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}" target="_blank">Monitor Space Hazards</a> before this time. We expect this work to take several hours and the web portal and APIs will be unavailable during this period. We apologise for any inconvenience caused. </p>
                     <img src="{{ reentry_event_map.src }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;text-decoration:none;" width="580" />
                 </tr>
               </tbody>

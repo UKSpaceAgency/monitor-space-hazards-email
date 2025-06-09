@@ -136,30 +136,30 @@
               <tbody>
                 <tr>
                   <td>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px">The National Space Operations Centre is monitoring the upcoming re-entry of a <a style="color:rgb(0,110,187)" href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">{{ reentry_event_report.object_type if reentry_event_report.object_type else "Unknown" }} (NORAD ID {{reentry_event_report.norad_id if reentry_event_report.norad_id else "Unknown"}} - {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }}), launched in {{ reentry_event_report.launch_year if reentry_event_report.launch_year else "Unknown" }}</a>. The launching state is likely to be liable for any damages and associated costs of the response and recovery efforts caused.</p>
+                    <p style="font-size:16px;line-height:24px;margin:0px">The National Space Operations Centre is monitoring the upcoming re-entry of a <a style="color:rgb(0,110,187)" href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">{{ reentry_event_report.object_type if reentry_event_report.object_type else "Unknown" }} (NORAD ID {{reentry_event_report.norad_id if reentry_event_report.norad_id else "Unknown"}} - {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }}), launched in {{ reentry_event_report.launch_year if reentry_event_report.launch_year else "Unknown" }}</a>. The launching state is likely to be liable for any damages and associated costs of the response and recovery efforts caused.</p>
                   </td>
                 </tr>
               </tbody>
             </table>
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem">
+              style="padding-top:16px">
               <tbody>
                 <tr>
                   <td>
                     <table
-                      style="width:100%;text-align:left;font-size:0.875rem;line-height:1.25rem;border-collapse:collapse">
+                      style="width:100%;text-align:left;font-size:14px;line-height:20px;border-collapse:collapse">
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Recommended Actions</th>
-                        <td style="width:66.666667%;padding:0.5rem">{{ recommended_actions }}</td>
+                        <th style="width:33.333333%;padding:8px">Recommended Actions</th>
+                        <td style="width:66.666667%;padding:8px">{{ recommended_actions }}</td>
                       </tr>
                       <tr style="width:100%">
-                        <th style="width:33.333333%;padding:0.5rem">Event Information</th>
-                        <td style="width:66.666667%;padding:0.5rem">
+                        <th style="width:33.333333%;padding:8px">Event Information</th>
+                        <td style="width:66.666667%;padding:8px">
                           The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "object" }} is expected to re-enter at <b>{{(reentry_event_report.time_window_start,reentry_event_report.time_window_end)|to_time_frame }}.</b> The UK mainland is expected to have {{ reentry_event_report.overflight_time|length }} overflight(s) in the current uncertainty window. The {{ reentry_event_report.object_type|title if reentry_event_report.object_type and reentry_event_report.object_type|lower != "unknown" else "object" }} has a <b>{{ '%0.3f' %(100*reentry_event_report.monte_carlo_probability)|float }}% probability of UK re-entry.</b> This meets the {{ risk }}-risk escalation threshold. We cannot rule out that hazardous material will have contaminated the re-entering objects. <a href="https://www.gov.uk/government/publications/hydrazine-properties-and-incident-management" style="color:rgb(0,110,187)">Hydrazine</a> is commonly used as rocket-fuel.</a></td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:0.5rem">Press and Public Lines</th>
-                        <td style="width:66.666667%;padding:0.5rem">{% if reentry_event_report.press_attention_addition %}{{ reentry_event_report.press_attention_addition }}{% else %}We have not seen any press attention on this event.{% endif %}</td>
+                        <th style="width:33.333333%;padding:8px">Press and Public Lines</th>
+                        <td style="width:66.666667%;padding:8px">{% if reentry_event_report.press_attention_addition %}{{ reentry_event_report.press_attention_addition }}{% else %}We have not seen any press attention on this event.{% endif %}</td>
                       </tr>
                     </table>
                   </td>
@@ -171,53 +171,53 @@
       </tbody>
     </table>
     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-      style="padding-top:0.5rem;padding-bottom:0.5rem;max-width:37.5em">
+      style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
             <h1 style="font-size:16px;line-height:24px;margin:0px">Impact Risk Locations</h1>
             <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:1rem">
+              style="padding-top:16px">
               <tbody>
                 <tr>
                   <td>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-bottom:1rem">The ground trace of the object is shown in red on the map below.</p>
+                    <p style="font-size:14px;line-height:20px;margin:0px;margin-bottom:16px">The ground trace of the object is shown in red on the map below.</p>
                     <img src="{{ reentry_event_map.src }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;border:none;text-decoration:none;font-family:Calibri, Arial, sans-serif" width="580" />
                     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="margin:0;border-collapse:collapse;border-spacing:0">
                       <tbody>
                         <tr>
                           <td>
-                            <table style="width:100%;text-align:left;font-size:0.875rem;line-height:1.25rem;border-collapse:collapse">
+                            <table style="width:100%;text-align:left;font-size:14px;line-height:20px;border-collapse:collapse">
                               <tr style="width:100%">
-                                <th style="width:33.333333%;padding:0.5rem">UK</th>
-                                <td style="width:66.666667%;padding:0.5rem">{{reentry_event_report.impact.by_nation|to_affected_territories or "No regions affected"}}</td>
+                                <th style="width:33.333333%;padding:8px">UK</th>
+                                <td style="width:66.666667%;padding:8px">{{reentry_event_report.impact.by_nation|to_affected_territories or "No regions affected"}}</td>
                               </tr>
                               <tr style="width:100%;background-color:rgb(240,240,240)">
-                                <th style="width:33.333333%;padding:0.5rem">England</th>
-                                <td style="width:66.666667%;padding:0.5rem">{{reentry_event_report.impact.england|to_affected_territories or "No regions affected"}}</td>
+                                <th style="width:33.333333%;padding:8px">England</th>
+                                <td style="width:66.666667%;padding:8px">{{reentry_event_report.impact.england|to_affected_territories or "No regions affected"}}</td>
                               </tr>
                               <tr style="width:100%">
-                                <th style="width:33.333333%;padding:0.5rem">Scotland</th>
-                                <td style="width:66.666667%;padding:0.5rem">{{reentry_event_report.impact.scotland|to_affected_territories or "No regions affected"}}</td>
+                                <th style="width:33.333333%;padding:8px">Scotland</th>
+                                <td style="width:66.666667%;padding:8px">{{reentry_event_report.impact.scotland|to_affected_territories or "No regions affected"}}</td>
                               </tr>
                               <tr style="width:100%;background-color:rgb(240,240,240)">
-                                <th style="width:33.333333%;padding:0.5rem">Wales</th>
-                                <td style="width:66.666667%;padding:0.5rem">{{reentry_event_report.impact.wales|to_affected_territories or "No regions affected"}}</td>
+                                <th style="width:33.333333%;padding:8px">Wales</th>
+                                <td style="width:66.666667%;padding:8px">{{reentry_event_report.impact.wales|to_affected_territories or "No regions affected"}}</td>
                               </tr>
                               <tr style="width:100%">
-                                <th style="width:33.333333%;padding:0.5rem">Northern Ireland</th>
-                                <td style="width:66.666667%;padding:0.5rem">{{reentry_event_report.impact.northern_ireland|to_affected_territories or "No regions affected"}}</td>
+                                <th style="width:33.333333%;padding:8px">Northern Ireland</th>
+                                <td style="width:66.666667%;padding:8px">{{reentry_event_report.impact.northern_ireland|to_affected_territories or "No regions affected"}}</td>
                               </tr>
                               <tr style="width:100%;background-color:rgb(240,240,240)">
-                                <th style="width:33.333333%;padding:0.5rem">UK OSTs and CDs</th>
-                                <td style="width:66.666667%;padding:0.5rem">{{
+                                <th style="width:33.333333%;padding:8px">UK OSTs and CDs</th>
+                                <td style="width:66.666667%;padding:8px">{{
                                         reentry_event_report.impact.overseas_territories_and_crown_dependencies|to_affected_territories or
                                         "No regions affected"}}</td>
                               </tr>
                               <tr style="width:100%">
-                                <th style="width:33.333333%;padding:0.5rem">Airspace and Maritime</th>
-                                <td style="width:66.666667%;padding:0.5rem">{{
+                                <th style="width:33.333333%;padding:8px">Airspace and Maritime</th>
+                                <td style="width:66.666667%;padding:8px">{{
                                         reentry_event_report.impact.maritime_and_airspace|to_affected_territories or
                                         "No regions affected"}}</td>
                               </tr>
@@ -226,7 +226,7 @@
                         </tr>
                       </tbody>
                     </table>
-                    <p style="font-size:0.875rem;line-height:1.25rem;margin:0px;margin-top:1rem">Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> to view
+                    <p style="font-size:14px;line-height:20px;margin:0px;margin-top:16px">Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> to view
                       analysis and additional information.</p>
                   </td>
                 </tr>
