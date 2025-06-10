@@ -64,7 +64,7 @@ application_url - MSH url
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:8px">Probability of Collision</th>
-                        <td style="width:66.666667%;padding:8px">{{ 'Unknown' if conjunction_event_report.collision_probability is none or conjunction_event_report.collision_probability == 0 else '{:.4e}'.format(100 * conjunction_event_report.collision_probability).replace('e-0', 'e-') }}</td>
+                        <td style="width:66.666667%;padding:8px">{{ 'Unknown' if conjunction_event_report.collision_probability is none or conjunction_event_report.collision_probability == 0 else '{:.3f}%'.format(100 * conjunction_event_report.collision_probability) }}</td>
                       </tr>
                       <tr style="width:100%">
                         <th style="width:33.333333%;padding:8px">Manoeuvre Expected?</th>
