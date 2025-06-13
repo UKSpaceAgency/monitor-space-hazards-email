@@ -31,7 +31,7 @@ application_url - MSH url
                           <tr style="width:100%;{% if loop.index0 is even %}background-color:rgb(240,240,240){% endif %}">
                             <td style="width:33.333333%;padding:8px" align="center"><a style="color:rgb(0,110,187)" href="{{ application_url }}/conjunctions/{{ event.short_id }}" target="_blank">{{ event.primary_object_common_name }} vs {{ event.secondary_object_common_name }}</a></td>
                             <td style="width:33.333333%;padding:8px" align="center">{{ event.tca_time.strftime('%d/%m/%Y %H:%M:%S') }}</td>
-                            <td style="width:33.333333%;padding:8px" align="center">{{ 'Unknown' if event.collision_probability is none else '{:.4e}'.format(event.collision_probability).replace('e-0', 'e-') }}</td>
+                            <td style="width:33.333333%;padding:8px" align="center">{{ 'Unknown' if event.collision_probability is none else '0' if event.collision_probability == 0 else '{:.4e}'.format(event.collision_probability).replace('e-0', 'e-') }}</td>
                           </tr>
                       {% endfor %}
                     </table>
