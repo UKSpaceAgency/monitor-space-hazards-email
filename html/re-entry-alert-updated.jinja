@@ -94,24 +94,24 @@
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:8px">Debris impact in UK</th>
                         <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.fragments_probability)|float if reentry_event_report.fragments_probability is not none else "0%" }}%</th>
-                        {{ render_risk_cell(reentry_event_report.fragments_risk) }}
+                        {{ render_risk_cell(reentry_event_report.fragments_risk.value) }}
                       </tr>
                       <tr style="width:100%;">
                         <th style="width:33.333333%;padding:8px">Re-entry over UK</th>
                         <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.monte_carlo_probability)|float if reentry_event_report.monte_carlo_probability is not none else "0%" }}%</th>
-                        {{ render_risk_cell(reentry_event_report.monte_carlo_risk) }}
+                        {{ render_risk_cell(reentry_event_report.monte_carlo_risk.value) }}
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:8px">UK casualty risk	</th>
                         <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.human_casualty_probability)|float if reentry_event_report.human_casualty_probability is not none else "0%" }}%</th>
-                        {{ render_risk_cell(reentry_event_report.human_casualty_risk) }}
+                        {{ render_risk_cell(reentry_event_report.human_casualty_risk.value) }}
                       </tr>
                     </table>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-top:16px">
-                    <img src="{{ reentry_event_map.src }}" style="width:100%;height:auto;margin-top:16px;display:block;outline:none;border:none;text-decoration:none;font-family:Calibri, Arial, sans-serif" width="580" />
+                    <img src="{{ reentry_event_map.src }}" style="width:100%;height:auto;display:block;outline:none;border:none;text-decoration:none;" width="580" />
                   </td>
                 </tr>
               </tbody>
