@@ -15,15 +15,15 @@
   {% extends "base.jinja" %}
 
   {% macro render_risk_cell(risk) -%}
-    {% if risk == "Hight" %}
+    {% if risk == "High" %}
       {% set risk_background_color = "#f4ccca" %}
       {% set risk_text_color = "#2a1a0e" %}    
     {% elif risk == "Medium" %}
       {% set risk_background_color = "#ffe0a3" %}
       {% set risk_text_color = "#594d00" %}
     {% else %}
-      {% set risk_background_color = "#f4ccca" %}
-      {% set risk_text_color = "#2a1a0e" %}
+      {% set risk_background_color = "#cce2d8" %}
+      {% set risk_text_color = "#005930" %}
     {% endif %}
     <td align="center" style="width:33.333333%;padding:8px;background-color:{{ risk_background_color }};font-weight:700;color:{{ risk_text_color }}">{{ risk if risk else "Low" }}</td>
   {%- endmacro %}
