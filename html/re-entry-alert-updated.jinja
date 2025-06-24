@@ -93,17 +93,17 @@
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:8px">Debris impact in UK</th>
-                        <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.fragments_probability)|float if reentry_event_report.fragments_probability is not none else "0%" }}%</th>
+                        <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.fragments_probability)|float if reentry_event_report.fragments_probability is not none else "0" }}%</th>
                         {{ render_risk_cell(reentry_event_report.fragments_risk.value) }}
                       </tr>
                       <tr style="width:100%;">
                         <th style="width:33.333333%;padding:8px">Re-entry over UK</th>
-                        <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.monte_carlo_probability)|float if reentry_event_report.monte_carlo_probability is not none else "0%" }}%</th>
+                        <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.monte_carlo_probability)|float if reentry_event_report.monte_carlo_probability is not none else "0" }}%</th>
                         {{ render_risk_cell(reentry_event_report.monte_carlo_risk.value) }}
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:8px">UK casualty risk	</th>
-                        <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.human_casualty_probability)|float if reentry_event_report.human_casualty_probability is not none else "0%" }}%</th>
+                        <th style="width:33.333333%;padding:8px">UK casualty risk</th>
+                        <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.human_casualty_probability)|float if reentry_event_report.human_casualty_probability is not none else "0" }}%</th>
                         {{ render_risk_cell(reentry_event_report.human_casualty_risk.value) }}
                       </tr>
                     </table>
@@ -299,7 +299,7 @@
                   <td>
                     <p style="font-size:14px;line-height:20px;margin:0px;margin-bottom:16px">
                       <b>Event Information:</b><br>
-                      The Payload is expected to re-enter on {{(reentry_event_report.time_window_start,reentry_event_report.time_window_end)|to_time_frame}}. {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }} has a {{ '%0.3f' % (100*reentry_event_report.fragments_probability)|float if reentry_event_report.fragments_probability is not none else "0%" }}% probability of debris impacting the UK. 
+                      The Payload is expected to re-enter on {{(reentry_event_report.time_window_start,reentry_event_report.time_window_end)|to_time_frame}}. {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }} has a {{ '%0.3f' % (100*reentry_event_report.fragments_probability)|float if reentry_event_report.fragments_probability is not none else "0" }}% probability of debris impacting the UK. 
                     </p>
                     {% if risk == "High" %}
                       <p style="font-size:14px;line-height:20px;margin:0px;margin-bottom:16px">
