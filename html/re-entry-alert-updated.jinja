@@ -15,33 +15,32 @@
   {% extends "base.jinja" %}
 
   {% macro render_risk_cell(risk) -%}
-    {% if risk == "Hight" %}
+    {% if risk == "High" %}
       {% set risk_background_color = "#f4ccca" %}
       {% set risk_text_color = "#2a1a0e" %}    
     {% elif risk == "Medium" %}
       {% set risk_background_color = "#ffe0a3" %}
       {% set risk_text_color = "#594d00" %}
     {% else %}
-      {% set risk_background_color = "#f4ccca" %}
-      {% set risk_text_color = "#2a1a0e" %}
+      {% set risk_background_color = "#cce2d8" %}
+      {% set risk_text_color = "#005930" %}
     {% endif %}
     <td align="center" style="width:33.333333%;padding:8px;background-color:{{ risk_background_color }};font-weight:700;color:{{ risk_text_color }}">{{ risk if risk else "Low" }}</td>
   {%- endmacro %}
   
   {% set risk = reentry_event_report.monte_carlo_probability|to_risk %}
-  {% if risk == "Low" %}
-    {% set risk_background_color = "#cce2d8" %}
-    {% set risk_text_color = "#005930" %}
-    {% set recommended_actions = "We would not normally expect stakeholders to take action on this report." %}
-   
+  {% if risk == "High" %}
+    {% set risk_background_color = "#f4ccca" %}
+    {% set risk_text_color = "#2a1a0e" %}
+    {% set recommended_actions = "Stakeholders may wish to ensure response plans are in place." %} 
   {% elif risk == "Medium" %}
     {% set risk_background_color = "#ffe0a3" %}
     {% set risk_text_color = "#594d00" %}
     {% set recommended_actions = "Stakeholders may wish to consider internal escalation." %}
   {% else %}
-    {% set risk_background_color = "#f4ccca" %}
-    {% set risk_text_color = "#2a1a0e" %}
-    {% set recommended_actions = "Stakeholders may wish to ensure response plans are in place." %} 
+    {% set risk_background_color = "#cce2d8" %}
+    {% set risk_text_color = "#005930" %}
+    {% set recommended_actions = "We would not normally expect stakeholders to take action on this report." %}
   {% endif %}
   
   {% block title %}
@@ -160,19 +159,19 @@
                               <tr style="width:100%;background-color:rgb(240,240,240)">
                                 <th style="width:33.333333%;padding:8px">UK Mainland</th>
                                 <td style="width:66.666667%;padding:8px" align="center">{{
-                                        reentry_event_report.impact.by_nation or
+                                        reentry_event_report.impact.by_nation|to_affected_territories or
                                         "No regions affected"}}</td>
                               </tr>
                               <tr style="width:100%">
                                 <th style="width:33.333333%;padding:8px">Airspace and Maritime</th>
                                 <td style="width:66.666667%;padding:8px" align="center">{{
-                                        reentry_event_report.impact.maritime_and_airspace or
+                                        reentry_event_report.impact.maritime_and_airspace|to_affected_territories or
                                         "No regions affected"}}</td>
                               </tr>
                               <tr style="width:100%;background-color:rgb(240,240,240)">
                                 <th style="width:33.333333%;padding:8px">UK Overseas Territories and Crown Dependencies</th>
                                 <td style="width:66.666667%;padding:8px" align="center">{{
-                                        reentry_event_report.impact.overseas_territories_and_crown_dependencies or
+                                        reentry_event_report.impact.overseas_territories_and_crown_dependencies|to_affected_territories or
                                         "No regions affected"}}</td>
                               </tr>
                             </table>
