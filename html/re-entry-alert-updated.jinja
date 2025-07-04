@@ -15,15 +15,15 @@
   {% extends "base.jinja" %}
 
   {% macro render_risk_cell(risk) -%}
-    {% if risk == "High" %}
+    {% if risk == "Hight" %}
       {% set risk_background_color = "#f4ccca" %}
       {% set risk_text_color = "#2a1a0e" %}    
     {% elif risk == "Medium" %}
       {% set risk_background_color = "#ffe0a3" %}
       {% set risk_text_color = "#594d00" %}
     {% else %}
-      {% set risk_background_color = "#cce2d8" %}
-      {% set risk_text_color = "#005930" %}
+      {% set risk_background_color = "#f4ccca" %}
+      {% set risk_text_color = "#2a1a0e" %}
     {% endif %}
     <td align="center" style="width:33.333333%;padding:8px;background-color:{{ risk_background_color }};font-weight:700;color:{{ risk_text_color }}">{{ risk if risk else "Low" }}</td>
   {%- endmacro %}
@@ -45,10 +45,7 @@
   {% endif %}
   
   {% block title %}
-    Uncontrolled Re-Entry Early Warning
-    {% if reentry_event.reentry_report_number > 1 %}
-      - Updated
-    {% endif %}  
+    {{ risk }} Risk Uncontrolled Re-Entry Alert
   {% endblock %}
 
   {% block subtitle %}
@@ -59,16 +56,13 @@
     {% endif %}
   {% endblock %}
 
-  
   {% block content %}
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:0px;padding-bottom:0px;max-width:600px">
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
+      style="max-width:600px;padding-bottom:16px">
       <tbody>
         <tr style="width:100%">
-          <td>
-            <p style="font-size:14px;line-height:20px;margin:0px">
-            The UK Space Agency is tracking the upcoming re-entry event involving {{ reentry_event_report.object_name }} from space into Earth's atmosphere, posing a potential risk to life and property on the ground. The event is assessed as <b>{{ risk }}</b> risk, with a <b>{{ '%0.3f' % (100*reentry_event_report.monte_carlo_probability)|float }}%</b> probability of re-entry over the UK. {{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }} is liable for any damages and associated response or recovery costs. All re-entered debris should be considered as hazardous until proven otherwise.
-            </p>
-            <p style="font-size:14px;line-height:20px;margin:0px;margin-top:16px">Sign in to <a style="color:rgb(0,110,187)" href="{{ application_url }}/re-entries/{{ reentry_event_report.short_id }}/alert">Monitor Space Hazards</a> to view analysis and additional information.</p>
+          <td align="center" style="font-size:14px;line-height:20px;margin:0px;padding:8px;background-color:{{ risk_background_color }};color:{{ risk_text_color }};font-weight:700">
+            {{ risk }} Risk - United Kingdom
           </td>
         </tr>
       </tbody>
@@ -88,23 +82,60 @@
                       style="width:100%;text-align:left;font-size:14px;line-height:20px;border-collapse:collapse;">
                       <tr style="width:100%;">
                         <th style="width:33.333333%;padding:8px"></th>
-                        <th style="width:33.333333%;padding:8px">Probability (%)</th>
-                        <th style="width:33.333333%;padding:8px">Risk</th>
+                        <th style="width:33.333333%;padding:8px" align="center">Probability (%)</th>
+                        <th style="width:33.333333%;padding:8px" align="center">Risk</th>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:8px">Debris impact in UK</th>
-                        <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.fragments_probability)|float if reentry_event_report.fragments_probability is not none else "0" }}%</th>
+                        <td style="width:33.333333%;padding:8px" align="center">{{ '%0.3f' % (100*reentry_event_report.fragments_probability)|float if reentry_event_report.fragments_probability is not none else "0" }}%</td>
                         {{ render_risk_cell(reentry_event_report.fragments_risk.value) }}
                       </tr>
                       <tr style="width:100%;">
                         <th style="width:33.333333%;padding:8px">Re-entry over UK</th>
-                        <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.monte_carlo_probability)|float if reentry_event_report.monte_carlo_probability is not none else "0" }}%</th>
+                        <td style="width:33.333333%;padding:8px" align="center">{{ '%0.3f' % (100*reentry_event_report.monte_carlo_probability)|float if reentry_event_report.monte_carlo_probability is not none else "0" }}%</td>
                         {{ render_risk_cell(reentry_event_report.monte_carlo_risk.value) }}
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:8px">UK casualty risk</th>
-                        <th style="width:33.333333%;padding:8px">{{ '%0.3f' % (100*reentry_event_report.human_casualty_probability)|float if reentry_event_report.human_casualty_probability is not none else "0" }}%</th>
+                        <th style="width:33.333333%;padding:8px">UK casualty risk	</th>
+                        <td style="width:33.333333%;padding:8px" align="center">{{ '%0.3f' % (100*reentry_event_report.human_casualty_probability)|float if reentry_event_report.human_casualty_probability is not none else "0" }}%</td>
                         {{ render_risk_cell(reentry_event_report.human_casualty_risk.value) }}
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:16px;padding-bottom:16px;max-width:600px">
+      <tbody>
+        <tr style="width:100%">
+          <td>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Event Summary</h1>
+            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
+            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
+              style="padding-top:4px;padding-bottom:4px;">
+              <tbody>
+                <tr>
+                  <td>
+                    <table style="width:100%;text-align:left;font-size:14px;line-height:20px;border-collapse:collapse">
+                      <tr style="width:100%;">
+                        <th style="width:33.333333%;padding:8px">Object Type</th>
+                        <td style="width:66.666667%;padding:8px" align="center">{{reentry_event_report.object_type or "Unknown"}}</td>
+                      </tr>
+                      <tr style="width:100%;background-color:rgb(240,240,240)">
+                        <th style="width:33.333333%;padding:8px">Estimated Mass (kg)</th>
+                        <td style="width:66.666667%;padding:8px" align="center">{{reentry_event_report.estimated_mass or "Unknown"}}</td>
+                      </tr>
+                      <tr style="width:100%;">
+                        <th style="width:33.333333%;padding:8px">Re-entry time window worldwide (UTC)</th>
+                        <td style="width:66.666667%;padding:8px" align="center">{{reentry_event_report.decay_epoch.strftime("%A %d %B %Y at %H:%M:%S") or "Unknown"}} +/- {{reentry_event_report.uncertainty_window}} minutes</td>
+                      </tr>
+                      <tr style="width:100%;background-color:rgb(240,240,240)">
+                        <th style="width:33.333333%;padding:8px">UK overflight time(s) (UTC)</th>
+                        <td style="width:66.666667%;padding:8px" align="center">{{reentry_event.overflight_time[0].strftime("%A %d %B %Y at %H:%M:%S") or "Unknown"}}</td>
                       </tr>
                     </table>
                   </td>
@@ -114,71 +145,9 @@
                     <img src="{{ reentry_event_map.src }}" style="width:100%;height:auto;display:block;outline:none;border:none;text-decoration:none;" width="580" />
                   </td>
                 </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-      style="padding-top:8px;padding-bottom:8px;max-width:600px">
-      <tbody>
-        <tr style="width:100%">
-          <td>
-            <h1 style="font-size:16px;line-height:24px;margin:0px">Potential Impact by UK Nations</h1>
-            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:16px">
-              <tbody>
-                <tr>
+                <tr> 
                   <td>
-                    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="margin:0;border-collapse:collapse;border-spacing:0">
-                      <tbody>
-                        <tr>
-                          <td>
-                            <table style="width:100%;text-align:left;font-size:14px;line-height:20px;border-collapse:collapse">
-                              <tr style="width:100%;background-color:rgb(240,240,240)">
-                                <th style="width:33.333333%;padding:8px">England</th>
-                                <td style="width:66.666667%;padding:8px">{{reentry_event_report.impact.england|to_affected_territories or "No regions affected"}}</td>
-                              </tr>
-                              <tr style="width:100%">
-                                <th style="width:33.333333%;padding:8px">Scotland</th>
-                                <td style="width:66.666667%;padding:8px">{{reentry_event_report.impact.scotland|to_affected_territories or "No regions affected"}}</td>
-                              </tr>
-                              <tr style="width:100%;background-color:rgb(240,240,240)">
-                                <th style="width:33.333333%;padding:8px">Wales</th>
-                                <td style="width:66.666667%;padding:8px">{{reentry_event_report.impact.wales|to_affected_territories or "No regions affected"}}</td>
-                              </tr>
-                              <tr style="width:100%">
-                                <th style="width:33.333333%;padding:8px">Northern Ireland</th>
-                                <td style="width:66.666667%;padding:8px">{{reentry_event_report.impact.northern_ireland|to_affected_territories or "No regions affected"}}</td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-      style="padding-top:8px;padding-bottom:8px;max-width:600px">
-      <tbody>
-        <tr style="width:100%">
-          <td>
-            <h1 style="font-size:16px;line-height:24px;margin:0px">Potential Impact by UK Interests</h1>
-            <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
-            <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
-              style="padding-top:16px">
-              <tbody>
-                <tr>
-                  <td>
-                    <img src="{{ reentry_event_map_world.src }}" style="width:100%;height:auto;margin-bottom:16px;display:block;outline:none;border:none;text-decoration:none;font-family:Calibri, Arial, sans-serif" width="580" />
+                    <img src="{{ reentry_event_map_world.src }}" style="width:100%;height:auto;display:block;outline:none;border:none;text-decoration:none;" width="580" />
                   </td>
                 </tr>
                 <tr>
@@ -189,15 +158,21 @@
                           <td>
                             <table style="width:100%;text-align:left;font-size:14px;line-height:20px;border-collapse:collapse">
                               <tr style="width:100%;background-color:rgb(240,240,240)">
-                                <th style="width:33.333333%;padding:8px">UK Overseas Territories and Crown Dependencies</th>
-                                <td style="width:66.666667%;padding:8px">{{
-                                        reentry_event_report.impact.overseas_territories_and_crown_dependencies|to_affected_territories or
+                                <th style="width:33.333333%;padding:8px">UK Mainland</th>
+                                <td style="width:66.666667%;padding:8px" align="center">{{
+                                        reentry_event_report.impact.by_nation or
                                         "No regions affected"}}</td>
                               </tr>
                               <tr style="width:100%">
                                 <th style="width:33.333333%;padding:8px">Airspace and Maritime</th>
-                                <td style="width:66.666667%;padding:8px">{{
-                                        reentry_event_report.impact.maritime_and_airspace|to_affected_territories or
+                                <td style="width:66.666667%;padding:8px" align="center">{{
+                                        reentry_event_report.impact.maritime_and_airspace or
+                                        "No regions affected"}}</td>
+                              </tr>
+                              <tr style="width:100%;background-color:rgb(240,240,240)">
+                                <th style="width:33.333333%;padding:8px">UK Overseas Territories and Crown Dependencies</th>
+                                <td style="width:66.666667%;padding:8px" align="center">{{
+                                        reentry_event_report.impact.overseas_territories_and_crown_dependencies or
                                         "No regions affected"}}</td>
                               </tr>
                             </table>
@@ -212,12 +187,14 @@
           </td>
         </tr>
       </tbody>
-    </table>  
+    </table>
+
+{# dada #}
     <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation" style="padding-top:8px;padding-bottom:8px;max-width:600px">
       <tbody>
         <tr style="width:100%">
           <td>
-            <h1 style="font-size:16px;line-height:24px;margin:0px">Event Summary</h1>
+            <h1 style="font-size:16px;line-height:24px;margin:0px">Event Details</h1>
             <hr height="1" style="height:1px;border:0 none;color:rgb(0,110,187);background-color:rgb(0,110,187);">
             <table align="center" width="100%" border="0" cellPadding="0" cellSpacing="0" role="presentation"
               style="padding-top:4px;padding-bottom:4px;">
@@ -227,45 +204,37 @@
                     <table
                       style="width:100%;text-align:left;font-size:14px;line-height:20px;border-collapse:collapse">
                       <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:8px">UK nations at risk</th>
-                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.impact.by_nation|to_affected_territories or "No regions affected" }}</td>
-                      </tr>
-                      <tr style="width:100%;">
-                        <th style="width:33.333333%;padding:8px">UK interests at risk</th>
-                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.impact.overseas_territories_and_crown_dependencies|to_affected_territories or "No regions affected" }}</td>
-                      </tr>
-                      <tr style="width:100%;background-color:rgb(240,240,240)">
-                        <th style="width:33.333333%;padding:8px">Time Frame (UTC)</th>
-                        <td style="width:66.666667%;padding:8px">{{ (reentry_event_report.time_window_start,reentry_event_report.time_window_end)|to_time_frame }}</td>
+                        <th style="width:33.333333%;padding:8px">Re-entry time window worldwide (UTC)</th>
+                        <td style="width:66.666667%;padding:8px" align="center">{{reentry_event_report.decay_epoch.strftime("%A %d %B %Y at %H:%M:%S") or "Unknown"}} +/- {{reentry_event_report.uncertainty_window}} minutes</td>
                       </tr>
                       <tr style="width:100%;">
                         <th style="width:33.333333%;padding:8px">Object</th>
-                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }} ({{ reentry_event_report.object_type if reentry_event_report.object_type else "Unknown" }})</td>
+                        <td style="width:66.666667%;padding:8px" align="center">{{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }} ({{ reentry_event_report.object_type if reentry_event_report.object_type else "Unknown" }})</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:8px">NORAD ID</th >
-                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.norad_id if reentry_event_report.norad_id else "Unknown" }}</td>
+                        <td style="width:66.666667%;padding:8px" align="center">{{ reentry_event_report.norad_id if reentry_event_report.norad_id else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%;">
                         <th style="width:33.333333%;padding:8px">Estimated mass (kg)</th>
-                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.estimated_mass if reentry_event_report.estimated_mass else "Unknown" }}</td>
+                        <td style="width:66.666667%;padding:8px" align="center">{{ reentry_event_report.estimated_mass if reentry_event_report.estimated_mass else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:8px">Height (m)</th>
-                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.object_height if reentry_event_report.object_height else "Unknown" }}</td>
+                        <td style="width:66.666667%;padding:8px" align="center">{{ reentry_event_report.object_height if reentry_event_report.object_height else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%">
                         <th style="width:33.333333%;padding:8px">Width (m)</th>
-                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.object_width if reentry_event_report.object_width else "Unknown" }}</td>
+                        <td style="width:66.666667%;padding:8px" align="center">{{ reentry_event_report.object_width if reentry_event_report.object_width else "Unknown" }}</td>
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:8px">Licensing Country</th>
-                        <td style="width:66.666667%;padding:8px">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}
+                        <td style="width:66.666667%;padding:8px" align="center">{{ reentry_event_report.license_country|to_full_country_name if reentry_event_report.license_country|to_full_country_name  else "Unknown" }}
                         </td>
                       </tr>
                       <tr style="width:100%;">
                         <th style="width:33.333333%;padding:8px">Expected Survivability to Ground	</th>
-                        <td style="width:66.666667%;padding:8px">
+                        <td style="width:66.666667%;padding:8px" align="center">
                           {% if reentry_event_report.survivability %}
                             {{ reentry_event_report.survivability }}.
                           {% endif %}
@@ -274,7 +243,7 @@
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:8px">Report Number</th>
-                        <td style="width:66.666667%;padding:8px">{{ reentry_event.reentry_report_number if reentry_event.reentry_report_number else "Unknown" }}</td>
+                        <td style="width:66.666667%;padding:8px" align="center">{{ reentry_event.reentry_report_number if reentry_event.reentry_report_number else "Unknown" }}</td>
                       </tr>
                     </table>
                   </td>
@@ -299,7 +268,7 @@
                   <td>
                     <p style="font-size:14px;line-height:20px;margin:0px;margin-bottom:16px">
                       <b>Event Information:</b><br>
-                      The Payload is expected to re-enter on {{(reentry_event_report.time_window_start,reentry_event_report.time_window_end)|to_time_frame}}. {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }} has a {{ '%0.3f' % (100*reentry_event_report.fragments_probability)|float if reentry_event_report.fragments_probability is not none else "0" }}% probability of debris impacting the UK. 
+                      The Payload is expected to re-enter on {{(reentry_event_report.time_window_start,reentry_event_report.time_window_end)|to_time_frame}}. {{ reentry_event_report.object_name if reentry_event_report.object_name else "Unknown" }} has a {{ '%0.3f' % (100*reentry_event_report.fragments_probability)|float if reentry_event_report.fragments_probability is not none else "0%" }}% probability of debris impacting the UK. 
                     </p>
                     {% if risk == "High" %}
                       <p style="font-size:14px;line-height:20px;margin:0px;margin-bottom:16px">
