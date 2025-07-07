@@ -134,7 +134,9 @@
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:8px">UK overflight time(s) (UTC)</th>
-                        <td style="width:66.666667%;padding:8px" align="center">{{reentry_event.overflight_time[0].strftime("%A %d %B %Y at %H:%M:%S") or "Unknown"}}</td>
+                        <td style="width:66.666667%;padding:8px" align="center">
+                            {% if reentry_event.overflight_time %}{{ reentry_event.overflight_time[0].strftime("%A %d %B %Y at %H:%M:%S") }}{% else %}Unknown{% endif %}
+                        </td>
                       </tr>
                     </table>
                   </td>
