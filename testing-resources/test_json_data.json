@@ -339,7 +339,7 @@
     "time_window_start": "2024-02-14 09:01:00",
     "time_window_end": "2024-02-14 14:01:00",
     "tip_external_id": "22557",
-    "monte_carlo_probability": 0.04,
+    "atmospheric_probability": 0.04,
     "norad_id": "56073",
     "object_name": "CZ-2C R/B",
     "object_type": "Rocket body",

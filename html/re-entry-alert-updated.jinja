@@ -28,7 +28,7 @@
     <td align="center" style="width:33.333333%;padding:8px;background-color:{{ risk_background_color }};font-weight:700;color:{{ risk_text_color }}">{{ risk if risk else "Low" }}</td>
   {%- endmacro %}
   
-  {% set risk = reentry_event_report.monte_carlo_probability|to_risk %}
+  {% set risk = reentry_event_report.atmospheric_probability|to_risk %}
   {% if risk == "High" %}
     {% set risk_background_color = "#f4ccca" %}
     {% set risk_text_color = "#2a1a0e" %}
@@ -91,8 +91,8 @@
                       </tr>
                       <tr style="width:100%;">
                         <th style="width:33.333333%;padding:8px">Re-entry over UK</th>
-                        <td style="width:33.333333%;padding:8px" align="center">{{ '%0.3f' % (100*reentry_event_report.monte_carlo_probability)|float if reentry_event_report.monte_carlo_probability is not none else "0" }}%</td>
-                        {{ render_risk_cell(reentry_event_report.monte_carlo_risk.value) }}
+                        <td style="width:33.333333%;padding:8px" align="center">{{ '%0.3f' % (100*reentry_event_report.atmospheric_probability)|float if reentry_event_report.atmospheric_probability is not none else "0" }}%</td>
+                        {{ render_risk_cell(reentry_event_report.atmospheric_risk.value) }}
                       </tr>
                       <tr style="width:100%;background-color:rgb(240,240,240)">
                         <th style="width:33.333333%;padding:8px">UK casualty risk	</th>
